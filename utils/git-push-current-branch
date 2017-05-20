@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# This script will push  changes to current branch on origin 
+
+current_branch_name="$(git rev-parse --abbrev-ref HEAD)"
+echo -n "Are you sure to push on : origin/$current_branch_name (y/n)? "
+read answer
+if echo "$answer" | grep -iq "^y" ;then
+    git push origin $current_branch_name
+fi
+ 
