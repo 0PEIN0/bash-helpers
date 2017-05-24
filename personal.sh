@@ -16,3 +16,7 @@ fi;
 if [ -f $BASH_TEMP_FOLDER/epad-project-team.sh ]; then
     . $BASH_TEMP_FOLDER/epad-project-team.sh
 fi;
+
+if [ -f $BASH_TEMP_FOLDER/ftp-project-team.sh ]; then
+    . $BASH_TEMP_FOLDER/ftp-project-team.sh
+fi;
