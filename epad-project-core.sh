@@ -29,8 +29,8 @@ EPAD_INIT_DATA_LOAD_PYTHON_FILE_PATH="$BASH_TEMP_FOLDER/$EPAD_INIT_DATA_LOAD_PYT
 
 EPAD_DOCKER_ROOT_FOLDER="$EPAD_PROJECT_ROOT_FOLDER/docker"
 
-if [ -f $BASH_TEMP_FOLDER/django-project-core.sh ]; then
-    . $BASH_TEMP_FOLDER/django-project-core.sh
+if [ -f $BASH_HELPER_GIT_FOLDER/django-project-core.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/django-project-core.sh
 fi;
 
 alias ${EPAD_PROJECT_NAME_UNDERSCORE}_bc="djangoBranchChange $EPAD_PROJECT_NAME_UNDERSCORE "
