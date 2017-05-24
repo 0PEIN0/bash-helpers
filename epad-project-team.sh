@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -f $BASH_TEMP_FOLDER/epad-project-core.sh ]; then
-    . $BASH_TEMP_FOLDER/epad-project-core.sh
+if [ -f $BASH_HELPER_GIT_FOLDER/epad-project-core.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/epad-project-core.sh
 fi;
 
 #global variable overrides
