@@ -13,7 +13,7 @@
 #"gedit ~/.bash_aliases" (add the reference this current bash script file and personal bash files)
 #system_init_sudo
 #"gedit ~/.zshrc" (change the zsh theme to "agnoster" and add the reference this current bash script file and personal bash files)
-#sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology;ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;'
+#sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;'
 #ssh_keygen
 #get_ssh (add the ssh public key at Github and Bitbucket)
 #ssh_sudo_setup
@@ -253,6 +253,7 @@ nodeUpdates() {
     return
   fi;
   aptGet
+  npm install -g @angular/cli
   npm install -g mongodb@latest
   npm install -g socket.io@latest
   npm install -g gulp gulp-cli@latest
@@ -397,11 +398,21 @@ findStringPattern() {
 installPythonAndPostgres() {
   goToRoot
   aptGet
-  printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme postgresql-server-dev-9.5
-  printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev python3-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+  printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme
+  printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+  printf 'y\n' | sudo apt-get install postgresql-server-dev-9.5
   #geo-spatial packages
   printf 'y\n' | sudo apt-get install binutils libproj-dev gdal-bin libgdal-dev postgis
   checkSoftwareFolder
+  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -sc)-pgdg main" >> /etc/apt/sources.list'
+  wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+  aptGet
+  sudo apt-get install -y postgresql-9.6
+  sudo apt-get install -y postgresql-9.6-postgis-2.3-scripts
+  sudo apt-get install -y postgresql-contrib-9.6
+  aptGet
+  printf "y\n" | sudo apt autoremove
+  aptGet
   wget http://postgis.net/stuff/$LATEST_POSTGIS_VERSION.tar.gz
   tar xvfz $LATEST_POSTGIS_VERSION.tar.gz
   cd $LATEST_POSTGIS_VERSION
@@ -425,13 +436,16 @@ installPythonAndPostgres() {
   pip install --upgrade docker-compose
   pip install --upgrade awscli
   sudo service postgresql restart
-  sudo service postgresql restart
   #the following command is for postgis installation in postgres in 9.3
-  #sudo apt-get install postgresql-9.3-postgis-scripts
+  #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
 }
 
 installGeos() {
-  #run in sudo mode
+  isSudoMode
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   checkSoftwareFolder
   cd $softwareFolder/
@@ -440,7 +454,7 @@ installGeos() {
   cd $LATEST_GEOS_VERSION
   ./configure
   make
-  printf 'y\n' | sudo make install
+  printf 'y\n' | make install
   cd ..
   rm -rf $LATEST_GEOS_VERSION
   rm -rf $LATEST_GEOS_VERSION.tar.bz2
@@ -654,7 +668,7 @@ installRedis() {
   tar xvzf redis-stable.tar.gz
   cd redis-stable
   make
-  printf 'y\n' | sudo make install
+  printf 'y\n' | make install
   rm -rf redis-stable.tar.gz
   goToRoot
 }
@@ -905,7 +919,11 @@ installWine() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  printf 'y\n' | sudo apt remove wine2.0 wine-staging wine wine1.8 wine-stable libwine* fonts-wine* && sudo apt autoremove
+  aptGet
+  printf 'y\n' | sudo apt remove wine2.0 wine-staging wine wine1.8 wine-stable libwine* fonts-wine*
+  aptGet
+  printf "y\n" | sudo apt autoremove
+  aptGet
   printf '\n' | sudo add-apt-repository --remove ppa:wine/wine-builds
   wget https://dl.winehq.org/wine-builds/Release.key
   sudo apt-key add Release.key
@@ -1005,8 +1023,8 @@ installPackagesForSystemSudo() {
   goToRoot
   coreSystemUpdate
   # Install build essentials
-  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass tree git zip upstart preload nano vim lsof
-  printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager checkinstall curl software-properties-common libav-tools ffmpeg
+  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools
+  printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager ffmpeg
   # Install ubuntu make
   printf '\n' | sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
   aptGet
@@ -1090,8 +1108,13 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install synaptic
   # Install Laptop mode tools
   printf 'y\n' | sudo apt-get install laptop-mode-tools
-  # Install microphone control panel
+  # Install microphone control panel and pulseaudio android support package
+  aptGet
   printf 'y\n' | sudo apt-get install pavucontrol
+  aptGet
+  printf '\n' | sudo add-apt-repository ppa:qos/pulseaudio-dlna
+  aptGet
+  printf 'y\n' | sudo apt-get install pulseaudio-dlna
   # Stacer installation
   installStacer $LATEST_STACER_VERSION
   # Docker installation
@@ -1299,11 +1322,12 @@ alias jenkins_start='/etc/init.d/jenkins start'
 alias jenkins_stop='/etc/init.d/jenkins stop'
 alias karma_test='karma start --browsers Chrome'
 alias loc_count='cloc '
+alias new_django_project='newDjangoProject '
 alias no_sudo_zsh='export SHELL=/usr/bin/zsh && exec /usr/bin/zsh -l'
 alias node_update=nodeUpdates
 alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_ROOT_FOLDER/Apps/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
 alias pip_freeze='pip freeze > requirements.txt'
-alias pip_init='pip install django psycopg2 djangorestframework markdown django-filter dj-database-url whitenoise django-nose nose djangorestframework gunicorn pytz mock django-celery django-celery-results && pip_freeze'
+alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower && pip_freeze'
 alias pip_update='pip install --upgrade pip'
 alias postgres_pgpass_file=postgresPgpassFileInit
 alias postgres_restart='sudo service postgresql restart'
