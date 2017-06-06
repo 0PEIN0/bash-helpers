@@ -465,3 +465,20 @@ djangoBranchChangeWithFullResetAndRun() {
   eval ${1}_bc_full_reset $2
   eval ${1}_run
 }
+
+djangoResetWithoutMigrationClean() {
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  if [ -z "$2" ]; then
+    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    return $2
+  fi;
+  goToRoot
+  eval ${1}_ve
+  eval ${1}_psql_reset
+  ./manage.py makemigrations
+  ./manage.py migrate
+  ./manage.py shell < $2
+}
