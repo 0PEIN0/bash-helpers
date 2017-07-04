@@ -13,7 +13,7 @@
 #"gedit ~/.bash_aliases" (add the reference this current bash script file and personal bash files)
 #system_init_sudo
 #"gedit ~/.zshrc" (change the zsh theme to "agnoster" and add the reference this current bash script file and personal bash files)
-#sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;'
+#sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;'
 #ssh_keygen
 #get_ssh (add the ssh public key at Github and Bitbucket)
 #ssh_sudo_setup
@@ -23,7 +23,6 @@
 #"gedit ~/.zshrc" (change the zsh theme to "agnoster" and add the reference this current bash script file and personal bash files)
 #ssh_keygen
 #get_ssh (add the ssh public key at Github and Bitbucket)
-#ssh_non_sudo_setup
 #admin
 
 #SWITCH BACK TO SUDO MODE
@@ -32,6 +31,9 @@
 #2. https://code.visualstudio.com/download
 #3. https://www.jetbrains.com/pycharm/download/
 #4. https://github.com/adobe/brackets/releases/
+
+#SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
+#ssh_non_sudo_setup
 
 LATEST_PYCHARM_VERSION="pycharm-community-2017.1.1"
 LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_3.deb"
