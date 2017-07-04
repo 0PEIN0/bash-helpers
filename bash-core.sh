@@ -710,7 +710,6 @@ installPyCharm() {
 
 installZshNonSudo() {
   goToRoot
-  aptGet
   rm -rf $SYSTEM_ROOT_FOLDER/.oh-my-zsh
   pip install --user powerline-status
   goToRoot
