@@ -619,11 +619,6 @@ powerlineFontInstallationNonSudo() {
 }
 
 installZshSudo() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
   goToRoot
   aptGet
   rm -rf /root/.oh-my-zsh
@@ -701,11 +696,6 @@ installRoboMongo() {
 }
 
 installPyCharm() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
   if [ -z "$1" ]; then
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
@@ -719,11 +709,6 @@ installPyCharm() {
 }
 
 installZshNonSudo() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
   goToRoot
   aptGet
   rm -rf $SYSTEM_ROOT_FOLDER/.oh-my-zsh
@@ -926,9 +911,10 @@ installWine() {
   printf "y\n" | sudo apt autoremove
   aptGet
   printf '\n' | sudo add-apt-repository --remove ppa:wine/wine-builds
+  sudo dpkg --add-architecture i386
   wget https://dl.winehq.org/wine-builds/Release.key
   sudo apt-key add Release.key
-  sudo apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/'
+  printf '\n' | sudo apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/'
   aptGet
   printf 'y\n' | sudo apt-get install --install-recommends wine-staging
   /opt/wine-staging/bin/wine
