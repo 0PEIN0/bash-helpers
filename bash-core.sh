@@ -1159,10 +1159,6 @@ installPackagesForSystemSudo() {
   printf '\n' | sudo add-apt-repository ppa:noobslab/icons
   aptGet
   printf 'y\n' | sudo apt-get install ultra-flat-icons ultra-flat-icons-green ultra-flat-icons-orange
-  # Install arc theme
-  sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
-  aptGet
-  printf 'y\ny\n' | sudo apt-get install arc-theme
   # Stacer installation
   installStacer $LATEST_STACER_VERSION
   # Docker installation
