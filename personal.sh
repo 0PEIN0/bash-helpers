@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#YSTEM_USER_FULL_NAME="John Doe"
+#SYSTEM_USER_FULL_NAME="John Doe"
 #SYSTEM_USER_EMAIL="john@doe.com"
 #SYSTEM_USER_NAME="john"
 SYSTEM_ROOT_FOLDER="/home/$SYSTEM_USER_NAME"

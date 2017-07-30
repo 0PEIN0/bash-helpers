@@ -1,7 +1,15 @@
 #!/bin/bash
 
-#LOGIN TO THE SYSTEM FOR THE FIRST TIME
-#Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install chrome.
+#LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO MODE
+#Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
+#Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
+#Create "bash-dump" folder in the user directory. Path will look like this: "/home/$SYSTEM_USER_NAME/bash-dump/".
+#Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh" and save the file in bash-dump folder.
+#Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder.
+#Open the "personal.sh" file located in the bash-dump folder and change the following variable values and un-comment the code there.
+#SYSTEM_USER_FULL_NAME="John Doe"
+#SYSTEM_USER_EMAIL="john@doe.com"
+#SYSTEM_USER_NAME="john"
 #Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
 #Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
 #Open "System Settings" -> "Brightness & Lock" -> Select "Never" for "Turn screen off when inactive for".
@@ -15,8 +23,8 @@
 #IN NON SUDO MODE
 #"gedit ~/.bash_aliases" (add the reference this current bash script file and personal bash files)
 #sample example of import of personal shell file:
-#if [ -f /home/user/bash-dump/personal.sh ]; then
-#    . /home/user/bash-dump/personal.sh
+#if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
+#    . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
 #fi;
 #system_init_non_sudo_first
 #admin
