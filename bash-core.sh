@@ -57,7 +57,8 @@
 #1. http://www.syntevo.com/smartgit/download
 #2. https://code.visualstudio.com/download
 #3. https://www.jetbrains.com/pycharm/download/
-#4. Install JAVA by running this following command: install_java. Choose "Ok" and "Yes" for the prompts.
+#Install JAVA by running this following command: install_java. Choose "Ok" and "Yes" for the prompts.
+#Open "Terminal" and run this command to install all the global packages via npm: "node_update".
 #Restart machine.
 
 #SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
@@ -79,6 +80,7 @@
 #Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
 #Restart machine.
 #Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
+#Open "Atom" -> There will be a pop-up showing list of dependicies to install, press "Yes" to install them.
 
 LATEST_PYCHARM_VERSION="pycharm-community-2017.2"
 LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_4.deb"
@@ -1086,7 +1088,7 @@ installPackagesForSystemSudo() {
   aptGet
   curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
   sudo apt-get install -y nodejs
-  nodeUpdates
+  #nodeUpdates
   # Install python and postgres
   installPythonAndPostgres
   # Install C++ code beautifier
