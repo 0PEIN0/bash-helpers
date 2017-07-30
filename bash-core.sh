@@ -78,7 +78,7 @@
 #Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
 #Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
 #Restart machine.
-#Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Regular" -> Make font size "16".
+#Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
 
 LATEST_PYCHARM_VERSION="pycharm-community-2017.2"
 LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_4.deb"
