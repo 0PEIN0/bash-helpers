@@ -57,8 +57,9 @@
 #1. http://www.syntevo.com/smartgit/download
 #2. https://code.visualstudio.com/download
 #3. https://www.jetbrains.com/pycharm/download/
+#Restart machine.
 
-#SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
+#SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 #Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
 #Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
 #Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
@@ -75,6 +76,8 @@
 #Clone the https://github.com/0PEIN0/bash-helpers repository to make sure the latest updates can be pulled at any time. Also update the bash imports in the machine for both sudo and non-sudo users.
 #Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
 #Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
+#Restart machine.
+#Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Regular"
 
 LATEST_PYCHARM_VERSION="pycharm-community-2017.2"
 LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_4.deb"
