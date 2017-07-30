@@ -1,10 +1,22 @@
 #!/bin/bash
 
+#LOGIN TO THE SYSTEM FOR THE FIRST TIME
+#Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install chrome.
+#Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
+#Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
+#Open "System Settings" -> "Brightness & Lock" -> Select "Never" for "Turn screen off when inactive for".
+#Open "System Settings" -> "Time & Date" -> "Clock" -> Select "Weekday" and "Date", Month", "Year", "Seconds" and "Include week numbers".
+#Open "System Settings" -> "Software and Updates" -> "Ubuntu Software" -> Select "Main Server" for "Download From" option.
+#Open "System Settings" -> "Software and Updates" -> "Additional Drivers" -> Select "Using NVIDIA binary driver" for allowing proprietary software from NVIDIA to be installed on the machine in case NVIDIA graphics card is present -> Press "Apply Changes" button.
+#Open "System Settings" -> "Language Support" -> Drag "English(United States)" at the top of the order.
+#Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
+#Restart machine.
+
 #IN NON SUDO MODE
 #"gedit ~/.bash_aliases" (add the reference this current bash script file and personal bash files)
-#sample example of import at bash aliases file:
-#if [ -f /home/user/bash-dump/bash-aliases.sh ]; then
-#    . /home/user/bash-dump/bash-aliases.sh
+#sample example of import of personal shell file:
+#if [ -f /home/user/bash-dump/personal.sh ]; then
+#    . /home/user/bash-dump/personal.sh
 #fi;
 #system_init_non_sudo_first
 #admin
@@ -12,39 +24,53 @@
 #SWITCH TO SUDO MODE
 #"gedit ~/.bash_aliases" (add the reference this current bash script file and personal bash files)
 #system_init_sudo
+#Restart machine
+#Enter sudo mode again
 #"gedit ~/.zshrc" (change the zsh theme to "agnoster" and add the reference this current bash script file and personal bash files)
+#Do the following postgres operation after replacing "$SYSTEM_USER_NAME" value.
 #sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;'
 #ssh_keygen
-#get_ssh (add the ssh public key at Github and Bitbucket)
+#get_ssh
+#Add the ssh public key at Github and Bitbucket
 #ssh_sudo_setup
 
 #SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 #system_init_non_sudo_second
 #"gedit ~/.zshrc" (change the zsh theme to "agnoster" and add the reference this current bash script file and personal bash files)
 #ssh_keygen
-#get_ssh (add the ssh public key at Github and Bitbucket)
+#get_ssh
+#Add the ssh public key at Github and Bitbucket
+#ssh_non_sudo_setup
 #admin
 
 #SWITCH BACK TO SUDO MODE
-#Download smartgit, vscode, pycharm and bracket deb files and put them in the softwares folder. Change the 3 lines below with the latest version the respective softwares. Then run 'install_smartgit', 'install_vscode', 'install_pycharm', 'install_bracket'.
+#Download smartgit, vscode, pycharm deb files and put them in the /home/$SYSTEM_USER_NAME/Downloads/Softwares folder. Change the 3 lines below with the latest version the respective softwares. Then run 'install_smartgit', 'install_vscode', 'install_pycharm'.
 #1. http://www.syntevo.com/smartgit/download
 #2. https://code.visualstudio.com/download
 #3. https://www.jetbrains.com/pycharm/download/
-#4. https://github.com/adobe/brackets/releases/
 
 #SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
-#ssh_non_sudo_setup
+#Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
+#Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
+#Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
+#Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "Don't suspend on lid close" -> Select "No".
+#Open "Tweak Tool" -> "Startup Applications" -> Add applications like "Google Chrome", "Atom", "Terminal", "System Monitor", "Files", "Dropbox", "Slack", "Sublime Text", "VLC Media Player", "Smartgit", "Skype".
+#Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Appearance" -> "Position" -> Select "Bottom".
+#Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Icons" -> "Icon Size" -> Make it "32".
+#Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Show my name".
+#Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Power" -> "Always visible".
+#Open "Chrome" -> Visit "https://slack.com/downloads/linux" -> Download the 64 bit slack and install using ubuntu package manager.
 
-LATEST_PYCHARM_VERSION="pycharm-community-2017.1.1"
-LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_3.deb"
-LATEST_VSCODE_FILE_NAME="code-insiders_1.12.0-1492586320_amd64.deb"
+LATEST_PYCHARM_VERSION="pycharm-community-2017.2"
+LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_4.deb"
+LATEST_VSCODE_FILE_NAME="code_1.14.2-1500506907_amd64.deb"
 LATEST_ROBOMONGO_VERSION="1.0.0"
 LATEST_ROBOMONGO_VERSION_FULL="robomongo-$LATEST_ROBOMONGO_VERSION-linux-x86_64-89f24ea"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
 LATEST_POSTGIS_VERSION="postgis-2.3.3dev"
 LATEST_PYTHON_VERSION="3.5.2"
-LATEST_BRACKET_VERSION="1.9"
+LATEST_BRACKET_VERSION="1.10"
 LATEST_STACER_VERSION="1.0.6"
 
 SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME="virtual-python-envs"
@@ -309,7 +335,7 @@ postgresPgpassFileInit() {
     return
   fi;
   if [ ! -f ~/.pgpass ]; then
-    touch $USER:$USER ~/.pgpass;
+    touch $USER:$USER ~/.pgpass
   fi;
   chown $USER:$USER ~/.pgpass
   chmod $DEFAULT_PERMISSION_VALUE ~/.pgpass
@@ -507,10 +533,13 @@ installBracket() {
   goToRoot
   aptGet
   checkSoftwareFolder
-  wget https://github.com/adobe/brackets/releases/download/release-$1/Brackets.Release.$1.64-bit.deb
-  printf 'y\n' | sudo apt install Brackets.Release.$1.64-bit.deb
-  sudo dpkg -i Brackets.Release.$1.64-bit
-  printf 'y\n' | sudo apt-get install -f
+  printf '\n' | sudo add-apt-repository ppa:webupd8team/brackets
+  aptGet
+  printf 'y\n' | sudo apt-get install brackets
+  #wget https://github.com/adobe/brackets/releases/download/release-$1/Brackets.Release.$1.64-bit.deb
+  #printf 'y\n' | sudo apt install $SYSTEM_SOFTWARE_FOLDER/Brackets.Release.$1.64-bit.deb
+  #sudo dpkg -i $SYSTEM_SOFTWARE_FOLDER/Brackets.Release.$1.64-bit
+  #printf 'y\n' | sudo apt-get install -f
   goToRoot
 }
 
@@ -724,24 +753,8 @@ installZshNonSudo() {
   source ~/.bashrc
 }
 
-installAtom() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
+installAtomExtensionsNonSudo() {
   goToRoot
-  aptGet
-  printf '\n' | sudo add-apt-repository ppa:webupd8team/atom
-  aptGet
-  printf 'y\n' | sudo apt-get install atom
-  #ALTERNATE METHOD BELOW(commented out)
-  #checkSoftwareFolder
-  #wget --no-check-certificate https://atom.io/download/deb
-  #mv "deb" "atom-amd64.deb"
-  #sudo dpkg -i atom-amd64.deb
-  #sudo apt-get install -f
-  #rm -rf atom-amd64.deb
   apm install nuclide
   apm install atom-beautify
   apm install autocomplete-python
@@ -762,6 +775,28 @@ installAtom() {
   apm install highlight-selected
   #apm install react
   apm install autoclose-html
+  goToRoot
+}
+
+installAtom() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  aptGet
+  printf '\n' | sudo add-apt-repository ppa:webupd8team/atom
+  aptGet
+  printf 'y\n' | sudo apt-get install atom
+  #ALTERNATE METHOD BELOW(commented out)
+  #checkSoftwareFolder
+  #wget --no-check-certificate https://atom.io/download/deb
+  #mv "deb" "atom-amd64.deb"
+  #sudo dpkg -i atom-amd64.deb
+  #sudo apt-get install -f
+  #rm -rf atom-amd64.deb
+  installAtomExtensionsNonSudo
   goToRoot
 }
 
@@ -1022,12 +1057,12 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install ubuntu-make
   # Install Git
   printf 'y\n' | sudo apt-get install git git-core xclip
-  git config --global user.name $SYSTEM_USER_FULL_NAME
-  GIT_COMMITTER_NAME=$SYSTEM_USER_FULL_NAME
-  GIT_AUTHOR_NAME=$SYSTEM_USER_FULL_NAME
-  git config --global user.email $SYSTEM_USER_EMAIL
-  GIT_COMMITTER_EMAIL=$SYSTEM_USER_EMAIL
-  GIT_AUTHOR_EMAIL=$SYSTEM_USER_EMAIL
+  git config --global user.name "$SYSTEM_USER_FULL_NAME"
+  GIT_COMMITTER_NAME="$SYSTEM_USER_FULL_NAME"
+  GIT_AUTHOR_NAME="$SYSTEM_USER_FULL_NAME"
+  git config --global user.email "$SYSTEM_USER_EMAIL"
+  GIT_COMMITTER_EMAIL="$SYSTEM_USER_EMAIL"
+  GIT_AUTHOR_EMAIL="$SYSTEM_USER_EMAIL"
   # Install NodeJS and NPM along with required global node modules
   aptGet
   curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
@@ -1103,6 +1138,14 @@ installPackagesForSystemSudo() {
   printf '\n' | sudo add-apt-repository ppa:qos/pulseaudio-dlna
   aptGet
   printf 'y\n' | sudo apt-get install pulseaudio-dlna
+  # Install noobs-lacb icons
+  printf '\n' | sudo add-apt-repository ppa:noobslab/icons
+  aptGet
+  printf 'y\n' | sudo apt-get install ultra-flat-icons ultra-flat-icons-green ultra-flat-icons-orange
+  # Install arc theme
+  sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+  aptGet
+  printf 'y\ny\n' | sudo apt-get install arc-theme
   # Stacer installation
   installStacer $LATEST_STACER_VERSION
   # Docker installation
@@ -1143,6 +1186,8 @@ installPackagesForSystemSudo() {
   sudo ufw allow 'Nginx HTTP'
   sudo ufw allow 'Nginx HTTPS'
   sudo service apache2 start
+  # Install Bracket editor
+  install_bracket
   coreSystemUpdate
 }
 
@@ -1175,6 +1220,7 @@ installPackagesForSystemNonSudoThird() {
   installZshNonSudo
   powerlineFontInstallationNonSudo
   installVSCodeExtensionsNonSudo
+  installAtomExtensionsNonSudo
   postgresPgpassFileInit
 }
 
@@ -1272,6 +1318,7 @@ alias git_a='git add '
 alias git_b='git_f && git rev-parse --abbrev-ref HEAD'
 alias git_c=gitCheckout
 alias git_cc='git commit -m "Rebased and resolved conflicts after rebasing from base branch."'
+alias git_co='git commit -m '
 alias git_f='printf "yes\n" | git fetch --all'
 alias git_l='git_f && git log'
 alias git_p='git push origin HEAD -f'
