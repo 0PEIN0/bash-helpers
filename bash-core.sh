@@ -57,6 +57,7 @@
 #1. http://www.syntevo.com/smartgit/download
 #2. https://code.visualstudio.com/download
 #3. https://www.jetbrains.com/pycharm/download/
+#4. Install JAVA by running this following command: install_java. Choose "Ok" and "Yes" for the prompts.
 #Restart machine.
 
 #SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
@@ -1049,10 +1050,10 @@ installVirtualBox() {
 }
 
 installJava() {
-  # Install Java 9
+  # Install Java 8
   printf '\n' | sudo add-apt-repository ppa:webupd8team/java
   aptGet
-  sudo apt-get install oracle-java9-installer
+  sudo apt-get install oracle-java8-installer
 }
 
 installPackagesForSystemSudo() {
