@@ -303,6 +303,8 @@ nodeUpdates() {
     return
   fi;
   aptGet
+  goToRoot
+  npm i -g npm
   npm install -g @angular/cli
   npm install -g mongodb@latest
   npm install -g socket.io@latest
@@ -326,6 +328,7 @@ nodeUpdates() {
   npm install -g redux-devtools@latest
   npm install -g grunt-cli@latest
   webdriver-manager update
+  goToRoot
 }
 
 apmUpdates() {
@@ -450,6 +453,7 @@ installPythonAndPostgres() {
   aptGet
   printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme
   printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+  printf 'y\n' | sudo apt-get install python-pyaudio python-numpy
   printf 'y\n' | sudo apt-get install postgresql-server-dev-9.5
   #geo-spatial packages
   printf 'y\n' | sudo apt-get install binutils libproj-dev gdal-bin libgdal-dev postgis
@@ -475,6 +479,7 @@ installPythonAndPostgres() {
   goToRoot
   pip install --upgrade WeasyPrint
   pip install --upgrade pip
+  pip install --upgrade apiai
   pip install --upgrade django
   pip install --upgrade virtualenv
   pip install --upgrade jsbeautifier
@@ -485,6 +490,7 @@ installPythonAndPostgres() {
   pip install --upgrade html5lib
   pip install --upgrade docker-compose
   pip install --upgrade awscli
+  pip install --upgrade pyOpenSSL==16.2.0
   sudo service postgresql restart
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
@@ -626,11 +632,13 @@ installVSCodeExtensionsNonSudo() {
 
 installDotNetCore() {
   goToRoot
+  #Reference: https://www.microsoft.com/net/core#linuxubuntu
   # Dependent on ubuntu version
-  sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ "$(lsb_release -sc)" main" > /etc/apt/sources.list.d/dotnetdev.list'
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod \"$(lsb_release -sc)\" main" > /etc/apt/sources.list.d/dotnetdev.list'
   aptGet
-  printf 'y\n' | sudo apt-get install dotnet-dev-1.0.1
+  printf 'y\n' | sudo apt-get install dotnet-sdk-2.0.0
   goToRoot
 }
 
@@ -796,6 +804,10 @@ installAtomExtensionsNonSudo() {
   apm install highlight-selected
   #apm install react
   apm install autoclose-html
+  apm install linter-ui-default
+  apm install busy-signal
+  apm install intentions
+  apm install linter-jshint
   goToRoot
 }
 
@@ -1067,13 +1079,15 @@ installPackagesForSystemSudo() {
   goToRoot
   coreSystemUpdate
   # Install build essentials
-  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools
+  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools
   printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager ffmpeg
+  # Install package for ubuntu app location restore feature after machine restart
+  printf 'y\n' | sudo apt-get install wmctrl
   # Install ubuntu make
   printf '\n' | sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
   aptGet
   # Install open vpn
-  printf '\n' | sudo apt-get install openvpn easy-rsa
+  printf 'y\n' | sudo apt-get install openvpn easy-rsa
   aptGet
   printf 'y\n' | sudo apt-get install ubuntu-make
   # Install Git
@@ -1194,6 +1208,11 @@ installPackagesForSystemSudo() {
   installZshSudo
   # Install blender
   installBlender
+  # Install Ansible
+  aptGet
+  printf "\n" | sudo apt-add-repository ppa:ansible/ansible
+  aptGet
+  printf "y\n" | sudo apt-get install ansible
   # Install ngnix
   sudo service apache2 stop
   printf "y\n" | sudo apt-get install nginx
@@ -1371,6 +1390,7 @@ alias jenkins_install=installJenkins
 alias jenkins_start='/etc/init.d/jenkins start'
 alias jenkins_stop='/etc/init.d/jenkins stop'
 alias karma_test='karma start --browsers Chrome'
+alias last_shutdown='last -x | grep shutdown'
 alias loc_count='cloc '
 alias new_django_project='newDjangoProject '
 alias no_sudo_zsh='export SHELL=/usr/bin/zsh && exec /usr/bin/zsh -l'
