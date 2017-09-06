@@ -45,7 +45,11 @@ fi;
 5. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
 6. Do the following postgres operation after replacing ***"$SYSTEM_USER_NAME*** value.
 ```sql
-sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;'
+'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD "$SYSTEM_USER_NAME"; ALTER role postgres PASSWORD "$SYSTEM_USER_NAME"; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";CREATE USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME"; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";alter USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME";ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO "utf8"; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO "read committed" ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO "UTC";alter role $SYSTEM_USER_NAME superuser;'
+```
+Its also possible to run the above sql queries directly from command line as well, like the following.
+```bash
+sudo -u postgres psql -c '<SQL_QUERY>'
 ```
 7. Run `ssh_keygen` command.
 8. Run `get_ssh` command.
