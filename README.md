@@ -13,9 +13,13 @@ Intended to help software engineers working on python/django environment.
 5. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh" and save the file in bash-dump folder.
 6. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder.
 7. Open the "personal.sh" file located in the bash-dump folder and change the following variable values and un-comment the code there. And comment out the last 3 imports there and replace the placeholder values with relevant values.
-`SYSTEM_USER_FULL_NAME="John Doe"`
-`SYSTEM_USER_EMAIL="john@doe.com"`
-`SYSTEM_USER_NAME="john"`
+
+>`SYSTEM_USER_FULL_NAME="John Doe"`
+
+>`SYSTEM_USER_EMAIL="john@doe.com"`
+
+>`SYSTEM_USER_NAME="john"`
+
 8. Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
 9. Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
 10. Open "System Settings" -> "Brightness & Lock" -> Select "Never" for "Turn screen off when inactive for".
