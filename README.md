@@ -16,7 +16,7 @@ Intended to help software engineers working on python/django environment.
 
 >`SYSTEM_USER_FULL_NAME="John Doe"`
 
->`SYSTEM_USER_EMAIL="john@doe.com"`
+>`SYSTEM_USER_EMAIL="john@example.com"`
 
 >`SYSTEM_USER_NAME="john"`
 
