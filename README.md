@@ -65,7 +65,9 @@ sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSI
 1. Download smartgit, vscode, pycharm deb files and put them in the **/home/$SYSTEM_USER_NAME/Downloads/Softwares** folder. Change the 3 app versions from below at the top of the `bash-core.sh` file with the latest version of the respective softwares. Namely ***$LATEST_SMARTGIT_FILE_NAME***, ***$LATEST_VSCODE_FILE_NAME***, ***$LATEST_PYCHARM_VERSION*** variable values. Then run `install_smartgit`, `install_vscode`, `install_pycharm`.
 
 >1. http://www.syntevo.com/smartgit/download
+
 >2. https://code.visualstudio.com/download
+
 >3. https://www.jetbrains.com/pycharm/download/
 
 2. Install JAVA by running this following command: `install_java`. Choose "Ok" and "Yes" for the prompts.
