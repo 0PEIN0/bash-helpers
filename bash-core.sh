@@ -1,87 +1,5 @@
 #!/bin/bash
 
-#LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO MODE
-#Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
-#Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
-#Login to Chrome as user.
-#Create "bash-dump" folder in the user directory. Path will look like this: "/home/$SYSTEM_USER_NAME/bash-dump/".
-#Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh" and save the file in bash-dump folder.
-#Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder.
-#Open the "personal.sh" file located in the bash-dump folder and change the following variable values and un-comment the code there. And comment out the last 3 imports there.
-#SYSTEM_USER_FULL_NAME="John Doe"
-#SYSTEM_USER_EMAIL="john@doe.com"
-#SYSTEM_USER_NAME="john"
-#Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
-#Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
-#Open "System Settings" -> "Brightness & Lock" -> Select "Never" for "Turn screen off when inactive for".
-#Open "System Settings" -> "Time & Date" -> "Clock" -> Select "Weekday" and "Date", Month", "Year", "Seconds" and "Include week numbers".
-#Open "System Settings" -> "Software and Updates" -> "Ubuntu Software" -> Select "Main Server" for "Download From" option.
-#Open "System Settings" -> "Software and Updates" -> "Additional Drivers" -> Select "Using NVIDIA binary driver" for allowing proprietary software from NVIDIA to be installed on the machine in case NVIDIA graphics card is present -> Press "Apply Changes" button.
-#Open "System Settings" -> "Language Support" -> Drag "English(United States)" at the top of the order.
-#Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
-#Restart machine.
-
-#IN NON SUDO MODE
-#"gedit ~/.bash_aliases" (add the reference to personal bash file)
-#sample example of import of personal shell file:
-#if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
-#    . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
-#fi;
-#system_init_non_sudo_first
-#admin
-
-#SWITCH TO SUDO MODE
-#"gedit ~/.bash_aliases" (add the reference to personal bash file)
-#system_init_sudo
-#Restart machine
-#Enter sudo mode again
-#"gedit ~/.zshrc" (change the zsh theme to "agnoster"(or any of your preferred theme) and add the reference to personal bash file)
-#Do the following postgres operation after replacing "$SYSTEM_USER_NAME" value.
-#sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;'
-#ssh_keygen
-#get_ssh
-#Add the ssh public key at Github and Bitbucket
-#ssh_sudo_setup
-
-#SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
-#system_init_non_sudo_second
-#"gedit ~/.zshrc" (change the zsh theme to "agnoster"(or any of your preferred theme) and add the reference to personal bash file)
-#ssh_keygen
-#get_ssh
-#Add the ssh public key at Github and Bitbucket
-#ssh_non_sudo_setup
-#admin
-
-#SWITCH BACK TO SUDO MODE
-#Download smartgit, vscode, pycharm deb files and put them in the /home/$SYSTEM_USER_NAME/Downloads/Softwares folder. Change the 3 app versions below with the latest version the respective softwares. Namesly "$LATEST_SMARTGIT_FILE_NAME", "$LATEST_VSCODE_FILE_NAME", "$LATEST_PYCHARM_VERSION" variable values. Then run 'install_smartgit', 'install_vscode', 'install_pycharm'.
-#1. http://www.syntevo.com/smartgit/download
-#2. https://code.visualstudio.com/download
-#3. https://www.jetbrains.com/pycharm/download/
-#Install JAVA by running this following command: install_java. Choose "Ok" and "Yes" for the prompts.
-#Open "Terminal" and run this command to install all the global packages via npm: "node_update".
-#Restart machine.
-
-#SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
-#Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
-#Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
-#Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
-#Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "Don't suspend on lid close" -> Select "No".
-#Open "Tweak Tool" -> "Startup Applications" -> Add applications like "Google Chrome", "Atom", "Terminal", "System Monitor", "Files", "Dropbox", "Slack", "Sublime Text", "VLC Media Player", "Smartgit", "Skype".
-#Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Appearance" -> "Position" -> Select "Bottom".
-#Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Icons" -> "Icon Size" -> Make it "32".
-#Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Show my name".
-#Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Power" -> "Always visible".
-#Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> "Default Player" -> Select "Vlc.desktop".
-#Open "Chrome" -> Visit "https://slack.com/downloads/linux" -> Download the 64 bit slack and install using ubuntu package manager.
-#Open "Dropbox" from dash -> Login to Dropbox.
-#Open "Terminal" and install Steam by running this command: "sudo apt-get install steam". Open "Steam" and login.
-#Clone the https://github.com/0PEIN0/bash-helpers repository to make sure the latest updates can be pulled at any time. Also update the bash imports in the machine for both sudo and non-sudo users.
-#Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
-#Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
-#Restart machine.
-#Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
-#Open "Atom" -> There will be a pop-up showing list of dependicies to install, press "Yes" to install them.
-
 LATEST_PYCHARM_VERSION="pycharm-community-2017.2"
 LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_4.deb"
 LATEST_VSCODE_FILE_NAME="code_1.14.2-1500506907_amd64.deb"
@@ -1065,9 +983,10 @@ installVirtualBox() {
 
 installJava() {
   # Install Java 8
-  printf '\n' | sudo add-apt-repository ppa:webupd8team/java
+  sudo add-apt-repository -y ppa:webupd8team/java
   aptGet
-  sudo apt-get install oracle-java8-installer
+  echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+  sudo apt-get install -y oracle-java8-installer
 }
 
 installPackagesForSystemSudo() {
@@ -1079,7 +998,7 @@ installPackagesForSystemSudo() {
   goToRoot
   coreSystemUpdate
   # Install build essentials
-  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools
+  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools debconf-utils
   printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager ffmpeg
   # Install package for ubuntu app location restore feature after machine restart
   printf 'y\n' | sudo apt-get install wmctrl
