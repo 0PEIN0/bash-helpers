@@ -3,7 +3,7 @@ Bash helper scripts.
 
 Intended to help software engineers working on python/django environment.
 
-# Usage instructions:
+# Usage Instructions:
 
 ### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO MODE
 1. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
