@@ -5,7 +5,7 @@ Intended to help software engineers working on python/django environment.
 
 # Usage instructions:
 
-###LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO MODE
+### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO MODE
 1. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
 2. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
 3. Login to Chrome as user.
@@ -26,7 +26,7 @@ Intended to help software engineers working on python/django environment.
 15. Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
 16. Restart machine.
 
-###IN NON SUDO MODE
+### IN NON SUDO MODE
 1. Run `gedit ~/.bash_aliases` from command line (add the reference to personal bash file).
 2. Below is the sample example for import of personal shell file.
 ```bash
@@ -37,7 +37,7 @@ fi;
 3. Run `system_init_non_sudo_first` command.
 4. Run `admin` command(enter into the sudo mode).
 
-###SWITCH TO SUDO MODE
+### SWITCH TO SUDO MODE
 1. Run `gedit ~/.bash_aliases` from command line (add the reference to personal bash file).
 2. Run `system_init_sudo` command.
 3. Restart machine.
@@ -52,7 +52,7 @@ sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSI
 9. Add the ssh public key at Github and Bitbucket.
 10. Run `ssh_sudo_setup` comamnd.
 
-###SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
+### SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
 2. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
 3. Run `ssh_keygen` command.
@@ -61,7 +61,7 @@ sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSI
 6. Run `ssh_non_sudo_setup` command.
 7. Run `admin` command.
 
-###SWITCH BACK TO SUDO MODE
+### SWITCH BACK TO SUDO MODE
 1. Download smartgit, vscode, pycharm deb files and put them in the **/home/$SYSTEM_USER_NAME/Downloads/Softwares** folder. Change the 3 app versions from below at the top of the `bash-core.sh` file with the latest version of the respective softwares. Namely ***$LATEST_SMARTGIT_FILE_NAME***, ***$LATEST_VSCODE_FILE_NAME***, ***$LATEST_PYCHARM_VERSION*** variable values. Then run `install_smartgit`, `install_vscode`, `install_pycharm`.
 
 >1. http://www.syntevo.com/smartgit/download
@@ -72,7 +72,7 @@ sudo -u postgres psql -c 'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSI
 3. Open "Terminal" and run this command to install all the global packages via npm: `node_update`.
 4. Restart machine.
 
-###SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
+### SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
 2. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
 3. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
