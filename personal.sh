@@ -13,14 +13,6 @@ if [ -f $BASH_HELPER_GIT_FOLDER/bash-core.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/bash-core.sh
 fi;
 
-if [ -f $BASH_HELPER_GIT_FOLDER/fleks-project-team.sh ]; then
-    . $BASH_HELPER_GIT_FOLDER/fleks-project-team.sh
-fi;
-
-if [ -f $BASH_HELPER_GIT_FOLDER/epad-project-team.sh ]; then
-    . $BASH_HELPER_GIT_FOLDER/epad-project-team.sh
-fi;
-
-if [ -f $BASH_HELPER_GIT_FOLDER/ftp-project-team.sh ]; then
-    . $BASH_HELPER_GIT_FOLDER/ftp-project-team.sh
+if [ -f $BASH_HELPER_GIT_FOLDER/drf-logger-project-team.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/drf-logger-project-team.sh
 fi;
