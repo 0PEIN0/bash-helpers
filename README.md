@@ -5,7 +5,7 @@ Intended to help software engineers working on python/django and nodejs environm
 
 Estimated total installation time is 2-3 hours, although will vary based on machine and network connection performance.
 
-# Usage Instructions
+# New System Installation Instructions
 
 ### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO MODE
 1. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
