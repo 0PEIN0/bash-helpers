@@ -1,7 +1,7 @@
 # bash-helpers
 Bash helper scripts.
 
-Intended to help software engineers working on python/django environment.
+Intended to help software engineers working on python/django and nodejs environment. The scripts that are used below are only tested on **Ubuntu 16.04**.
 
 # Usage Instructions:
 
