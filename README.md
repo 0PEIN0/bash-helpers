@@ -22,16 +22,6 @@ Estimated total installation time is 2 hours, although will vary based on machin
 
 >`SYSTEM_USER_NAME="john"`
 
-8. Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
-9. Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
-10. Open "System Settings" -> "Brightness & Lock" -> Select "Never" for "Turn screen off when inactive for".
-11. Open "System Settings" -> "Time & Date" -> "Clock" -> Select "Weekday" and "Date", Month", "Year", "Seconds" and "Include week numbers".
-12. Open "System Settings" -> "Software and Updates" -> "Ubuntu Software" -> Select "Main Server" for "Download From" option.
-13. Open "System Settings" -> "Software and Updates" -> "Additional Drivers" -> Select "Using NVIDIA binary driver" for allowing proprietary software from NVIDIA to be installed on the machine in case NVIDIA graphics card is present -> Press "Apply Changes" button.
-14. Open "System Settings" -> "Language Support" -> Drag "English(United States)" at the top of the order.
-15. Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
-16. Restart machine.
-
 ### IN NON SUDO MODE
 1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
 2. Below is the sample example for import of personal shell file.
@@ -40,7 +30,7 @@ if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
 fi;
 ```
-3. Run `source ~/.bashrc` comamnd.
+3. Run `source ~/.bashrc` command.
 4. Run `system_init_non_sudo_first` command.
 5. Run `admin` command(enter into the sudo mode).
 
@@ -52,7 +42,7 @@ if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
 fi;
 ```
-3. Run `source ~/.bashrc` comamnd.
+3. Run `source ~/.bashrc` command.
 4. Run `system_init_sudo` command.
 5. Restart machine.
 6. Enter sudo mode again by running `admin` command.
@@ -68,16 +58,18 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 9. Run `ssh_keygen` command.
 10. Run `get_ssh` command.
 11. Add the ssh public key at Github and Bitbucket.
-12. Run `ssh_sudo_setup` comamnd.
+12. Run `ssh_sudo_setup` command.
+13. Run `exit` command.
 
 ### SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
 2. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
-3. Run `ssh_keygen` command.
-4. Run `get_ssh` command.
-5. Add the ssh public key at Github and Bitbucket.
-6. Run `ssh_non_sudo_setup` command.
-7. Run `admin` command.
+3. Run `source ~/.zshrc`.
+4. Run `ssh_keygen` command.
+5. Run `get_ssh` command.
+6. Add the ssh public key at Github and Bitbucket.
+7. Run `ssh_non_sudo_setup` command.
+8. Run `admin` command.
 
 ### SWITCH BACK TO SUDO MODE
 1. Download smartgit, vscode, pycharm deb files and put them in the **/home/$SYSTEM_USER_NAME/Downloads/Softwares** folder. Change the 3 app versions from below at the top of the `bash-core.sh` file with the latest version of the respective softwares. Namely ***$LATEST_SMARTGIT_FILE_NAME***, ***$LATEST_VSCODE_FILE_NAME***, ***$LATEST_PYCHARM_VERSION*** variable values. Then run `install_smartgit`, `install_vscode`, `install_pycharm`.
@@ -88,16 +80,15 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 
 >3. https://www.jetbrains.com/pycharm/download/
 
-2. Install JAVA by running this following command: `install_java`. Choose "Ok" and "Yes" for the prompts.
-3. Open "Terminal" and run this command to install all the necessary global packages via npm: `node_update`.
-4. Restart machine.
+2. Open "Terminal" and run this command to install all the necessary global packages via npm: `node_update`.
+3. Install JAVA by running this following command: `install_java`. Choose "Ok" and "Yes" for the prompts.
 
 ### SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
 2. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
 3. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
 4. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "Don't suspend on lid close" -> Select "No".
-5. Open "Tweak Tool" -> "Startup Applications" -> Add applications like "Google Chrome", "Atom", "Terminal", "System Monitor", "Files", "Dropbox", "Slack", "Sublime Text", "VLC Media Player", "Smartgit", "Skype".
+5. Open "Tweak Tool" -> "Startup Applications" -> Add applications like "Google Chrome", "Atom", "Terminal", "System Monitor", "Files", "Dropbox", "Slack", "Sublime Text", "VLC Media Player", "Smartgit", "Skype", "Spotify".
 6. Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Appearance" -> "Position" -> Select "Bottom".
 7. Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Icons" -> "Icon Size" -> Make it "32".
 8. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Show my name".
@@ -105,10 +96,18 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 10. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> "Default Player" -> Select "Vlc.desktop".
 11. Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
 12. Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
-13. Restart machine.
-14. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
-15. Open "Atom" -> There will be a pop-up showing list of dependencies to install, press "Yes" to install them.
-16. Open "Chrome" -> Visit "https://slack.com/downloads/linux" -> Download the 64 bit slack and install using Ubuntu package manager.
-17. Open "Dropbox" from dash -> Login to Dropbox.
-18. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login.
-19. Clone the https://github.com/0PEIN0/bash-helpers repository to ensure that the latest updates can be pulled at any time. Run the following command: `cd /home/$SYSTEM_USER_NAME/Gitrepos/ && git clone https://github.com/0PEIN0/bash-helpers` to clone the repo. Also update the bash import of `bash-core.sh` file in the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file. And update ***$BASH_HELPER_GIT_FOLDER*** variable value at **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file which should point to the location under ***Gitrepos*** folder. Then at the end, source it.
+13. Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
+14. Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
+15. Open "System Settings" -> "Brightness & Lock" -> Select "Never" for "Turn screen off when inactive for".
+16. Open "System Settings" -> "Time & Date" -> "Clock" -> Select "Weekday" and "Date", Month", "Year", "Seconds" and "Include week numbers".
+17. Open "System Settings" -> "Software and Updates" -> "Ubuntu Software" -> Select "Main Server" for "Download From" option.
+18. Open "System Settings" -> "Software and Updates" -> "Additional Drivers" -> Select "Using NVIDIA binary driver" for allowing proprietary software from NVIDIA to be installed on the machine in case NVIDIA graphics card is present -> Press "Apply Changes" button.
+19. Open "System Settings" -> "Language Support" -> Drag "English(United States)" at the top of the order.
+20. Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
+21. Restart machine.
+22. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
+23. Open "Atom" -> There will be a pop-up showing list of dependencies to install, press "Yes" to install them.
+24. Open "Dropbox" from dash -> Login to Dropbox.
+25. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login.
+26. Clone the https://github.com/0PEIN0/bash-helpers repository to ensure that the latest updates can be pulled at any time. Run the following command: `cd /home/$SYSTEM_USER_NAME/Gitrepos/ && git clone https://github.com/0PEIN0/bash-helpers` to clone the repo. Also update the bash import of `bash-core.sh` file in the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file. And update ***$BASH_HELPER_GIT_FOLDER*** variable value at **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file which should point to the location under ***Gitrepos*** folder. Then at the end, source it.
+27. Open "Chrome" -> Visit "https://slack.com/downloads/linux" -> Download the 64 bit slack and install using Ubuntu package manager.
