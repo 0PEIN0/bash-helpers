@@ -3,6 +3,7 @@
 LATEST_PYCHARM_VERSION="pycharm-community-2017.2.3"
 LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_5.deb"
 LATEST_VSCODE_FILE_NAME="code_1.16.0-1504714880_amd64.deb"
+LATEST_SLACK_VERSION="2.7.1"
 LATEST_ROBOMONGO_VERSION="1.0.0"
 LATEST_ROBOMONGO_VERSION_FULL="robomongo-$LATEST_ROBOMONGO_VERSION-linux-x86_64-89f24ea"
 
@@ -862,11 +863,30 @@ installSkype() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
-  curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add -
-  echo "deb [arch=amd64] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list
-  aptGet
-  sudo apt-get install skypeforlinux -y
+  checkSoftwareFolder
+  wget -O skypeforlinux-64.deb "https://repo.skype.com/latest/skypeforlinux-64.deb"
+  sudo dpkg -i skypeforlinux-64.deb
+  rm -rf skypeforlinux-64.deb
+  goToRoot
+  #below is the old installation of skype
+  #dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+  #curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add -
+  #echo "deb [arch=amd64] https://repo.skype.com/deb stable main" | sudo tee /etc/apt/sources.list.d/skype-stable.list
+  #aptGet
+  #sudo apt-get install skypeforlinux -y
+}
+
+installSlack() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  checkSoftwareFolder
+  wget -O slack-desktop-$1-amd64.deb "https://downloads.slack-edge.com/linux_releases/slack-desktop-$1-amd64.deb"
+  sudo dpkg -i slack-desktop-$1-amd64.deb
+  rm -rf slack-desktop-$1-amd64.deb
+  goToRoot
 }
 
 installGnome() {
@@ -1153,6 +1173,8 @@ installPackagesForSystemSudo() {
   install_smartgit
   # Install pycharm
   install_pycharm
+  # Install slack chat app
+  install_slack
   # Install java
   install_java
   goToRoot
@@ -1316,6 +1338,7 @@ alias install_mongo=installMongoDb
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
 alias install_python_postgres=installPythonAndPostgres
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
+alias install_slack="installSlack $LATEST_SLACK_VERSION"
 alias install_smartgit="installSmartgit $LATEST_SMARTGIT_FILE_NAME"
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"

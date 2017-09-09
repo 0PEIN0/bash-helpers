@@ -1,9 +1,11 @@
-# bash-helpers
+# Bash Helpers
 Bash helper scripts.
 
-Intended to help software engineers working on python/django and nodejs environment. The scripts that are used below are only tested on **Ubuntu 16.04**.
+Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only tested on **Ubuntu 16.04 LTS**. The will be no os version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version.
 
-# Usage Instructions:
+Estimated total installation time is 2 hours, although will vary based on machine and network connection performance.
+
+# Usage Instructions
 
 ### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO MODE
 1. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
