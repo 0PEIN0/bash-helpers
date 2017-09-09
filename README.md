@@ -1,9 +1,9 @@
 # Bash Helpers
 Bash helper scripts.
 
-Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only tested on **Ubuntu 16.04 LTS**. The will be no os version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version.
+Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only tested on **Ubuntu 16.04 LTS**. There will be no OS version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version.
 
-Estimated total installation time is 2 hours, although will vary based on machine and network connection performance.
+Estimated total installation time is 2-3 hours, although will vary based on machine and network connection performance.
 
 # Usage Instructions
 
