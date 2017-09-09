@@ -22,17 +22,16 @@ Estimated total installation time is 2-3 hours, although will vary based on mach
 
 >`SYSTEM_USER_NAME="john"`
 
-### IN NON SUDO MODE
-1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
-2. Below is the sample example for import of personal shell file.
+8. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
+9. Below is the sample example for import of personal shell file.
 ```bash
 if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
 fi;
 ```
-3. Run `source ~/.bashrc` command.
-4. Run `system_init_non_sudo_first` command.
-5. Run `admin` command(enter into the sudo mode).
+10. Run `source ~/.bashrc` command.
+11. Run `system_init_non_sudo_first` command.
+12. Run `admin` command(enter into the sudo mode).
 
 ### SWITCH TO SUDO MODE
 1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
@@ -45,7 +44,7 @@ fi;
 3. Run `source ~/.bashrc` command.
 4. Run `system_init_sudo` command.
 5. Restart machine.
-6. Enter sudo mode again by running `admin` command.
+6. Enter sudo mode again after restart by running `admin` command.
 7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
 8. Do the following postgres operation after replacing ***"$SYSTEM_USER_NAME*** value.
 ```sql
