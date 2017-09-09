@@ -246,6 +246,7 @@ nodeUpdates() {
   npm install -g react-redux@latest
   npm install -g redux-devtools@latest
   npm install -g grunt-cli@latest
+  npm install -g webpack@latest
   webdriver-manager update
   goToRoot
 }
@@ -410,6 +411,7 @@ installPythonAndPostgres() {
   pip install --upgrade docker-compose
   pip install --upgrade awscli
   pip install --upgrade pyOpenSSL==16.2.0
+  pip install --upgrade selenium
   sudo service postgresql restart
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
