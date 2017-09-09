@@ -9,9 +9,9 @@ Intended to help software engineers working on python/django environment.
 1. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
 2. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
 3. Login to Chrome as user.
-4. Create "bash-dump" folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/bash-dump/**.
-5. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh" and save the file in bash-dump folder.
-6. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder.
+4. Create ***bash-dump*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/bash-dump/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the system user, that is not the default ***root*** user.
+5. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh" and save the file in bash-dump folder. Or run the following command from command line to get the file locally: `cd ~/bash-dump && wget -O bash-core.sh https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh`.
+6. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder. Or run the following command from command line to get the file locally: `cd ~/bash-dump && wget -O bash-core.sh https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh`.
 7. Open the "personal.sh" file located in the bash-dump folder and change the following variable values and un-comment the code there. And comment out the last 3 imports there and replace the placeholder values with relevant values.
 
 >`SYSTEM_USER_FULL_NAME="John Doe"`
@@ -31,34 +31,42 @@ Intended to help software engineers working on python/django environment.
 16. Restart machine.
 
 ### IN NON SUDO MODE
-1. Run `gedit ~/.bash_aliases` from command line (add the reference to personal bash file).
+1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
 2. Below is the sample example for import of personal shell file.
 ```bash
 if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
 fi;
 ```
-3. Run `system_init_non_sudo_first` command.
-4. Run `admin` command(enter into the sudo mode).
+3. Run `source ~/.bashrc` comamnd.
+4. Run `system_init_non_sudo_first` command.
+5. Run `admin` command(enter into the sudo mode).
 
 ### SWITCH TO SUDO MODE
-1. Run `gedit ~/.bash_aliases` from command line (add the reference to personal bash file).
-2. Run `system_init_sudo` command.
-3. Restart machine.
-4. Enter sudo mode again by running `admin` command.
-5. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
-6. Do the following postgres operation after replacing ***"$SYSTEM_USER_NAME*** value.
+1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
+2. Below is the sample example for import of personal shell file.
+```bash
+if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
+    . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
+fi;
+```
+3. Run `source ~/.bashrc` comamnd.
+4. Run `system_init_sudo` command.
+5. Restart machine.
+6. Enter sudo mode again by running `admin` command.
+7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
+8. Do the following postgres operation after replacing ***"$SYSTEM_USER_NAME*** value.
 ```sql
-'CREATE EXTENSION IF NOT EXISTS postgis; CREATE EXTENSION IF NOT EXISTS postgis_topology; ALTER USER postgres PASSWORD "$SYSTEM_USER_NAME"; ALTER role postgres PASSWORD "$SYSTEM_USER_NAME"; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";CREATE USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME"; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";alter USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME";ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO "utf8"; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO "read committed" ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO "UTC";alter role $SYSTEM_USER_NAME superuser;'
+'ALTER USER postgres PASSWORD "$SYSTEM_USER_NAME"; ALTER role postgres PASSWORD "$SYSTEM_USER_NAME"; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";CREATE USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME"; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";alter USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME";ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO "utf8"; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO "read committed" ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO "UTC";alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;'
 ```
 Its also possible to run the above sql queries directly from command line as well, like the following.
 ```bash
 sudo -u postgres psql -c '<SQL_QUERY>'
 ```
-7. Run `ssh_keygen` command.
-8. Run `get_ssh` command.
-9. Add the ssh public key at Github and Bitbucket.
-10. Run `ssh_sudo_setup` comamnd.
+9. Run `ssh_keygen` command.
+10. Run `get_ssh` command.
+11. Add the ssh public key at Github and Bitbucket.
+12. Run `ssh_sudo_setup` comamnd.
 
 ### SWITCH BACK TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.

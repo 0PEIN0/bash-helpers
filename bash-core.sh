@@ -1,14 +1,14 @@
 #!/bin/bash
 
-LATEST_PYCHARM_VERSION="pycharm-community-2017.2"
-LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_4.deb"
-LATEST_VSCODE_FILE_NAME="code_1.14.2-1500506907_amd64.deb"
+LATEST_PYCHARM_VERSION="pycharm-community-2017.2.3"
+LATEST_SMARTGIT_FILE_NAME="smartgit-17_0_5.deb"
+LATEST_VSCODE_FILE_NAME="code_1.16.0-1504714880_amd64.deb"
 LATEST_ROBOMONGO_VERSION="1.0.0"
 LATEST_ROBOMONGO_VERSION_FULL="robomongo-$LATEST_ROBOMONGO_VERSION-linux-x86_64-89f24ea"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
-LATEST_POSTGIS_VERSION="postgis-2.3.3dev"
-LATEST_PYTHON_VERSION="3.5.2"
+LATEST_POSTGIS_VERSION="postgis-2.3.3"
+LATEST_PYTHON_VERSION="3.6.2"
 LATEST_BRACKET_VERSION="1.10"
 LATEST_STACER_VERSION="1.0.6"
 
@@ -20,7 +20,8 @@ SYSTEM_ROOT_GIT_REPO_FOLDER="$SYSTEM_ROOT_FOLDER/Gitrepos"
 BASH_HELPER_GIT_FOLDER="$SYSTEM_ROOT_GIT_REPO_FOLDER/bash-helpers"
 SYSTEM_DOWNLOAD_FOLDER="$SYSTEM_ROOT_FOLDER/Downloads"
 SYSTEM_SOFTWARE_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Softwares"
-DEFAULT_PERMISSION_VALUE=777
+SYSTEM_APPS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Apps"
+DEFAULT_PERMISSION_VALUE=760
 
 goToRoot() {
   cd /
@@ -206,7 +207,7 @@ checkSoftwareFolder() {
 
 checkAppsFolder() {
   goToRoot
-  appsFolder="$SYSTEM_ROOT_FOLDER/Apps/"
+  appsFolder="$SYSTEM_APPS_FOLDER/"
   if [ ! -d "$appsFolder" ]; then
     mkdir $appsFolder
     chmod $DEFAULT_PERMISSION_VALUE $appsFolder
@@ -512,6 +513,7 @@ installVisualStudioCode() {
   aptGet
   checkSoftwareFolder
   printf 'y\n' | sudo apt-get install gvfs-bin
+  wget -O $1 "https://go.microsoft.com/fwlink/?LinkID=760868"
   #wget --no-check-certificate https://az764295.vo.msecnd.net/stable/e6b4afa53e9c0f54edef1673de9001e9f0f547ae/code_1.3.1-1468329898_amd64.deb
   sudo dpkg -i $1
   rm -rf $1
@@ -625,6 +627,7 @@ installSmartgit() {
     return $1
   fi;
   checkSoftwareFolder
+  wget -O $1 "http://www.syntevo.com/static/smart/download/smartgit/$1"
   printf 'y\n' | sudo apt install $1
   sudo dpkg -i $1
   printf 'y\n' | sudo apt-get install -f
@@ -679,10 +682,11 @@ installPyCharm() {
     return $1
   fi;
   checkSoftwareFolder
+  wget -O $1.tar.gz "https://download.jetbrains.com/python/$1.tar.gz"
   tar xvfz $1.tar.gz
-  mkdir $SYSTEM_ROOT_FOLDER/Apps/$1
-  rm -rf $SYSTEM_ROOT_FOLDER/Apps/$1
-  mv "$1" "$SYSTEM_ROOT_FOLDER/Apps/$1"
+  mkdir $SYSTEM_APPS_FOLDER/$1
+  rm -rf $SYSTEM_APPS_FOLDER/$1
+  mv "$1" "$SYSTEM_APPS_FOLDER/$1"
   rm -rf "$1"
 }
 
@@ -702,30 +706,30 @@ installZshNonSudo() {
 
 installAtomExtensionsNonSudo() {
   goToRoot
-  apm install nuclide
+  apm install minimap
+  apm install linter
   apm install atom-beautify
-  apm install autocomplete-python
+  apm install file-icons
+  apm install pigments
+  apm install git-plus
+  apm install linter-ui-default
   apm install color-picker
   apm install emmet
-  apm install file-icons
-  apm install git-plus
-  apm install linter
-  apm install linter-eslint
-  apm install minimap
-  apm install pigments
-  apm install project-manager
-  apm install script
-  apm install merge-conflicts
-  apm install atom-typescript
-  apm install activate-power-mode
   #apm install language-babel
-  apm install highlight-selected
-  #apm install react
-  apm install autoclose-html
-  apm install linter-ui-default
+  apm install autocomplete-python
+  apm install atom-typescript
+  apm install linter-eslint
   apm install busy-signal
+  apm install highlight-selected
   apm install intentions
+  apm install script
+  apm install project-manager
+  apm install merge-conflicts
+  apm install activate-power-mode
   apm install linter-jshint
+  apm install nuclide
+  apm install autoclose-html
+  #apm install react
   goToRoot
 }
 
@@ -1141,7 +1145,15 @@ installPackagesForSystemSudo() {
   sudo service apache2 start
   # Install Bracket editor
   install_bracket
-  coreSystemUpdate
+  # Install vscode editor
+  install_vscode
+  # Install smartgit
+  install_smartgit
+  # Install pycharm
+  install_pycharm
+  # Install java
+  install_java
+  goToRoot
 }
 
 installPackagesForSystemNonSudoFirst() {
@@ -1314,7 +1326,7 @@ alias loc_count='cloc '
 alias new_django_project='newDjangoProject '
 alias no_sudo_zsh='export SHELL=/usr/bin/zsh && exec /usr/bin/zsh -l'
 alias node_update=nodeUpdates
-alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_ROOT_FOLDER/Apps/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
+alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
 alias pip_freeze='pip freeze > requirements.txt'
 alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower && pip_freeze'
 alias pip_update='pip install --upgrade pip'
@@ -1331,7 +1343,7 @@ alias redis_start='nohup redis-server &'
 alias redis_stop='redis-cli shutdown'
 alias root='goToRoot'
 alias service_details='systemctl status '
-alias sg="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_ROOT_FOLDER/Apps/smartgit/bin/smartgit.sh"
+alias sg="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/smartgit/bin/smartgit.sh"
 alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
