@@ -71,16 +71,7 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 8. Run `admin` command.
 
 ### SWITCH BACK TO SUDO MODE
-1. Download smartgit, vscode, pycharm deb files and put them in the **/home/$SYSTEM_USER_NAME/Downloads/Softwares** folder. Change the 3 app versions from below at the top of the `bash-core.sh` file with the latest version of the respective softwares. Namely ***$LATEST_SMARTGIT_FILE_NAME***, ***$LATEST_VSCODE_FILE_NAME***, ***$LATEST_PYCHARM_VERSION*** variable values. Then run `install_smartgit`, `install_vscode`, `install_pycharm`.
-
->1. http://www.syntevo.com/smartgit/download
-
->2. https://code.visualstudio.com/download
-
->3. https://www.jetbrains.com/pycharm/download/
-
-2. Open "Terminal" and run this command to install all the necessary global packages via npm: `node_update`.
-3. Install JAVA by running this following command: `install_java`. Choose "Ok" and "Yes" for the prompts.
+1. Open "Terminal" and run this command to install all the necessary global packages via npm: `node_update`.
 
 ### SWITCH TO NON SUDO MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
@@ -109,4 +100,3 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 24. Open "Dropbox" from dash -> Login to Dropbox.
 25. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login.
 26. Clone the https://github.com/0PEIN0/bash-helpers repository to ensure that the latest updates can be pulled at any time. Run the following command: `cd /home/$SYSTEM_USER_NAME/Gitrepos/ && git clone https://github.com/0PEIN0/bash-helpers` to clone the repo. Also update the bash import of `bash-core.sh` file in the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file. And update ***$BASH_HELPER_GIT_FOLDER*** variable value at **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file which should point to the location under ***Gitrepos*** folder. Then at the end, source it.
-27. Open "Chrome" -> Visit "https://slack.com/downloads/linux" -> Download the 64 bit slack and install using Ubuntu package manager.
