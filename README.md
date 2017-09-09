@@ -103,12 +103,12 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 8. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Show my name".
 9. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Power" -> "Always visible".
 10. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> "Default Player" -> Select "Vlc.desktop".
-11. Open "Chrome" -> Visit "https://slack.com/downloads/linux" -> Download the 64 bit slack and install using Ubuntu package manager.
-12. Open "Dropbox" from dash -> Login to Dropbox.
-13. Open "Terminal" and install Steam by running this command: "sudo apt-get install steam". Open "Steam" and login.
-14. Clone the https://github.com/0PEIN0/bash-helpers repository to ensure that the latest updates can be pulled at any time. Also update the bash import of `bash-core.sh` file in the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file. And uncomment ***$BASH_HELPER_GIT_FOLDER*** variable at **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file.
-15. Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
-16. Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
-17. Restart machine.
-18. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
-19. Open "Atom" -> There will be a pop-up showing list of dependencies to install, press "Yes" to install them.
+11. Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
+12. Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
+13. Restart machine.
+14. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
+15. Open "Atom" -> There will be a pop-up showing list of dependencies to install, press "Yes" to install them.
+16. Open "Chrome" -> Visit "https://slack.com/downloads/linux" -> Download the 64 bit slack and install using Ubuntu package manager.
+17. Open "Dropbox" from dash -> Login to Dropbox.
+18. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login.
+19. Clone the https://github.com/0PEIN0/bash-helpers repository to ensure that the latest updates can be pulled at any time. Run the following command: `cd /home/$SYSTEM_USER_NAME/Gitrepos/ && git clone https://github.com/0PEIN0/bash-helpers` to clone the repo. Also update the bash import of `bash-core.sh` file in the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file. And update ***$BASH_HELPER_GIT_FOLDER*** variable value at **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file which should point to the location under ***Gitrepos*** folder. Then at the end, source it.
