@@ -1169,14 +1169,14 @@ installPackagesForSystemSudo() {
   install_bracket
   # Install vscode editor
   install_vscode
+  # Install java
+  install_java
   # Install smartgit
   install_smartgit
   # Install pycharm
   install_pycharm
   # Install slack chat app
   install_slack
-  # Install java
-  install_java
   goToRoot
 }
 
