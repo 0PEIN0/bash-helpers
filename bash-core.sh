@@ -449,14 +449,14 @@ installHackLang() {
 
 installPython() {
   #latest python version
-  mkdir /opt/python3.5
-  cd /opt/python3.5
+  mkdir /opt/python3.6
+  cd /opt/python3.6
   wget https://www.python.org/ftp/python/$LATEST_PYTHON_VERSION/Python-$LATEST_PYTHON_VERSION.tgz
   sudo tar xzf Python-$LATEST_PYTHON_VERSION.tgz
   cd Python-$LATEST_PYTHON_VERSION
   sudo ./configure
   sudo make altinstall
-  python3.5 -V
+  python3.6 -V
 }
 
 installHipchat() {
@@ -1336,6 +1336,7 @@ alias install_hack_lang=installHackLang
 alias install_java=installJava
 alias install_mongo=installMongoDb
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
+alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"

@@ -13,7 +13,7 @@ Estimated total installation time is 2-3 hours, although will vary based on mach
 3. Login to Chrome as user.
 4. Create ***bash-dump*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/bash-dump/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the system user, that is not the default ***root*** user.
 5. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh" and save the file in bash-dump folder. Or run the following command from command line to get the file locally: `cd ~/bash-dump && wget -O bash-core.sh https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh`.
-6. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder. Or run the following command from command line to get the file locally: `cd ~/bash-dump && wget -O bash-core.sh https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh`.
+6. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder. Or run the following command from command line to get the file locally: `cd ~/bash-dump && wget -O personal.sh https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh`.
 7. Open the "personal.sh" file located in the bash-dump folder and change the following variable values and un-comment the code there. And comment out the last 3 imports there and replace the placeholder values with relevant values.
 
 >`SYSTEM_USER_FULL_NAME="John Doe"`
