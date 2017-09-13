@@ -178,7 +178,8 @@ djangoStopProcesses() {
   ps auxww | grep 'celery worker' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'beat' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'flower' | awk '{print $2}' | xargs kill -9
-  ps auxww | grep 'worker' | awk '{print $2}' | xargs kill -9
+  #the following command crashes chrome
+  #ps auxww | grep 'worker' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'celery' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'nohup' | awk '{print $2}' | xargs kill -9
   ps auxww | grep "$2" | awk '{print $2}' | xargs kill -9
