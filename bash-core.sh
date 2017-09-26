@@ -1320,6 +1320,7 @@ alias git_l='git_f && git log'
 alias git_p='git push origin HEAD -f'
 alias git_r=gitRebase
 alias git_rc='git rebase --continue'
+alias git_rd='gitRebase develop'
 alias git_remove_last_commit='git reset --hard HEAD^'
 alias git_rh='git_f && gitResetHard'
 alias git_rl='git_f && git reflog'
