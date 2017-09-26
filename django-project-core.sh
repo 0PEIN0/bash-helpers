@@ -376,6 +376,11 @@ djangoBranchChange() {
   eval ${1}_ve
 }
 
+djangoBranchChangeRun() {
+  djangoBranchChange $1 $2
+  eval ${1}_run
+}
+
 djangoBranchChangeWithFullReset() {
   if [ -z "$1" ]; then
     echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
