@@ -1031,7 +1031,7 @@ installPackagesForSystemSudo() {
   goToRoot
   coreSystemUpdate
   # Install build essentials
-  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools debconf-utils
+  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools debconf-utils htop
   printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager ffmpeg
   # Install package for ubuntu app location restore feature after machine restart
   printf 'y\n' | sudo apt-get install wmctrl
