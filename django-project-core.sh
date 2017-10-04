@@ -183,6 +183,7 @@ djangoStopProcesses() {
   ps auxww | grep 'celery' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'nohup' | awk '{print $2}' | xargs kill -9
   ps auxww | grep "$2" | awk '{print $2}' | xargs kill -9
+  pgrep -f celery | xargs kill -9
 }
 
 djangoVeClear() {
