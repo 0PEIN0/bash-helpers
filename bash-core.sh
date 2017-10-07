@@ -730,9 +730,14 @@ installAtomExtensionsNonSudo() {
   apm install merge-conflicts
   apm install activate-power-mode
   apm install linter-jshint
-  apm install nuclide
+  #apm install nuclide
   apm install autoclose-html
   #apm install react
+  apm install atom-ide-ui
+  apm install ide-typescript
+  apm install ide-csharp
+  apm install ide-java
+  apm install ide-php
   goToRoot
 }
 
