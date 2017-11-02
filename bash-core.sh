@@ -269,6 +269,7 @@ rabbitMqRestart() {
   fi;
   rabbitmqctl status
   rabbitmqctl stop
+  rabbitmq-plugins enable rabbitmq_management
   sudo invoke-rc.d rabbitmq-server start
   rabbitmqctl status
 }
@@ -917,6 +918,29 @@ installRabbitMq() {
   printf 'y\n' | sudo apt-get install rabbitmq-server
 }
 
+installPostman() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+  tar -xzf postman.tar.gz -C /opt
+  rm postman.tar.gz
+  ln -s /opt/Postman/Postman /usr/bin/postman
+
+ cat > ~/.local/share/applications/postman.desktop <<EOL
+  [Desktop Entry]
+  Encoding=UTF-8
+  Name=Postman
+  Exec=postman
+  Icon=/opt/Postman/resources/app/assets/icon.png
+  Terminal=false
+  Type=Application
+  Categories=Development;
+EOL
+}
+
 installWine() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -995,6 +1019,7 @@ installDocker() {
 
 installSublime() {
   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+  printf 'y\n' | sudo apt-get install apt-transport-https
   echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
   aptGet
   printf 'y\n' | sudo apt-get install sublime-text
@@ -1132,6 +1157,8 @@ installPackagesForSystemSudo() {
   printf '\n' | sudo add-apt-repository ppa:noobslab/icons
   aptGet
   printf 'y\n' | sudo apt-get install ultra-flat-icons ultra-flat-icons-green ultra-flat-icons-orange
+  # Postman installation
+  install_postman
   # Stacer installation
   installStacer $LATEST_STACER_VERSION
   # Docker installation
@@ -1348,6 +1375,7 @@ alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_hack_lang=installHackLang
 alias install_java=installJava
 alias install_mongo=installMongoDb
+alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
 alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
