@@ -414,6 +414,7 @@ installPythonAndPostgres() {
   pip install --upgrade awscli
   pip install --upgrade pyOpenSSL==16.2.0
   pip install --upgrade selenium
+  pip install --upgrade python-language-server
   sudo service postgresql restart
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
@@ -711,7 +712,7 @@ installZshNonSudo() {
 installAtomExtensionsNonSudo() {
   goToRoot
   apm install minimap
-  apm install linter
+  #apm install linter
   apm install atom-beautify
   apm install file-icons
   apm install pigments
@@ -739,6 +740,8 @@ installAtomExtensionsNonSudo() {
   apm install ide-csharp
   apm install ide-java
   apm install ide-php
+  apm install ide-python
+  apm install ide-cpp
   goToRoot
 }
 
