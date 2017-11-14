@@ -621,6 +621,19 @@ installZshSudo() {
   source ~/.bashrc
 }
 
+installZoomConference() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  checkSoftwareFolder
+  printf '\n' | sudo apt-get install libglib2.0-0 libgstreamer-plugins-base0.10-0 libxcb-shape0 libxcb-shm0 libxcb-xfixes0 libxcb-randr0 libxcb-image0 libfontconfig1 libgl1-mesa-glx libxi6 libsm6 libxrender1 libpulse0 libxcomposite1 libxslt1.1 libsqlite3-0 libxcb-keysyms1 libxcb-xtest0
+  wget -O zoom_amd64.deb "https://d11yldzmag5yn.cloudfront.net/prod/2.0.106600.0904/zoom_amd64.deb"
+  sudo dpkg -i zoom_amd64.deb
+  printf 'y\n' | sudo apt-get install -f
+}
+
 installSmartgit() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -957,7 +970,7 @@ installWine() {
   aptGet
   printf '\n' | sudo add-apt-repository --remove ppa:wine/wine-builds
   sudo dpkg --add-architecture i386
-  wget https://dl.winehq.org/wine-builds/Release.key
+  wget -nc https://dl.winehq.org/wine-builds/Release.key
   sudo apt-key add Release.key
   printf '\n' | sudo apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/'
   aptGet
