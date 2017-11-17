@@ -11,34 +11,36 @@ Estimated total installation time is 2-3 hours, although will vary based on mach
 1. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
 2. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
 3. Login to Chrome as user.
-4. Create ***bash-dump*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/bash-dump/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the system user, that is not the default ***root*** user.
-5. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh" and save the file in bash-dump folder. Or run the following command from command line to get the file locally: `cd ~/bash-dump && wget -O bash-core.sh https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/bash-core.sh`.
-6. Open "Chrome" -> Visit "https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh" and save the file in bash-dump folder. Or run the following command from command line to get the file locally: `cd ~/bash-dump && wget -O personal.sh https://raw.githubusercontent.com/0PEIN0/bash-helpers/develop/personal.sh`.
-7. Open the "personal.sh" file located in the bash-dump folder and change the following variable values and un-comment the code there. And comment out the last 3 imports there and replace the placeholder values with relevant values.
-
+4. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the system user, that is not the default ***root*** user.
+5. Open "Chrome" and go to [Bash Helper's Repo](https://github.com/0PEIN0/bash-helpers) and clone it in Gitrepos folder by running follwing commands.
+```sh
+$ cd /home/$SYSTEM_USER_NAME/Gitrepos/
+$ git clone https://github.com/0PEIN0/bash-helpers.git
+```
+6. After cloning just configure your info in ***config.sh*** file like :
 >`SYSTEM_USER_FULL_NAME="John Doe"`
 
 >`SYSTEM_USER_EMAIL="john@example.com"`
 
 >`SYSTEM_USER_NAME="john"`
 
-8. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
-9. Below is the sample example for import of personal shell file.
+7. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers/config.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
+8. Below is the sample example for import of config shell file.
 ```bash
-if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
-    . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
+if [ -f /home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers/config.sh ]; then
+    . /home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers/config.sh
 fi;
 ```
-10. Run `source ~/.bashrc` command.
-11. Run `system_init_non_sudo_first` command.
-12. Run `admin` command(enter into the sudo mode).
+9. Run `source ~/.bashrc` command.
+10. Run `system_init_non_sudo_first` command.
+11. Run `admin` command(enter into the sudo mode).
 
 ### SWITCH TO SUDO MODE
-1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-dump/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
+1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/Gitrepos/bash-delpers/config.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
 2. Below is the sample example for import of personal shell file.
 ```bash
-if [ -f /home/$SYSTEM_USER_NAME/bash-dump/personal.sh ]; then
-    . /home/$SYSTEM_USER_NAME/bash-dump/personal.sh
+if [ -f /home/$SYSTEM_USER_NAME/Gitrepos/bash-delpers/config.sh ]; then
+    . /home/$SYSTEM_USER_NAME/Gitrepos/bash-delpers/config.sh
 fi;
 ```
 3. Run `source ~/.bashrc` command.

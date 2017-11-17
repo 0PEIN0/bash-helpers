@@ -1,4 +1,11 @@
-#!/bin/bash
+newDjangoProject() {
+  funcName=$(getFunctionName)
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  django-admin startproject $1 .
+}
 
 checkVirtualPythonEnvironmentFolder() {
   if [ -z "$1" ]; then
@@ -23,6 +30,7 @@ checkVirtualPythonEnvironmentFolder() {
   fi;
 }
 
+
 postgresPasswordReset() {
   if [ -z "$1" ]; then
     echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
@@ -33,13 +41,6 @@ postgresPasswordReset() {
   sudo service postgresql restart
 }
 
-goToDir() {
-  if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
-    return $1
-  fi;
-  cd $1/
-}
 
 pythonThreeVeCheck() {
   if [ -z "$1" ]; then
@@ -63,7 +64,7 @@ pythonThreeVeCheck() {
     echo "VE exists for $4!"
   else
     cd $2/
-    virtualenv -p python3.5 $3
+    virtualenv -p python3 $3
     echo "Created VE for $4!"
   fi;
 }
@@ -199,7 +200,10 @@ djangoVeClear() {
   virtualenv --clear $2
   rm -rf $2
 }
-
+djangoBranchChangeRun() {
+  djangoBranchChange $1 $2
+  eval ${1}_run
+}
 djangoGitSetup() {
   if [ -z "$1" ]; then
   echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
@@ -207,6 +211,7 @@ djangoGitSetup() {
   fi;
   git remote set-url origin $1
 }
+
 
 djangoDefaultSetup() {
   if [ -z "$1" ]; then
@@ -238,6 +243,7 @@ djangoPsqlReset() {
   fi;
   psql -U $1 -h localhost -f $2 $1
 }
+
 
 djangoProjectDataLoad() {
   if [ -z "$1" ]; then
@@ -377,11 +383,6 @@ djangoBranchChange() {
   eval ${1}_ve
 }
 
-djangoBranchChangeRun() {
-  djangoBranchChange $1 $2
-  eval ${1}_run
-}
-
 djangoBranchChangeWithFullReset() {
   if [ -z "$1" ]; then
     echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
@@ -489,3 +490,24 @@ djangoResetWithoutMigrationClean() {
   ./manage.py migrate
   ./manage.py shell < $2
 }
+
+djangoMakeMigrations() {
+  eval python manage.py makemigrations $1
+}
+
+djangoMigrate() {
+  eval python manage.py migrate $1
+}
+
+alias new_django_project='newDjangoProject '
+alias pip_freeze='pip freeze > requirements.txt'
+alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower && pip_freeze'
+alias pip_update='pip install --upgrade pip'
+alias postgres_pgpass_file=postgresPgpassFileInit
+alias postgres_restart='sudo service postgresql restart'
+alias postgres_shell='psql -U postgres'
+alias postgres_shell_sudo='sudo -u postgres psql'
+alias python_postgres_init='install_python_postgres && postgres_pgpass_file && postgres_restart'
+
+alias  make_mig="djangoMakeMigrations"
+alias  migrate="djangoMigrate"

@@ -1,0 +1,15 @@
+ALTER ROLE your_username SET client_encoding TO 'utf8';
+ALTER ROLE your_username SET default_transaction_isolation TO 'read committed';
+ALTER ROLE your_username SET timezone TO 'UTC';
+drop database if exists example_db ;
+create database example_db ;
+grant all privileges on database example_db to your_username ;
+ALTER USER your_username CREATEDB;
+drop database if exists test_example_db ;
+create database testing_example_db ;
+grant all privileges on database testing_example_db to your_username ;
+grant all privileges on database testing_example_db to postgres ;
+drop database if exists testing_example_db ;
+create database testing_example_db ;
+grant all privileges on database test_test_example_db to your_username ;
+grant all privileges on database test_test_example_db to postgres ;
