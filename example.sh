@@ -2,7 +2,7 @@
 
 EXAMPLE_PYTHON_VERSION="3"
 EXAMPLE_REPO_NAME="example_repo_name"
-EXAMPLE_GIT_REPO="git@github.com:ITbtn/$EXAMPLE_REPO_NAME.git"
+EXAMPLE_GIT_REPO="git@github.com:GITHUB_USER/$EXAMPLE_REPO_NAME.git"
 EXAMPLE_PROJECT_NAME="example_project_name"
 EXAMPLE_CELERY_PROJECT_NAME="example_project_name"
 EXAMPLE_PROJECT_NAME_UNDERSCORE="example_project_name"
@@ -75,8 +75,3 @@ alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_psql_reset="djangoPsqlReset $EXAMPLE_PO
 alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_reinitiate="djangoReinitiate \"$EXAMPLE_PROJECT_ROOT_FOLDER\" \"$EXAMPLE_DJANGO_APP_NAMES\" $EXAMPLE_INIT_DATA_LOAD_PYTHON_FILE_PATH \"$EXAMPLE_DJANGO_OPERATIONS\""
 alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_reset_clean="djangoResetWithoutMigrationClean $EXAMPLE_PROJECT_NAME_UNDERSCORE $EXAMPLE_INIT_DATA_LOAD_PYTHON_FILE_PATH"
 alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_start_celery="startCeleryWorkers $EXAMPLE_CELERY_PROJECT_NAME $EXAMPLE_CELERY_FLOWER_HOST $EXAMPLE_CELERY_FLOWER_PORT"
-
-alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_staging="sshpass -p 'fleks2017' ssh pein@fleks.external.itbutton.com"
-alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_ansible_staging="${EXAMPLE_PROJECT_NAME_UNDERSCORE}_ve && cd deploy/ansible && cp ~/Downloads/cp2-backend-linux.pem ~/.ssh/cp2-backend-linux.pem -f && chmod 600 ~/.ssh/cp2-backend-linux.pem && ansible-playbook -i development update_dev.yml --ask-become-pass -k  -vvv --user pein -e \"gitpass=git1234\""
-alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_production="cd $PEIN_FRAMEWORK_ROOT_FOLDER/Ubuntu/Keys/ && ssh -i cp2-backend-linux.pem ubuntu@52.59.114.3"
-alias ${EXAMPLE_PROJECT_NAME_UNDERSCORE}_ansible_production="${EXAMPLE_PROJECT_NAME_UNDERSCORE}_ve && cd deploy/ansible && cp $PEIN_FRAMEWORK_ROOT_FOLDER/Ubuntu/Keys/cp2-backend-linux.pem ~/.ssh/cp2-backend-linux.pem -f && chmod 600 ~/.ssh/cp2-backend-linux.pem && ansible-playbook -i production update_prod.yml -e \"gitpass=git1234\" -vvv"
