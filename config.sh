@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SYSTEM_ROOT_FOLDER="/Users/your-username/your-folder"
+SYSTEM_ROOT_FOLDER="/home/your-username/your-folder"
 BASH_TEMP_FOLDER="$SYSTEM_ROOT_FOLDER/bash-dump"
 SYSTEM_ROOT_GIT_REPO_FOLDER="$SYSTEM_ROOT_FOLDER/Gitrepos"
 BASH_HELPER_GIT_FOLDER="$SYSTEM_ROOT_GIT_REPO_FOLDER/bash-helpers"
