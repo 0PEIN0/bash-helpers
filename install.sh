@@ -114,7 +114,7 @@ installPythonAndPostgres() {
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
 }
-#install.sh
+
 installGeos() {
   isSudoMode
   checkIfSudo $funcName
@@ -135,7 +135,7 @@ installGeos() {
   rm -rf $LATEST_GEOS_VERSION.tar.bz2
   goToRoot
 }
-#install.sh
+
 installHackLang() {
   goToRoot
   sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
@@ -143,7 +143,7 @@ installHackLang() {
   aptGet
   printf 'y\n' | sudo apt-get install hhvm
 }
-#install.sh
+
 installPython() {
   #latest python version
   mkdir /opt/python3.6
@@ -155,7 +155,7 @@ installPython() {
   sudo make altinstall
   python3.6 -V
 }
-#install.sh
+
 installHipchat() {
   goToRoot
   aptGet
@@ -165,7 +165,7 @@ installHipchat() {
   aptGet
   printf 'y\n' | sudo apt-get install hipchat4
 }
-#install.sh
+
 installBracket() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -188,7 +188,7 @@ installBracket() {
   #printf 'y\n' | sudo apt-get install -f
   goToRoot
 }
-#install.sh
+
 installBlender() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -202,7 +202,7 @@ installBlender() {
   printf 'y\n' | sudo apt install blender
   goToRoot
 }
-#install.sh
+
 installVisualStudioCode() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -219,7 +219,7 @@ installVisualStudioCode() {
   rm -rf $1
   goToRoot
 }
-#install.sh
+
 installVSCodeExtensionsNonSudo() {
   code --install-extension ms-vscode.cpptools
   code --install-extension ms-vscode.csharp
@@ -249,7 +249,7 @@ installVSCodeExtensionsNonSudo() {
   code --install-extension Shan.code-settings-sync
   code --install-extension Zignd.html-css-class-completion
 }
-#install.sh
+
 installDotNetCore() {
   goToRoot
   #Reference: https://www.microsoft.com/net/core#linuxubuntu
@@ -262,7 +262,7 @@ installDotNetCore() {
   goToRoot
 }
 
-#install.sh
+
 installMongoDb() {
   goToRoot
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -273,7 +273,7 @@ installMongoDb() {
   sudo service mongod start
   goToRoot
 }
-#install.sh
+
 powerlineFontInstallationSudo() {
   goToRoot
   aptGet
@@ -286,7 +286,7 @@ powerlineFontInstallationSudo() {
   fc-cache -f -v
   goToRoot
 }
-#install.sh
+
 powerlineFontInstallationNonSudo() {
   goToRoot
   checkSoftwareFolder
@@ -298,7 +298,7 @@ powerlineFontInstallationNonSudo() {
   fc-cache -f -v
   goToRoot
 }
-#install.sh
+
 installZshSudo() {
   goToRoot
   aptGet
@@ -316,7 +316,7 @@ installZshSudo() {
   source ~/.zshrc
   source ~/.bashrc
 }
-#install.sh
+
 installSmartgit() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -333,7 +333,7 @@ installSmartgit() {
   sudo dpkg -i $1
   printf 'y\n' | sudo apt-get install -f
 }
-#install.sh
+
 installRedis() {
   isSudoMode
   checkIfSudo $funcName
@@ -350,7 +350,7 @@ installRedis() {
   rm -rf redis-stable.tar.gz
   goToRoot
 }
-#install.sh
+
 installRoboMongo() {
   isSudoMode
   checkIfSudo $funcName
@@ -376,7 +376,7 @@ installRoboMongo() {
   ./robomongo
   goToRoot
 }
-#install.sh
+
 installPyCharm() {
   if [ -z "$1" ]; then
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
@@ -390,7 +390,7 @@ installPyCharm() {
   mv "$1" "$SYSTEM_APPS_FOLDER/$1"
   rm -rf "$1"
 }
-#install.sh
+
 installZshNonSudo() {
   goToRoot
   rm -rf $SYSTEM_ROOT_FOLDER/.oh-my-zsh
@@ -404,7 +404,7 @@ installZshNonSudo() {
   source ~/.zshrc
   source ~/.bashrc
 }
-#install.sh
+
 installAtomExtensionsNonSudo() {
   goToRoot
   apm install minimap
@@ -440,7 +440,7 @@ installAtomExtensionsNonSudo() {
   apm install ide-cpp
   goToRoot
 }
-#install.sh
+
 installAtom() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -462,7 +462,7 @@ installAtom() {
   installAtomExtensionsNonSudo
   goToRoot
 }
-#install.sh
+
 installSmartgitByCrawl() {
   funcName=$(getFunctionName)
   # TODO: finish this implementation
@@ -501,7 +501,7 @@ installSmartgitByCrawl() {
   sudo dpkg -i $fileName
   printf 'y\n' | sudo apt-get install -f
 }
-#install.sh
+
 installStacer() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -521,7 +521,7 @@ installStacer() {
   printf 'y\n' | sudo apt-get install -f
   goToRoot
 }
-#install.sh
+
 installJenkins() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -537,7 +537,7 @@ installJenkins() {
   printf 'Y\n' | sudo apt-get install jenkins
   goToRoot
 }
-#install.sh
+
 installPhpmyadmin() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -549,7 +549,7 @@ installPhpmyadmin() {
   printf 'y\n' | sudo apt-get install phpmyadmin php-mbstring php-gettext
   #https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04
 }
-#install.sh
+
 installLaravelNonSudo() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
@@ -561,7 +561,7 @@ installLaravelNonSudo() {
   bash_refresh
   #http://vaguelyuseful.info/2016/08/03/installing-laravel-5-2-on-ubuntu-16-04-and-apache2/
 }
-#install.sh
+
 installSkype() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -580,7 +580,7 @@ installSkype() {
   #aptGet
   #sudo apt-get install skypeforlinux -y
 }
-#install.sh
+
 installSlack() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -593,7 +593,7 @@ installSlack() {
   rm -rf slack-desktop-$1-amd64.deb
   goToRoot
 }
-#install.sh
+
 installGnome() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -604,7 +604,7 @@ installGnome() {
   printf 'y\n' | sudo apt-get install gnome-shell
   printf 'y\n' | sudo apt install gnome-control-center gnome-online-accounts
 }
-#install.sh
+
 installRabbitMq() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -616,7 +616,7 @@ installRabbitMq() {
   aptGet
   printf 'y\n' | sudo apt-get install rabbitmq-server
 }
-#install.sh
+
 installWine() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -638,7 +638,7 @@ installWine() {
   /opt/wine-staging/bin/wine
   /opt/wine-staging/bin/winecfg
 }
-#install.sh
+
 installMonoDevelop() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -650,7 +650,7 @@ installMonoDevelop() {
   printf 'y\n' | sudo apt install flatpak
   printf 'y\n' | flatpak install --user --from https://download.mono-project.com/repo/monodevelop.flatpakref
 }
-#install.sh
+
 installPhp() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -670,7 +670,7 @@ installPhp() {
   sudo a2enmod rewrite
   sudo systemctl restart apache2
 }
-#install.sh
+
 installDocker() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -692,14 +692,14 @@ installDocker() {
   sudo service docker start
   usermod -aG docker ${USER}
 }
-#install.sh
+
 installSublime() {
   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
   echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
   aptGet
   printf 'y\n' | sudo apt-get install sublime-text
 }
-#install.sh
+
 installHerokuToolbelt() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -713,12 +713,12 @@ installHerokuToolbelt() {
   aptGet
   printf 'y\n' | sudo apt-get install heroku
 }
-#install.sh
+
 installVirtualBox() {
   # Install virtual-box
   printf 'y\n' | sudo apt install virtualbox virtualbox-ext-pack
 }
-#install.sh
+
 installJava() {
   # Install Java 8
   sudo add-apt-repository -y ppa:webupd8team/java
@@ -726,7 +726,7 @@ installJava() {
   echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
   sudo apt-get install -y oracle-java8-installer
 }
-#install.sh
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -893,7 +893,7 @@ installPackagesForSystemSudo() {
   install_postman
   goToRoot
 }
-#install.sh
+
 installPackagesForSystemNonSudoFirst() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
@@ -904,7 +904,7 @@ installPackagesForSystemNonSudoFirst() {
   checkSoftwareFolder
   checkAppsFolder
 }
-#install.sh
+
 installPackagesForSystemSudoSecond() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -913,7 +913,7 @@ installPackagesForSystemSudoSecond() {
   fi;
   installPackagesForSystemSudo
 }
-#install.sh
+
 installPackagesForSystemNonSudoThird() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
@@ -927,7 +927,7 @@ installPackagesForSystemNonSudoThird() {
   postgresPgpassFileInit
 }
 
-#install.sh
+
 nodeExpressNpmInitiation() {
   npm install express@latest --save
   npm install body-parser@latest --save
@@ -1048,5 +1048,5 @@ alias ssh_sudo_setup=sshOperationsSudo
 alias system_init_non_sudo_first=installPackagesForSystemNonSudoFirst
 alias system_init_non_sudo_second=installPackagesForSystemNonSudoThird
 alias system_init_sudo=installPackagesForSystemSudoSecond
-alias install_php_composer = installPhpAndComposer
+alias install_php_composer=installPhpAndComposer
 alias install_sublime="installSublime"
