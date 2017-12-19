@@ -1,5 +1,13 @@
 #!/bin/bash
 
+SYSTEM_ROOT_FOLDER="/home/$SYSTEM_USER_NAME"
+BASH_TEMP_FOLDER="$SYSTEM_ROOT_FOLDER/bash-dump"
+SYSTEM_ROOT_GIT_REPO_FOLDER="$SYSTEM_ROOT_FOLDER/Gitrepos"
+SYSTEM_DOWNLOAD_FOLDER="$SYSTEM_ROOT_FOLDER/Downloads"
+SYSTEM_SOFTWARE_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Softwares"
+SYSTEM_APPS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Apps"
+SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME="virtual-python-envs"
+
 goToRoot() {
   cd /
 }
@@ -318,27 +326,22 @@ alias downloads="cd $SYSTEM_DOWNLOAD_FOLDER"
 alias erc='/etc/bash.bashrc'
 alias firewall_list='sudo ufw app list'
 alias filewall_status="sudo ufw status"
-alias forever_list='forever list'
-alias forever_restart='forever restart 0'
 alias fperm='stat -c "%a %n" '
 alias gbrc='gedit ~/.bashrc'
 alias gerc='gedit /etc/bash.bashrc'
 alias get_ssh='cat ~/.ssh/id_rsa.pub | xclip -sel clip'
-alias gpg_config='git config --global gpg.program gpg2'
-alias gpg_export='gpg --armor --export'
-alias gpg_gen='gpg --gen-key'
-alias gpg_list='gpg --list-secret-keys --keyid-format LONG'
-alias gpg_sign='git config --global user.signingkey'
 alias gzrc='gedit ~/.zshrc'
 alias home='cd ~/'
-alias loc_count='cloc '
+alias last_shutdown='last -x | grep shutdown'
 alias no_sudo_zsh='export SHELL=/usr/bin/zsh && exec /usr/bin/zsh -l'
-alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
-alias protractor_test='protractor conf.js'
 alias proxy_remove="kill -9 $(ps -efda | grep ssh | tail -n1 | awk '{print $2}')"
 alias rc_factory_reset=rcFactoryReset
 alias root='goToRoot'
 alias service_details='systemctl status '
+alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
+alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
+alias ssh_agent_verify='eval "$(ssh-agent -s)"'
+alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
 alias tar_install='tar -xzf '
 alias up='cd ..'
 alias zrc='~/.zshrc'

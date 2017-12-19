@@ -1,5 +1,20 @@
 #!/bin/bash
 
+postgresPgpassFileInit() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  if [ ! -f ~/.pgpass ]; then
+    touch $USER:$USER ~/.pgpass
+  fi;
+  chown $USER:$USER ~/.pgpass
+  chmod $DEFAULT_PERMISSION_VALUE ~/.pgpass
+  echo -e "localhost:5432:*:postgres:$SYSTEM_USER_NAME\n127.0.0.1:5432:*:postgres:$SYSTEM_USER_NAME\n">~/.pgpass
+  echo "Updated pgpass file"
+}
+
 newDjangoProject() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -524,7 +539,7 @@ rabbitMqRestart() {
 
 alias new_django_project='newDjangoProject '
 alias pip_freeze='pip freeze > requirements.txt'
-alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower && pip_freeze'
+alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower django-material && pip_freeze'
 alias pip_update='pip install --upgrade pip'
 alias postgres_pgpass_file=postgresPgpassFileInit
 alias postgres_restart='sudo service postgresql restart'
