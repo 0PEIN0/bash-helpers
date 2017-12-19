@@ -1,68 +1,21 @@
-nodeUpdates() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  aptGet
-  goToRoot
-  npm i -g npm
-  npm install -g @angular/cli
-  npm install -g mongodb@latest
-  npm install -g socket.io@latest
-  npm install -g gulp gulp-cli@latest
-  npm install -g bower@latest
-  npm install -g mocha@latest
-  npm install -g coffee-script@latest
-  npm install -g karma-cli@latest
-  npm install -g nodemon@latest
-  npm install -g npm@latest
-  npm install -g protractor@latest
-  npm install -g firebase-tools@latest
-  npm install -g pm2@latest
-  npm install -g forever@latest
-  npm install -g prettyjson@latest
-  npm install -g uglify-js@latest
-  npm install -g html-minifier@latest
-  npm install -g react@latest
-  npm install -g redux@latest
-  npm install -g react-redux@latest
-  npm install -g redux-devtools@latest
-  npm install -g grunt-cli@latest
-  npm install -g webpack@latest
-  webdriver-manager update
-  goToRoot
-}
-# install.sh
+#!/bin/bash
+
+LATEST_PYCHARM_VERSION="pycharm-community-2017.3.1"
+LATEST_SMARTGIT_FILE_NAME="smartgit-17_1_3.deb"
+LATEST_VSCODE_FILE_NAME="code_1.19.0-1513245498_amd64.deb"
+LATEST_SLACK_VERSION="3.0.0"
+LATEST_ROBOMONGO_VERSION="1.1.1"
+LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-c93c6b0"
+
+LATEST_GEOS_VERSION="geos-3.6.1"
+LATEST_POSTGIS_VERSION="postgis-2.3.3"
+LATEST_PYTHON_VERSION="3.6.3"
+LATEST_BRACKET_VERSION="1.11"
+LATEST_STACER_VERSION="1.0.6"
+
 apmUpdates() {
   printf "yes\n" | apm update
   printf "yes\n" | apm upgrade
-}
-
-rabbitMqRestart() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  rabbitmqctl status
-  rabbitmqctl stop
-  rabbitmq-plugins enable rabbitmq_management
-  sudo invoke-rc.d rabbitmq-server start
-  rabbitmqctl status
-}
-
-installZoomConference() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  checkSoftwareFolder
-  printf '\n' | sudo apt-get install libglib2.0-0 libgstreamer-plugins-base0.10-0 libxcb-shape0 libxcb-shm0 libxcb-xfixes0 libxcb-randr0 libxcb-image0 libfontconfig1 libgl1-mesa-glx libxi6 libsm6 libxrender1 libpulse0 libxcomposite1 libxslt1.1 libsqlite3-0 libxcb-keysyms1 libxcb-xtest0
-  wget -O zoom_amd64.deb "https://d11yldzmag5yn.cloudfront.net/prod/2.0.106600.0904/zoom_amd64.deb"
-  sudo dpkg -i zoom_amd64.deb
-  printf 'y\n' | sudo apt-get install -f
 }
 
 installPythonAndPostgres() {
@@ -114,7 +67,41 @@ installPythonAndPostgres() {
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
 }
-#install.sh
+installPythonAndPostgres() {
+  goToRoot
+  aptGet
+  printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme python-coverage
+  printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+  printf 'y\n' | sudo apt-get install python-pyaudio python-numpy
+  printf 'y\n' | sudo apt-get install postgresql-server-dev-9.5
+  #geo-spatial packages
+  printf 'y\n' | sudo apt-get install binutils libproj-dev gdal-bin libgdal-dev postgis
+  checkSoftwareFolder
+  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -sc)-pgdg main" >> /etc/apt/sources.list'
+  wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+  aptGet
+  sudo apt-get install -y postgresql-9.6
+  sudo apt-get install -y postgresql-9.6-postgis-2.3-scripts
+  sudo apt-get install -y postgresql-contrib-9.6
+  aptGet
+  printf "y\n" | sudo apt autoremove
+  aptGet
+  wget http://postgis.net/stuff/$LATEST_POSTGIS_VERSION.tar.gz
+  tar xvfz $LATEST_POSTGIS_VERSION.tar.gz
+  cd $LATEST_POSTGIS_VERSION
+  ./configure
+  make
+  make install
+  cd ..
+  rm -rf $LATEST_POSTGIS_VERSION.tar.gz
+  rm -rf $LATEST_POSTGIS_VERSION
+  goToRoot
+  pip install --upgrade pip WeasyPrint apiai django virtualenv jsbeautifier autopep8 isort coursera-dl setuptools html5lib docker-compose awscli pyOpenSSL==16.2.0 selenium python-language-server pylint coverage
+  sudo service postgresql restart
+  #the following command is for postgis installation in postgres in 9.3
+  #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
+}
+
 installGeos() {
   isSudoMode
   checkIfSudo $funcName
@@ -135,7 +122,7 @@ installGeos() {
   rm -rf $LATEST_GEOS_VERSION.tar.bz2
   goToRoot
 }
-#install.sh
+
 installHackLang() {
   goToRoot
   sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
@@ -143,10 +130,10 @@ installHackLang() {
   aptGet
   printf 'y\n' | sudo apt-get install hhvm
 }
-#install.sh
+
 installPython() {
   #latest python version
-  mkdir /opt/python3.6
+  mkdir -p /opt/python3.6
   cd /opt/python3.6
   wget https://www.python.org/ftp/python/$LATEST_PYTHON_VERSION/Python-$LATEST_PYTHON_VERSION.tgz
   sudo tar xzf Python-$LATEST_PYTHON_VERSION.tgz
@@ -155,7 +142,7 @@ installPython() {
   sudo make altinstall
   python3.6 -V
 }
-#install.sh
+
 installHipchat() {
   goToRoot
   aptGet
@@ -165,7 +152,7 @@ installHipchat() {
   aptGet
   printf 'y\n' | sudo apt-get install hipchat4
 }
-#install.sh
+
 installBracket() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -188,7 +175,7 @@ installBracket() {
   #printf 'y\n' | sudo apt-get install -f
   goToRoot
 }
-#install.sh
+
 installBlender() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -202,7 +189,7 @@ installBlender() {
   printf 'y\n' | sudo apt install blender
   goToRoot
 }
-#install.sh
+
 installVisualStudioCode() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -219,7 +206,7 @@ installVisualStudioCode() {
   rm -rf $1
   goToRoot
 }
-#install.sh
+
 installVSCodeExtensionsNonSudo() {
   code --install-extension ms-vscode.cpptools
   code --install-extension ms-vscode.csharp
@@ -249,7 +236,7 @@ installVSCodeExtensionsNonSudo() {
   code --install-extension Shan.code-settings-sync
   code --install-extension Zignd.html-css-class-completion
 }
-#install.sh
+
 installDotNetCore() {
   goToRoot
   #Reference: https://www.microsoft.com/net/core#linuxubuntu
@@ -262,7 +249,6 @@ installDotNetCore() {
   goToRoot
 }
 
-#install.sh
 installMongoDb() {
   goToRoot
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -273,7 +259,7 @@ installMongoDb() {
   sudo service mongod start
   goToRoot
 }
-#install.sh
+
 powerlineFontInstallationSudo() {
   goToRoot
   aptGet
@@ -286,7 +272,7 @@ powerlineFontInstallationSudo() {
   fc-cache -f -v
   goToRoot
 }
-#install.sh
+
 powerlineFontInstallationNonSudo() {
   goToRoot
   checkSoftwareFolder
@@ -298,7 +284,7 @@ powerlineFontInstallationNonSudo() {
   fc-cache -f -v
   goToRoot
 }
-#install.sh
+
 installZshSudo() {
   goToRoot
   aptGet
@@ -316,7 +302,20 @@ installZshSudo() {
   source ~/.zshrc
   source ~/.bashrc
 }
-#install.sh
+
+installZoomConference() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  checkSoftwareFolder
+  printf '\n' | sudo apt-get install libglib2.0-0 libgstreamer-plugins-base0.10-0 libxcb-shape0 libxcb-shm0 libxcb-xfixes0 libxcb-randr0 libxcb-image0 libfontconfig1 libgl1-mesa-glx libxi6 libsm6 libxrender1 libpulse0 libxcomposite1 libxslt1.1 libsqlite3-0 libxcb-keysyms1 libxcb-xtest0
+  wget -O zoom_amd64.deb "https://d11yldzmag5yn.cloudfront.net/prod/2.0.106600.0904/zoom_amd64.deb"
+  sudo dpkg -i zoom_amd64.deb
+  printf 'y\n' | sudo apt-get install -f
+}
+
 installSmartgit() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -333,7 +332,7 @@ installSmartgit() {
   sudo dpkg -i $1
   printf 'y\n' | sudo apt-get install -f
 }
-#install.sh
+
 installRedis() {
   isSudoMode
   checkIfSudo $funcName
@@ -350,7 +349,7 @@ installRedis() {
   rm -rf redis-stable.tar.gz
   goToRoot
 }
-#install.sh
+
 installRoboMongo() {
   isSudoMode
   checkIfSudo $funcName
@@ -369,14 +368,23 @@ installRoboMongo() {
   checkSoftwareFolder
   wget https://download.robomongo.org/$1/linux/$2.tar.gz
   tar -xvzf $2.tar.gz
-  sudo mkdir /usr/local/bin/robomongo
+  sudo mkdir -p /usr/local/bin/robomongo
   sudo mv $2/* /usr/local/bin/robomongo
   cd /usr/local/bin/robomongo/bin
   sudo chmod +x robomongo ## run command only if robomongo isn't excutable file
   ./robomongo
   goToRoot
 }
-#install.sh
+
+installRazerDrivers() {
+  printf '\n' | sudo add-apt-repository ppa:openrazer/stable
+  aptGet
+  printf 'y\n' | sudo apt install openrazer-meta
+  printf '\n' | sudo add-apt-repository ppa:lah7/polychromatic
+  aptGet
+  printf 'y\n' | sudo apt install polychromatic
+}
+
 installPyCharm() {
   if [ -z "$1" ]; then
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
@@ -385,12 +393,12 @@ installPyCharm() {
   checkSoftwareFolder
   wget -O $1.tar.gz "https://download.jetbrains.com/python/$1.tar.gz"
   tar xvfz $1.tar.gz
-  mkdir $SYSTEM_APPS_FOLDER/$1
+  mkdir -p $SYSTEM_APPS_FOLDER/$1
   rm -rf $SYSTEM_APPS_FOLDER/$1
   mv "$1" "$SYSTEM_APPS_FOLDER/$1"
   rm -rf "$1"
 }
-#install.sh
+
 installZshNonSudo() {
   goToRoot
   rm -rf $SYSTEM_ROOT_FOLDER/.oh-my-zsh
@@ -404,11 +412,11 @@ installZshNonSudo() {
   source ~/.zshrc
   source ~/.bashrc
 }
-#install.sh
+
 installAtomExtensionsNonSudo() {
   goToRoot
   apm install minimap
-  # apm install linter
+  #apm install linter
   apm install atom-beautify
   apm install file-icons
   apm install pigments
@@ -428,7 +436,7 @@ installAtomExtensionsNonSudo() {
   apm install merge-conflicts
   apm install activate-power-mode
   apm install linter-jshint
-  apm install nuclide
+  #apm install nuclide
   apm install autoclose-html
   #apm install react
   apm install atom-ide-ui
@@ -440,7 +448,7 @@ installAtomExtensionsNonSudo() {
   apm install ide-cpp
   goToRoot
 }
-#install.sh
+
 installAtom() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -462,7 +470,7 @@ installAtom() {
   installAtomExtensionsNonSudo
   goToRoot
 }
-#install.sh
+
 installSmartgitByCrawl() {
   funcName=$(getFunctionName)
   # TODO: finish this implementation
@@ -501,7 +509,7 @@ installSmartgitByCrawl() {
   sudo dpkg -i $fileName
   printf 'y\n' | sudo apt-get install -f
 }
-#install.sh
+
 installStacer() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -521,7 +529,7 @@ installStacer() {
   printf 'y\n' | sudo apt-get install -f
   goToRoot
 }
-#install.sh
+
 installJenkins() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -537,7 +545,7 @@ installJenkins() {
   printf 'Y\n' | sudo apt-get install jenkins
   goToRoot
 }
-#install.sh
+
 installPhpmyadmin() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -549,7 +557,7 @@ installPhpmyadmin() {
   printf 'y\n' | sudo apt-get install phpmyadmin php-mbstring php-gettext
   #https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04
 }
-#install.sh
+
 installLaravelNonSudo() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
@@ -561,7 +569,7 @@ installLaravelNonSudo() {
   bash_refresh
   #http://vaguelyuseful.info/2016/08/03/installing-laravel-5-2-on-ubuntu-16-04-and-apache2/
 }
-#install.sh
+
 installSkype() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -580,7 +588,7 @@ installSkype() {
   #aptGet
   #sudo apt-get install skypeforlinux -y
 }
-#install.sh
+
 installSlack() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -593,7 +601,7 @@ installSlack() {
   rm -rf slack-desktop-$1-amd64.deb
   goToRoot
 }
-#install.sh
+
 installGnome() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -604,7 +612,7 @@ installGnome() {
   printf 'y\n' | sudo apt-get install gnome-shell
   printf 'y\n' | sudo apt install gnome-control-center gnome-online-accounts
 }
-#install.sh
+
 installRabbitMq() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -616,7 +624,30 @@ installRabbitMq() {
   aptGet
   printf 'y\n' | sudo apt-get install rabbitmq-server
 }
-#install.sh
+
+installPostman() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+  tar -xzf postman.tar.gz -C /opt
+  rm postman.tar.gz
+  ln -s /opt/Postman/Postman /usr/bin/postman
+
+ cat > ~/.local/share/applications/postman.desktop <<EOL
+  [Desktop Entry]
+  Encoding=UTF-8
+  Name=Postman
+  Exec=postman
+  Icon=/opt/Postman/resources/app/assets/icon.png
+  Terminal=false
+  Type=Application
+  Categories=Development;
+EOL
+}
+
 installWine() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -638,7 +669,7 @@ installWine() {
   /opt/wine-staging/bin/wine
   /opt/wine-staging/bin/winecfg
 }
-#install.sh
+
 installMonoDevelop() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -650,7 +681,7 @@ installMonoDevelop() {
   printf 'y\n' | sudo apt install flatpak
   printf 'y\n' | flatpak install --user --from https://download.mono-project.com/repo/monodevelop.flatpakref
 }
-#install.sh
+
 installPhp() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -670,7 +701,7 @@ installPhp() {
   sudo a2enmod rewrite
   sudo systemctl restart apache2
 }
-#install.sh
+
 installDocker() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -692,14 +723,15 @@ installDocker() {
   sudo service docker start
   usermod -aG docker ${USER}
 }
-#install.sh
+
 installSublime() {
   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+  printf 'y\n' | sudo apt-get install apt-transport-https
   echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
   aptGet
   printf 'y\n' | sudo apt-get install sublime-text
 }
-#install.sh
+
 installHerokuToolbelt() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -713,12 +745,12 @@ installHerokuToolbelt() {
   aptGet
   printf 'y\n' | sudo apt-get install heroku
 }
-#install.sh
+
 installVirtualBox() {
   # Install virtual-box
   printf 'y\n' | sudo apt install virtualbox virtualbox-ext-pack
 }
-#install.sh
+
 installJava() {
   # Install Java 8
   sudo add-apt-repository -y ppa:webupd8team/java
@@ -726,7 +758,7 @@ installJava() {
   echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
   sudo apt-get install -y oracle-java8-installer
 }
-#install.sh
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -736,8 +768,11 @@ installPackagesForSystemSudo() {
   goToRoot
   coreSystemUpdate
   # Install build essentials
-  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree git zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools debconf-utils htop
-  printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager ffmpeg
+  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree xclip zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools debconf-utils htop
+  printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager ffmpeg gpick
+  printf 'y\n' | sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+  printf 'y\n' | sudo apt-get install gradle
+  printf 'y\n' | sudo apt-get install android-tools-adb
   # Install package for ubuntu app location restore feature after machine restart
   printf 'y\n' | sudo apt-get install wmctrl
   # Install ubuntu make
@@ -747,19 +782,6 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install openvpn easy-rsa
   aptGet
   printf 'y\n' | sudo apt-get install ubuntu-make
-  # Install Git
-  printf 'y\n' | sudo apt-get install git git-core xclip
-  git config --global user.name "$SYSTEM_USER_FULL_NAME"
-  GIT_COMMITTER_NAME="$SYSTEM_USER_FULL_NAME"
-  GIT_AUTHOR_NAME="$SYSTEM_USER_FULL_NAME"
-  git config --global user.email "$SYSTEM_USER_EMAIL"
-  GIT_COMMITTER_EMAIL="$SYSTEM_USER_EMAIL"
-  GIT_AUTHOR_EMAIL="$SYSTEM_USER_EMAIL"
-  # Install NodeJS and NPM along with required global node modules
-  aptGet
-  curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
-  sudo apt-get install -y nodejs
-  #nodeUpdates
   # Install python and postgres
   installPythonAndPostgres
   # Install C++ code beautifier
@@ -832,6 +854,8 @@ installPackagesForSystemSudo() {
   printf '\n' | sudo add-apt-repository ppa:noobslab/icons
   aptGet
   printf 'y\n' | sudo apt-get install ultra-flat-icons ultra-flat-icons-green ultra-flat-icons-orange
+  # Postman installation
+  install_postman
   # Stacer installation
   installStacer $LATEST_STACER_VERSION
   # Docker installation
@@ -858,6 +882,9 @@ installPackagesForSystemSudo() {
   rabbitMqRestart
   # Install Geos
   installGeos
+  # Install Open ssh
+  printf 'y\n' | sudo apt-get install openssh-server
+  sudo service ssh restart
   # Install powerline fonts
   powerlineFontInstallationSudo
   # Install ZSH
@@ -889,11 +916,9 @@ installPackagesForSystemSudo() {
   install_pycharm
   # Install slack chat app
   install_slack
-  # Postman installation
-  install_postman
   goToRoot
 }
-#install.sh
+
 installPackagesForSystemNonSudoFirst() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
@@ -904,7 +929,7 @@ installPackagesForSystemNonSudoFirst() {
   checkSoftwareFolder
   checkAppsFolder
 }
-#install.sh
+
 installPackagesForSystemSudoSecond() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -913,7 +938,7 @@ installPackagesForSystemSudoSecond() {
   fi;
   installPackagesForSystemSudo
 }
-#install.sh
+
 installPackagesForSystemNonSudoThird() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
@@ -927,7 +952,6 @@ installPackagesForSystemNonSudoThird() {
   postgresPgpassFileInit
 }
 
-#install.sh
 nodeExpressNpmInitiation() {
   npm install express@latest --save
   npm install body-parser@latest --save
@@ -960,39 +984,9 @@ nodeExpressNpmInitiation() {
   npm install html-minifier@latest --save
 }
 
-installPhpAndComposer(){
-    brew update
-    brew tap homebrew/php
-    brew install php70
-    brew install mcrypt php70-mcrypt
-    brew install composer
-    export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
-}
-
-installPostman() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
-  tar -xzf postman.tar.gz -C /opt
-  rm postman.tar.gz
-  ln -s /opt/Postman/Postman /usr/bin/postman
-
- cat > ~/.local/share/applications/postman.desktop <<EOL
-  [Desktop Entry]
-  Encoding=UTF-8
-  Name=Postman
-  Exec=postman
-  Icon=/opt/Postman/resources/app/assets/icon.png
-  Terminal=false
-  Type=Application
-  Categories=Development;
-EOL
-}
-
-
+alias android="sh $SYSTEM_APPS_FOLDER/android-studio/bin/studio.sh"
+alias apache_reload='/etc/init.d/apache2 reload'
+alias atom_up=apmUpdates
 alias fb_d='firebase deploy'
 alias fb_i='firebase init'
 alias fb_l='firebase list'
@@ -1000,12 +994,17 @@ alias fb_lo='firebase login'
 alias fb_o='firebase open'
 alias fb_s='firebase serve'
 alias fb_v='firebase --version'
+alias forever_list='forever list'
+alias forever_restart='forever restart 0'
 alias install_atom=installAtom
 alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_hack_lang=installHackLang
 alias install_java=installJava
+alias install_laravel=installLaravelNonSudo
 alias install_mongo=installMongoDb
+alias install_php=installPhp
+alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
 alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
@@ -1020,24 +1019,14 @@ alias jenkins_install=installJenkins
 alias jenkins_start='/etc/init.d/jenkins start'
 alias jenkins_stop='/etc/init.d/jenkins stop'
 alias karma_test='karma start --browsers Chrome'
+alias loc_count='cloc '
 alias node_update=nodeUpdates
 alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
-alias pip_freeze='pip freeze > requirements.txt'
-alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower && pip_freeze'
-alias pip_update='pip install --upgrade pip'
-alias postgres_pgpass_file=postgresPgpassFileInit
-alias postgres_restart='sudo service postgresql restart'
-alias postgres_shell='psql -U postgres'
-alias postgres_shell_sudo='sudo -u postgres psql'
 alias protractor_test='protractor conf.js'
 alias proxy_remove="kill -9 $(ps -efda | grep ssh | tail -n1 | awk '{print $2}')"
-alias python_postgres_init='install_python_postgres && postgres_pgpass_file && postgres_restart'
-alias rc_factory_reset=rcFactoryReset
 alias redis_check='redis-cli ping'
 alias redis_start='nohup redis-server &'
 alias redis_stop='redis-cli shutdown'
-alias root='goToRoot'
-alias service_details='systemctl status '
 alias sg="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/smartgit/bin/smartgit.sh"
 alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
@@ -1048,5 +1037,3 @@ alias ssh_sudo_setup=sshOperationsSudo
 alias system_init_non_sudo_first=installPackagesForSystemNonSudoFirst
 alias system_init_non_sudo_second=installPackagesForSystemNonSudoThird
 alias system_init_sudo=installPackagesForSystemSudoSecond
-alias install_php_composer = installPhpAndComposer
-alias install_sublime="installSublime"

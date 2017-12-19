@@ -1,3 +1,23 @@
+#!/bin/bash
+
+SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME="virtual-python-envs"
+SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER="$SYSTEM_ROOT_FOLDER/$SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME"
+
+postgresPgpassFileInit() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  if [ ! -f ~/.pgpass ]; then
+    touch $USER:$USER ~/.pgpass
+  fi;
+  chown $USER:$USER ~/.pgpass
+  chmod $DEFAULT_PERMISSION_VALUE ~/.pgpass
+  echo -e "localhost:5432:*:postgres:$SYSTEM_USER_NAME\n127.0.0.1:5432:*:postgres:$SYSTEM_USER_NAME\n">~/.pgpass
+  echo "Updated pgpass file"
+}
+
 newDjangoProject() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -25,11 +45,10 @@ checkVirtualPythonEnvironmentFolder() {
     cd $1/
   else
     cd $2/
-    mkdir $3
+    mkdir -p $3
     cd $3/
   fi;
 }
-
 
 postgresPasswordReset() {
   if [ -z "$1" ]; then
@@ -40,7 +59,6 @@ postgresPasswordReset() {
   sudo -u postgres psql < $1
   sudo service postgresql restart
 }
-
 
 pythonThreeVeCheck() {
   if [ -z "$1" ]; then
@@ -64,7 +82,7 @@ pythonThreeVeCheck() {
     echo "VE exists for $4!"
   else
     cd $2/
-    virtualenv -p python3 $3
+    virtualenv -p python3.5 $3
     echo "Created VE for $4!"
   fi;
 }
@@ -171,18 +189,18 @@ djangoStopProcesses() {
   kill -9 $(lsof -t -i:$1)
   kill $(ps aux | grep python | grep manage.py | awk '{print $2}')
   celery multi stop celery --pidfile=celerybeat.pid
-  celery multi stop worker
+  #celery multi stop worker
   celery multi stop $2
   celery multi stop flower
   celery multi stop beat
   celery -A $2 purge -f
-  ps auxww | grep 'celery worker' | awk '{print $2}' | xargs kill -9
+  #ps auxww | grep 'celery worker' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'beat' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'flower' | awk '{print $2}' | xargs kill -9
   #the following command crashes chrome
   #ps auxww | grep 'worker' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'celery' | awk '{print $2}' | xargs kill -9
-  ps auxww | grep 'nohup' | awk '{print $2}' | xargs kill -9
+  #ps auxww | grep 'nohup' | awk '{print $2}' | xargs kill -9
   ps auxww | grep "$2" | awk '{print $2}' | xargs kill -9
   pgrep -f celery | xargs kill -9
 }
@@ -200,10 +218,7 @@ djangoVeClear() {
   virtualenv --clear $2
   rm -rf $2
 }
-djangoBranchChangeRun() {
-  djangoBranchChange $1 $2
-  eval ${1}_run
-}
+
 djangoGitSetup() {
   if [ -z "$1" ]; then
   echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
@@ -211,7 +226,6 @@ djangoGitSetup() {
   fi;
   git remote set-url origin $1
 }
-
 
 djangoDefaultSetup() {
   if [ -z "$1" ]; then
@@ -243,7 +257,6 @@ djangoPsqlReset() {
   fi;
   psql -U $1 -h localhost -f $2 $1
 }
-
 
 djangoProjectDataLoad() {
   if [ -z "$1" ]; then
@@ -289,7 +302,7 @@ djangoReinitiate() {
     appNames=(${(s: :)2})
   fi;
   for i in ${appNames[@]}; do
-    mkdir $1/$i/migrations/
+    mkdir -p $1/$i/migrations/
     touch $1/$i/migrations/__init__.py
   done
   operations=("${4}")
@@ -359,6 +372,7 @@ djangoTest() {
     return $1
   fi;
   eval ${1}_ve
+  find . -name '*.pyc' -delete
   printf "yes\n" | ./manage.py test
 }
 
@@ -381,6 +395,11 @@ djangoBranchChange() {
   eval ${1}_reinitiate_clean
   bashRefresh
   eval ${1}_ve
+}
+
+djangoBranchChangeRun() {
+  djangoBranchChange $1 $2
+  eval ${1}_run
 }
 
 djangoBranchChangeWithFullReset() {
@@ -492,22 +511,42 @@ djangoResetWithoutMigrationClean() {
 }
 
 djangoMakeMigrations() {
-  eval python manage.py makemigrations $1
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  eval ${1}_ve
+  eval "./manage.py makemigrations"
 }
 
 djangoMigrate() {
-  eval python manage.py migrate $1
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  eval ${1}_ve
+  eval "./manage.py migrate"
+}
+
+rabbitMqRestart() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  rabbitmqctl status
+  rabbitmqctl stop
+  rabbitmq-plugins enable rabbitmq_management
+  sudo invoke-rc.d rabbitmq-server start
+  rabbitmqctl status
 }
 
 alias new_django_project='newDjangoProject '
 alias pip_freeze='pip freeze > requirements.txt'
-alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower && pip_freeze'
+alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower django-material && pip_freeze'
 alias pip_update='pip install --upgrade pip'
 alias postgres_pgpass_file=postgresPgpassFileInit
 alias postgres_restart='sudo service postgresql restart'
 alias postgres_shell='psql -U postgres'
 alias postgres_shell_sudo='sudo -u postgres psql'
 alias python_postgres_init='install_python_postgres && postgres_pgpass_file && postgres_restart'
-
-alias  make_mig="djangoMakeMigrations"
-alias  migrate="djangoMigrate"

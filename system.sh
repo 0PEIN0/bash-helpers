@@ -1,3 +1,13 @@
+#!/bin/bash
+
+SYSTEM_ROOT_FOLDER="/home/$SYSTEM_USER_NAME"
+BASH_TEMP_FOLDER="$SYSTEM_ROOT_FOLDER/helper-scripts"
+SYSTEM_ROOT_GIT_REPO_FOLDER="$SYSTEM_ROOT_FOLDER/Gitrepos"
+SYSTEM_DOWNLOAD_FOLDER="$SYSTEM_ROOT_FOLDER/Downloads"
+SYSTEM_SOFTWARE_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Softwares"
+SYSTEM_APPS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Apps"
+BASH_HELPER_GIT_FOLDER="$SYSTEM_ROOT_GIT_REPO_FOLDER/bash-helpers"
+DEFAULT_PERMISSION_VALUE=777
 
 goToRoot() {
   cd /
@@ -19,7 +29,7 @@ clearTerminal() {
 }
 
 bashRefresh() {
-  # source ~/.bash_aliases
+  source ~/.bash_aliases
   source ~/.zshrc
 }
 
@@ -119,7 +129,7 @@ checkParameters() {
     j=$((i+2))
     #echo $i $j "${\"$j\"}"
     if [ -z "$j" ]; then
-      echo "null value not allowed as ${parameterPositions[i]} parameter for method: \"${2}\"! You must pass the required parameter(s)."
+      echo "aaanull value not allowed as ${parameterPositions[i]} parameter for method: \"${2}\"! You must pass the required parameter(s)."
       return "0"
     fi;
   done
@@ -168,7 +178,7 @@ checkVirtualPythonEnvironmentFolder() {
     cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER/
   else
     cd $SYSTEM_ROOT_FOLDER/
-    mkdir $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME
+    mkdir -p $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME
     cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME/
   fi;
 }
@@ -177,13 +187,13 @@ checkSoftwareFolder() {
   goToRoot
   downloadFolder="$SYSTEM_DOWNLOAD_FOLDER"
   if [ ! -d "$downloadFolder" ]; then
-    mkdir $downloadFolder
+    mkdir -p $downloadFolder
     chmod $DEFAULT_PERMISSION_VALUE $downloadFolder
   fi;
   cd $downloadFolder/
   softwareFolder="$SYSTEM_SOFTWARE_FOLDER"
   if [ ! -d "$softwareFolder" ]; then
-    mkdir $softwareFolder
+    mkdir -p $softwareFolder
     chmod $DEFAULT_PERMISSION_VALUE $softwareFolder
   fi;
   cd $softwareFolder/
@@ -193,11 +203,12 @@ checkAppsFolder() {
   goToRoot
   appsFolder="$SYSTEM_APPS_FOLDER/"
   if [ ! -d "$appsFolder" ]; then
-    mkdir $appsFolder
+    mkdir -p $appsFolder
     chmod $DEFAULT_PERMISSION_VALUE $appsFolder
   fi;
   cd $appsFolder/
 }
+
 rcFactoryReset() {
   /bin/cp /etc/skel/.bashrc $SYSTEM_ROOT_FOLDER/
 }
@@ -276,6 +287,39 @@ sshOperationsNonSudo() {
   bitbucket_auth
 }
 
+installPackagesForSystemNonSudoFirst() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  checkVirtualPythonEnvironmentFolder
+  checkSoftwareFolder
+  checkAppsFolder
+}
+
+installPackagesForSystemSudoSecond() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  installPackagesForSystemSudo
+}
+
+installPackagesForSystemNonSudoThird() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  installZshNonSudo
+  powerlineFontInstallationNonSudo
+  installVSCodeExtensionsNonSudo
+  installAtomExtensionsNonSudo
+  postgresPgpassFileInit
+  export ANDROID_HOME=~/Android/Sdk
+}
 
 
 alias admin='sudo -i'
@@ -291,27 +335,22 @@ alias downloads="cd $SYSTEM_DOWNLOAD_FOLDER"
 alias erc='/etc/bash.bashrc'
 alias firewall_list='sudo ufw app list'
 alias filewall_status="sudo ufw status"
-alias forever_list='forever list'
-alias forever_restart='forever restart 0'
 alias fperm='stat -c "%a %n" '
 alias gbrc='gedit ~/.bashrc'
 alias gerc='gedit /etc/bash.bashrc'
 alias get_ssh='cat ~/.ssh/id_rsa.pub | xclip -sel clip'
-alias gpg_config='git config --global gpg.program gpg2'
-alias gpg_export='gpg --armor --export'
-alias gpg_gen='gpg --gen-key'
-alias gpg_list='gpg --list-secret-keys --keyid-format LONG'
-alias gpg_sign='git config --global user.signingkey'
 alias gzrc='gedit ~/.zshrc'
 alias home='cd ~/'
-alias loc_count='cloc '
+alias last_shutdown='last -x | grep shutdown'
 alias no_sudo_zsh='export SHELL=/usr/bin/zsh && exec /usr/bin/zsh -l'
-alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
-alias protractor_test='protractor conf.js'
 alias proxy_remove="kill -9 $(ps -efda | grep ssh | tail -n1 | awk '{print $2}')"
 alias rc_factory_reset=rcFactoryReset
 alias root='goToRoot'
 alias service_details='systemctl status '
+alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
+alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
+alias ssh_agent_verify='eval "$(ssh-agent -s)"'
+alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
 alias tar_install='tar -xzf '
 alias up='cd ..'
 alias zrc='~/.zshrc'
