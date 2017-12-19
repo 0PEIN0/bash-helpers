@@ -1002,6 +1002,7 @@ alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_hack_lang=installHackLang
 alias install_java=installJava
 alias install_mongo=installMongoDb
+alias install_php_composer=installPhpAndComposer
 alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
 alias install_python=installPython

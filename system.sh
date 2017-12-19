@@ -13,6 +13,14 @@ goToRoot() {
   cd /
 }
 
+goToDir() {
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  cd $1/
+}
+
 clearTerminal() {
   clear
   printf "\033c"

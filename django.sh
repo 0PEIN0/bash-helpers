@@ -60,14 +60,6 @@ postgresPasswordReset() {
   sudo service postgresql restart
 }
 
-goToDir() {
-  if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
-    return $1
-  fi;
-  cd $1/
-}
-
 pythonThreeVeCheck() {
   if [ -z "$1" ]; then
     echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
