@@ -42,7 +42,7 @@ checkVirtualPythonEnvironmentFolder() {
     cd $1/
   else
     cd $2/
-    mkdir $3
+    mkdir -p $3
     cd $3/
   fi;
 }
@@ -55,6 +55,14 @@ postgresPasswordReset() {
   goToRoot
   sudo -u postgres psql < $1
   sudo service postgresql restart
+}
+
+goToDir() {
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  cd $1/
 }
 
 pythonThreeVeCheck() {
@@ -79,7 +87,7 @@ pythonThreeVeCheck() {
     echo "VE exists for $4!"
   else
     cd $2/
-    virtualenv -p python3 $3
+    virtualenv -p python3.5 $3
     echo "Created VE for $4!"
   fi;
 }
@@ -186,18 +194,18 @@ djangoStopProcesses() {
   kill -9 $(lsof -t -i:$1)
   kill $(ps aux | grep python | grep manage.py | awk '{print $2}')
   celery multi stop celery --pidfile=celerybeat.pid
-  celery multi stop worker
+  #celery multi stop worker
   celery multi stop $2
   celery multi stop flower
   celery multi stop beat
   celery -A $2 purge -f
-  ps auxww | grep 'celery worker' | awk '{print $2}' | xargs kill -9
+  #ps auxww | grep 'celery worker' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'beat' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'flower' | awk '{print $2}' | xargs kill -9
   #the following command crashes chrome
   #ps auxww | grep 'worker' | awk '{print $2}' | xargs kill -9
   ps auxww | grep 'celery' | awk '{print $2}' | xargs kill -9
-  ps auxww | grep 'nohup' | awk '{print $2}' | xargs kill -9
+  #ps auxww | grep 'nohup' | awk '{print $2}' | xargs kill -9
   ps auxww | grep "$2" | awk '{print $2}' | xargs kill -9
   pgrep -f celery | xargs kill -9
 }
@@ -215,10 +223,7 @@ djangoVeClear() {
   virtualenv --clear $2
   rm -rf $2
 }
-djangoBranchChangeRun() {
-  djangoBranchChange $1 $2
-  eval ${1}_run
-}
+
 djangoGitSetup() {
   if [ -z "$1" ]; then
   echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
@@ -226,7 +231,6 @@ djangoGitSetup() {
   fi;
   git remote set-url origin $1
 }
-
 
 djangoDefaultSetup() {
   if [ -z "$1" ]; then
@@ -258,7 +262,6 @@ djangoPsqlReset() {
   fi;
   psql -U $1 -h localhost -f $2 $1
 }
-
 
 djangoProjectDataLoad() {
   if [ -z "$1" ]; then
@@ -304,7 +307,7 @@ djangoReinitiate() {
     appNames=(${(s: :)2})
   fi;
   for i in ${appNames[@]}; do
-    mkdir $1/$i/migrations/
+    mkdir -p $1/$i/migrations/
     touch $1/$i/migrations/__init__.py
   done
   operations=("${4}")
@@ -374,6 +377,7 @@ djangoTest() {
     return $1
   fi;
   eval ${1}_ve
+  find . -name '*.pyc' -delete
   printf "yes\n" | ./manage.py test
 }
 
@@ -396,6 +400,11 @@ djangoBranchChange() {
   eval ${1}_reinitiate_clean
   bashRefresh
   eval ${1}_ve
+}
+
+djangoBranchChangeRun() {
+  djangoBranchChange $1 $2
+  eval ${1}_run
 }
 
 djangoBranchChangeWithFullReset() {
