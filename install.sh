@@ -984,7 +984,7 @@ nodeExpressNpmInitiation() {
   npm install html-minifier@latest --save
 }
 
-alias android="sh $SYSTEM_ROOT_FOLDER/Apps/android-studio/bin/studio.sh"
+alias android="sh $SYSTEM_APPS_FOLDER/android-studio/bin/studio.sh"
 alias apache_reload='/etc/init.d/apache2 reload'
 alias atom_up=apmUpdates
 alias fb_d='firebase deploy'
