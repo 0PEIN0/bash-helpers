@@ -1,55 +1,8 @@
-nodeUpdates() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  aptGet
-  goToRoot
-  npm i -g npm
-  npm install -g @angular/cli
-  npm install -g mongodb@latest
-  npm install -g socket.io@latest
-  npm install -g gulp gulp-cli@latest
-  npm install -g bower@latest
-  npm install -g mocha@latest
-  npm install -g coffee-script@latest
-  npm install -g karma-cli@latest
-  npm install -g nodemon@latest
-  npm install -g npm@latest
-  npm install -g protractor@latest
-  npm install -g firebase-tools@latest
-  npm install -g pm2@latest
-  npm install -g forever@latest
-  npm install -g prettyjson@latest
-  npm install -g uglify-js@latest
-  npm install -g html-minifier@latest
-  npm install -g react@latest
-  npm install -g redux@latest
-  npm install -g react-redux@latest
-  npm install -g redux-devtools@latest
-  npm install -g grunt-cli@latest
-  npm install -g webpack@latest
-  webdriver-manager update
-  goToRoot
-}
-# install.sh
+#!/bin/bash
+
 apmUpdates() {
   printf "yes\n" | apm update
   printf "yes\n" | apm upgrade
-}
-
-rabbitMqRestart() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  rabbitmqctl status
-  rabbitmqctl stop
-  rabbitmq-plugins enable rabbitmq_management
-  sudo invoke-rc.d rabbitmq-server start
-  rabbitmqctl status
 }
 
 installZoomConference() {

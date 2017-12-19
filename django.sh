@@ -1,3 +1,5 @@
+#!/bin/bash
+
 newDjangoProject() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
@@ -30,7 +32,6 @@ checkVirtualPythonEnvironmentFolder() {
   fi;
 }
 
-
 postgresPasswordReset() {
   if [ -z "$1" ]; then
     echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
@@ -40,7 +41,6 @@ postgresPasswordReset() {
   sudo -u postgres psql < $1
   sudo service postgresql restart
 }
-
 
 pythonThreeVeCheck() {
   if [ -z "$1" ]; then
@@ -492,11 +492,34 @@ djangoResetWithoutMigrationClean() {
 }
 
 djangoMakeMigrations() {
-  eval python manage.py makemigrations $1
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  eval ${1}_ve
+  eval "./manage.py makemigrations"
 }
 
 djangoMigrate() {
-  eval python manage.py migrate $1
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  eval ${1}_ve
+  eval "./manage.py migrate"
+}
+
+rabbitMqRestart() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  rabbitmqctl status
+  rabbitmqctl stop
+  rabbitmq-plugins enable rabbitmq_management
+  sudo invoke-rc.d rabbitmq-server start
+  rabbitmqctl status
 }
 
 alias new_django_project='newDjangoProject '
@@ -508,6 +531,3 @@ alias postgres_restart='sudo service postgresql restart'
 alias postgres_shell='psql -U postgres'
 alias postgres_shell_sudo='sudo -u postgres psql'
 alias python_postgres_init='install_python_postgres && postgres_pgpass_file && postgres_restart'
-
-alias  make_mig="djangoMakeMigrations"
-alias  migrate="djangoMigrate"

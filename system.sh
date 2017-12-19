@@ -1,14 +1,7 @@
+#!/bin/bash
 
 goToRoot() {
   cd /
-}
-
-goToDir() {
-  if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
-    return $1
-  fi;
-  cd $1/
 }
 
 clearTerminal() {
@@ -19,7 +12,7 @@ clearTerminal() {
 }
 
 bashRefresh() {
-  # source ~/.bash_aliases
+  source ~/.bash_aliases
   source ~/.zshrc
 }
 
@@ -119,7 +112,7 @@ checkParameters() {
     j=$((i+2))
     #echo $i $j "${\"$j\"}"
     if [ -z "$j" ]; then
-      echo "null value not allowed as ${parameterPositions[i]} parameter for method: \"${2}\"! You must pass the required parameter(s)."
+      echo "aaanull value not allowed as ${parameterPositions[i]} parameter for method: \"${2}\"! You must pass the required parameter(s)."
       return "0"
     fi;
   done
@@ -168,7 +161,7 @@ checkVirtualPythonEnvironmentFolder() {
     cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER/
   else
     cd $SYSTEM_ROOT_FOLDER/
-    mkdir $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME
+    mkdir -p $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME
     cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME/
   fi;
 }
@@ -177,13 +170,13 @@ checkSoftwareFolder() {
   goToRoot
   downloadFolder="$SYSTEM_DOWNLOAD_FOLDER"
   if [ ! -d "$downloadFolder" ]; then
-    mkdir $downloadFolder
+    mkdir -p $downloadFolder
     chmod $DEFAULT_PERMISSION_VALUE $downloadFolder
   fi;
   cd $downloadFolder/
   softwareFolder="$SYSTEM_SOFTWARE_FOLDER"
   if [ ! -d "$softwareFolder" ]; then
-    mkdir $softwareFolder
+    mkdir -p $softwareFolder
     chmod $DEFAULT_PERMISSION_VALUE $softwareFolder
   fi;
   cd $softwareFolder/
@@ -193,11 +186,12 @@ checkAppsFolder() {
   goToRoot
   appsFolder="$SYSTEM_APPS_FOLDER/"
   if [ ! -d "$appsFolder" ]; then
-    mkdir $appsFolder
+    mkdir -p $appsFolder
     chmod $DEFAULT_PERMISSION_VALUE $appsFolder
   fi;
   cd $appsFolder/
 }
+
 rcFactoryReset() {
   /bin/cp /etc/skel/.bashrc $SYSTEM_ROOT_FOLDER/
 }
@@ -276,6 +270,39 @@ sshOperationsNonSudo() {
   bitbucket_auth
 }
 
+installPackagesForSystemNonSudoFirst() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  checkVirtualPythonEnvironmentFolder
+  checkSoftwareFolder
+  checkAppsFolder
+}
+
+installPackagesForSystemSudoSecond() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  installPackagesForSystemSudo
+}
+
+installPackagesForSystemNonSudoThird() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  installZshNonSudo
+  powerlineFontInstallationNonSudo
+  installVSCodeExtensionsNonSudo
+  installAtomExtensionsNonSudo
+  postgresPgpassFileInit
+  export ANDROID_HOME=~/Android/Sdk
+}
 
 
 alias admin='sudo -i'
