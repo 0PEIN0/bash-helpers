@@ -6,6 +6,7 @@ SYSTEM_ROOT_GIT_REPO_FOLDER="$SYSTEM_ROOT_FOLDER/Gitrepos"
 SYSTEM_DOWNLOAD_FOLDER="$SYSTEM_ROOT_FOLDER/Downloads"
 SYSTEM_SOFTWARE_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Softwares"
 SYSTEM_APPS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Apps"
+SYSTEM_MUSIC_VIDEOS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Music Videos"
 BASH_HELPER_GIT_FOLDER="$SYSTEM_ROOT_GIT_REPO_FOLDER/bash-helpers"
 DEFAULT_PERMISSION_VALUE=777
 
@@ -173,6 +174,11 @@ coreSystemUpdate() {
 }
 
 checkVirtualPythonEnvironmentFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   if [ -d "$SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER" ]; then
     cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER/
@@ -184,6 +190,11 @@ checkVirtualPythonEnvironmentFolder() {
 }
 
 checkSoftwareFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   downloadFolder="$SYSTEM_DOWNLOAD_FOLDER"
   if [ ! -d "$downloadFolder" ]; then
@@ -200,6 +211,11 @@ checkSoftwareFolder() {
 }
 
 checkAppsFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   appsFolder="$SYSTEM_APPS_FOLDER/"
   if [ ! -d "$appsFolder" ]; then
@@ -210,10 +226,20 @@ checkAppsFolder() {
 }
 
 rcFactoryReset() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   /bin/cp /etc/skel/.bashrc $SYSTEM_ROOT_FOLDER/
 }
 
 changePermissionOfBashrcFiles() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   chmod $DEFAULT_PERMISSION_VALUE $SYSTEM_ROOT_FOLDER/.zshrc
   chmod $DEFAULT_PERMISSION_VALUE $SYSTEM_ROOT_FOLDER/.bashrc
   chmod $DEFAULT_PERMISSION_VALUE /etc/bash.bashrc
