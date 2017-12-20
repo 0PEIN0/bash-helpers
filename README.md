@@ -98,4 +98,7 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 30. Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
 31. Restart machine.
 32. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
-33. Take regular fetches from ***bash-helpers*** remote repository to get the latest updates/additions. After it update don't forget to source it.
+
+### Notes:
+
+1. Take regular fetches from ***bash-helpers*** remote repository to get the latest updates/additions. After it update don't forget to source it. You can source it by running this command: `source ~/.bashrc`.
