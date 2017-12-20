@@ -1026,6 +1026,7 @@ installPackagesForSystemNonSudoFirst() {
   checkVirtualPythonEnvironmentFolder
   checkSoftwareFolder
   checkAppsFolder
+  checkMusicVideosFolder
 }
 
 installPackagesForSystemSudoSecond() {
@@ -1145,8 +1146,6 @@ alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
 alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
-alias ssh_non_sudo_setup=sshOperationsNonSudo
-alias ssh_sudo_setup=sshOperationsSudo
 alias system_init_non_sudo_first=installPackagesForSystemNonSudoFirst
 alias system_init_non_sudo_second=installPackagesForSystemNonSudoThird
 alias system_init_sudo=installPackagesForSystemSudoSecond

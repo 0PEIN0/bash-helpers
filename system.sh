@@ -225,6 +225,21 @@ checkAppsFolder() {
   cd $appsFolder/
 }
 
+checkMusicVideosFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  musicVideosFolder="$SYSTEM_MUSIC_VIDEOS_FOLDER/"
+  if [ ! -d "$musicVideosFolder" ]; then
+    mkdir -p $musicVideosFolder
+    chmod $DEFAULT_PERMISSION_VALUE $musicVideosFolder
+  fi;
+  cd $musicVideosFolder/
+}
+
 rcFactoryReset() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -313,41 +328,6 @@ sshOperationsNonSudo() {
   bitbucket_auth
 }
 
-installPackagesForSystemNonSudoFirst() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  checkVirtualPythonEnvironmentFolder
-  checkSoftwareFolder
-  checkAppsFolder
-}
-
-installPackagesForSystemSudoSecond() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  installPackagesForSystemSudo
-}
-
-installPackagesForSystemNonSudoThird() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  installZshNonSudo
-  powerlineFontInstallationNonSudo
-  installVSCodeExtensionsNonSudo
-  installAtomExtensionsNonSudo
-  postgresPgpassFileInit
-  export ANDROID_HOME=~/Android/Sdk
-}
-
-
 alias admin='sudo -i'
 alias allow_port_sudo='sudo ufw allow '
 alias apache_reload='/etc/init.d/apache2 reload'
@@ -377,6 +357,8 @@ alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
 alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
+alias ssh_non_sudo_setup=sshOperationsNonSudo
+alias ssh_sudo_setup=sshOperationsSudo
 alias tar_install='tar -xzf '
 alias up='cd ..'
 alias zrc='~/.zshrc'
