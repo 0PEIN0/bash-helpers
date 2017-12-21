@@ -539,18 +539,18 @@ installAtom() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  goToRoot
-  aptGet
-  printf '\n' | sudo add-apt-repository ppa:webupd8team/atom
-  aptGet
-  printf 'y\n' | sudo apt-get install atom
+  #goToRoot
+  #aptGet
+  #printf '\n' | sudo add-apt-repository ppa:webupd8team/atom
+  #aptGet
+  #printf 'y\n' | sudo apt-get install atom
   #ALTERNATE METHOD BELOW(commented out)
-  #checkSoftwareFolder
-  #wget --no-check-certificate https://atom.io/download/deb
-  #mv "deb" "atom-amd64.deb"
-  #sudo dpkg -i atom-amd64.deb
-  #sudo apt-get install -f
-  #rm -rf atom-amd64.deb
+  checkSoftwareFolder
+  wget --no-check-certificate https://atom.io/download/deb
+  mv "deb" "atom-amd64.deb"
+  sudo dpkg -i atom-amd64.deb
+  sudo apt-get install -f
+  rm -rf atom-amd64.deb
   installAtomExtensionsNonSudo
   goToRoot
 }
