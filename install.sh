@@ -551,7 +551,6 @@ installAtom() {
   sudo dpkg -i atom-amd64.deb
   sudo apt-get install -f
   rm -rf atom-amd64.deb
-  installAtomExtensionsNonSudo
   goToRoot
 }
 
