@@ -1050,43 +1050,6 @@ installPackagesForSystemNonSudoThird() {
   postgresPgpassFileInit
 }
 
-nodeExpressNpmInitiation() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  npm install express@latest --save
-  npm install body-parser@latest --save
-  npm install cookie-parser@latest --save
-  npm install multer@latest --save
-  npm install nodemailer@latest --save
-  npm install file-stream-rotator@latest --save
-  npm install morgan@latest --save
-  npm install connect@latest --save
-  npm install body-parser@latest --save
-  npm install compression@latest --save
-  npm install cookie-parser@latest --save
-  npm install cookie-session@latest --save
-  npm install csurf@latest --save
-  npm install errorhandler@latest --save
-  npm install express-session@latest --save
-  npm install method-override@latest --save
-  npm install response-time@latest --save
-  npm install serve-favicon@latest --save
-  npm install serve-index@latest --save
-  npm install serve-static@latest --save
-  npm install vhost@latest --save
-  npm install pm2@latest --save
-  npm install forever@latest --save
-  npm install winston@latest --save
-  npm install raven@latest --save
-  npm install helmet@latest --save
-  npm install cron@latest --save
-  npm install uglify-js@latest --save
-  npm install html-minifier@latest --save
-}
-
 downloadYoutubeVideo() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then

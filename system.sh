@@ -328,6 +328,12 @@ sshOperationsNonSudo() {
   bitbucket_auth
 }
 
+systemUpdatesNonSudo() {
+  upgrade_oh_my_zsh
+  youtube-dl -U
+  apmUpdates
+}
+
 alias admin='sudo -i'
 alias allow_port_sudo='sudo ufw allow '
 alias apache_reload='/etc/init.d/apache2 reload'
@@ -360,5 +366,6 @@ alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
 alias ssh_non_sudo_setup=sshOperationsNonSudo
 alias ssh_sudo_setup=sshOperationsSudo
 alias tar_install='tar -xzf '
+alias uap=systemUpdatesNonSudo
 alias up='cd ..'
 alias zrc='~/.zshrc'
