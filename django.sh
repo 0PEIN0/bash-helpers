@@ -541,7 +541,8 @@ rabbitMqRestart() {
   rabbitmqctl status
 }
 
-alias new_django_project='newDjangoProject '
+alias new_django_project=newDjangoProject
+alias new_django_app='./manage.py startapp '
 alias pip_freeze='pip freeze > requirements.txt'
 alias pip_init='pip install django django-celery-beat psycopg2 djangorestframework markdown python-magic django-filter dj-database-url raven whitenoise django-nose nose gunicorn pytz mock django-celery django-celery-results ipython flower django-material && pip_freeze'
 alias pip_update='pip install --upgrade pip'

@@ -47,6 +47,11 @@ nodeUpdates() {
 }
 
 nodeExpressNpmInitiation() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   npm install express@latest --save
   npm install body-parser@latest --save
   npm install cookie-parser@latest --save

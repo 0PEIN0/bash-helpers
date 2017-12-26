@@ -3,8 +3,6 @@ Bash helper scripts.
 
 Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only tested on **Ubuntu 16.04 LTS**. There will be no OS version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version.
 
-Estimated total installation time is 2-3 hours, although will vary based on machine and network connection performance.
-
 # New System Installation Instructions
 
 ### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO USER MODE
@@ -46,7 +44,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
 fi;
 ```
 3. Run `source ~/.bashrc` command.
-4. Run `system_init_sudo` command.
+4. Run `system_init_sudo` command. This command will take approximately 2 hours, have a snack/coffee in this period.
 5. Restart machine.
 6. Enter sudo user mode again after restart by running `admin` command.
 7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
@@ -98,4 +96,8 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 30. Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
 31. Restart machine.
 32. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
-33. Take regular fetches from ***bash-helpers*** remote repository to get the latest updates/additions. After it update don't forget to source it.
+
+### Notes:
+
+1. Take regular fetches from ***bash-helpers*** remote repository to get the latest updates/additions. After it update don't forget to source it. You can source it by running this command: `source ~/.bashrc`.
+2. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.

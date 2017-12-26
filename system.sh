@@ -6,6 +6,7 @@ SYSTEM_ROOT_GIT_REPO_FOLDER="$SYSTEM_ROOT_FOLDER/Gitrepos"
 SYSTEM_DOWNLOAD_FOLDER="$SYSTEM_ROOT_FOLDER/Downloads"
 SYSTEM_SOFTWARE_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Softwares"
 SYSTEM_APPS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Apps"
+SYSTEM_MUSIC_VIDEOS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Music Videos"
 BASH_HELPER_GIT_FOLDER="$SYSTEM_ROOT_GIT_REPO_FOLDER/bash-helpers"
 DEFAULT_PERMISSION_VALUE=777
 
@@ -173,6 +174,11 @@ coreSystemUpdate() {
 }
 
 checkVirtualPythonEnvironmentFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   if [ -d "$SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER" ]; then
     cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER/
@@ -184,6 +190,11 @@ checkVirtualPythonEnvironmentFolder() {
 }
 
 checkSoftwareFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   downloadFolder="$SYSTEM_DOWNLOAD_FOLDER"
   if [ ! -d "$downloadFolder" ]; then
@@ -200,6 +211,11 @@ checkSoftwareFolder() {
 }
 
 checkAppsFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   appsFolder="$SYSTEM_APPS_FOLDER/"
   if [ ! -d "$appsFolder" ]; then
@@ -209,11 +225,36 @@ checkAppsFolder() {
   cd $appsFolder/
 }
 
+checkMusicVideosFolder() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  musicVideosFolder="$SYSTEM_MUSIC_VIDEOS_FOLDER/"
+  if [ ! -d "$musicVideosFolder" ]; then
+    mkdir -p $musicVideosFolder
+    chmod $DEFAULT_PERMISSION_VALUE $musicVideosFolder
+  fi;
+  cd $musicVideosFolder/
+}
+
 rcFactoryReset() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   /bin/cp /etc/skel/.bashrc $SYSTEM_ROOT_FOLDER/
 }
 
 changePermissionOfBashrcFiles() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   chmod $DEFAULT_PERMISSION_VALUE $SYSTEM_ROOT_FOLDER/.zshrc
   chmod $DEFAULT_PERMISSION_VALUE $SYSTEM_ROOT_FOLDER/.bashrc
   chmod $DEFAULT_PERMISSION_VALUE /etc/bash.bashrc
@@ -287,42 +328,13 @@ sshOperationsNonSudo() {
   bitbucket_auth
 }
 
-installPackagesForSystemNonSudoFirst() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  checkVirtualPythonEnvironmentFolder
-  checkSoftwareFolder
-  checkAppsFolder
+systemUpdatesNonSudo() {
+  upgrade_oh_my_zsh
+  youtube-dl -U
+  apmUpdates
 }
 
-installPackagesForSystemSudoSecond() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  installPackagesForSystemSudo
-}
-
-installPackagesForSystemNonSudoThird() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  installZshNonSudo
-  powerlineFontInstallationNonSudo
-  installVSCodeExtensionsNonSudo
-  installAtomExtensionsNonSudo
-  postgresPgpassFileInit
-  export ANDROID_HOME=~/Android/Sdk
-}
-
-
-alias admin='sudo -i'
+alias admin='sudo su'
 alias allow_port_sudo='sudo ufw allow '
 alias apache_reload='/etc/init.d/apache2 reload'
 alias apt_get=aptGetUpgrade
@@ -351,6 +363,9 @@ alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
 alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
+alias ssh_non_sudo_setup=sshOperationsNonSudo
+alias ssh_sudo_setup=sshOperationsSudo
 alias tar_install='tar -xzf '
+alias uap=systemUpdatesNonSudo
 alias up='cd ..'
 alias zrc='~/.zshrc'

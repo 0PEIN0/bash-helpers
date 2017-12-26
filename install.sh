@@ -14,11 +14,21 @@ LATEST_BRACKET_VERSION="1.11"
 LATEST_STACER_VERSION="1.0.6"
 
 apmUpdates() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   printf "yes\n" | apm update
   printf "yes\n" | apm upgrade
 }
 
 installPythonAndPostgres() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   aptGet
   printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme
@@ -68,6 +78,11 @@ installPythonAndPostgres() {
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
 }
 installPythonAndPostgres() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   aptGet
   printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme python-coverage
@@ -103,7 +118,7 @@ installPythonAndPostgres() {
 }
 
 installGeos() {
-  isSudoMode
+  funcName=$(getFunctionName)
   checkIfSudo $funcName
   if [ "${?}" = "0" ] ; then
     return
@@ -124,6 +139,11 @@ installGeos() {
 }
 
 installHackLang() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
   printf '\n' | sudo add-apt-repository "deb http://dl.hhvm.com/ubuntu $(lsb_release -sc) main"
@@ -132,6 +152,11 @@ installHackLang() {
 }
 
 installPython() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   #latest python version
   mkdir -p /opt/python3.6
   cd /opt/python3.6
@@ -144,6 +169,11 @@ installPython() {
 }
 
 installHipchat() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   aptGet
   # Dependent on ubuntu version
@@ -155,13 +185,13 @@ installHipchat() {
 
 installBracket() {
   funcName=$(getFunctionName)
-  if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
-    return $1
-  fi;
   checkIfSudo $funcName
   if [ "${?}" = "0" ] ; then
     return
+  fi;
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
   fi;
   goToRoot
   aptGet
@@ -192,6 +222,10 @@ installBlender() {
 
 installVisualStudioCode() {
   funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   if [ -z "$1" ]; then
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
@@ -208,6 +242,11 @@ installVisualStudioCode() {
 }
 
 installVSCodeExtensionsNonSudo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   code --install-extension ms-vscode.cpptools
   code --install-extension ms-vscode.csharp
   code --install-extension robertohuertasm.vscode-icons
@@ -238,6 +277,11 @@ installVSCodeExtensionsNonSudo() {
 }
 
 installDotNetCore() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   #Reference: https://www.microsoft.com/net/core#linuxubuntu
   # Dependent on ubuntu version
@@ -250,6 +294,11 @@ installDotNetCore() {
 }
 
 installMongoDb() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
   # Dependent on ubuntu version
@@ -261,6 +310,11 @@ installMongoDb() {
 }
 
 powerlineFontInstallationSudo() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   aptGet
   checkSoftwareFolder
@@ -274,6 +328,11 @@ powerlineFontInstallationSudo() {
 }
 
 powerlineFontInstallationNonSudo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   checkSoftwareFolder
   wget --no-check-certificate https://github.com/powerline/fonts/archive/master.zip
@@ -286,6 +345,11 @@ powerlineFontInstallationNonSudo() {
 }
 
 installZshSudo() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   aptGet
   rm -rf /root/.oh-my-zsh
@@ -334,7 +398,7 @@ installSmartgit() {
 }
 
 installRedis() {
-  isSudoMode
+  funcName=$(getFunctionName)
   checkIfSudo $funcName
   if [ "${?}" = "0" ] ; then
     return
@@ -351,7 +415,7 @@ installRedis() {
 }
 
 installRoboMongo() {
-  isSudoMode
+  funcName=$(getFunctionName)
   checkIfSudo $funcName
   if [ "${?}" = "0" ] ; then
     return
@@ -377,6 +441,11 @@ installRoboMongo() {
 }
 
 installRazerDrivers() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   printf '\n' | sudo add-apt-repository ppa:openrazer/stable
   aptGet
   printf 'y\n' | sudo apt install openrazer-meta
@@ -386,6 +455,11 @@ installRazerDrivers() {
 }
 
 installPyCharm() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   if [ -z "$1" ]; then
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
@@ -400,6 +474,11 @@ installPyCharm() {
 }
 
 installZshNonSudo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   rm -rf $SYSTEM_ROOT_FOLDER/.oh-my-zsh
   pip install --user powerline-status
@@ -414,6 +493,11 @@ installZshNonSudo() {
 }
 
 installAtomExtensionsNonSudo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   goToRoot
   apm install minimap
   #apm install linter
@@ -455,24 +539,27 @@ installAtom() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  goToRoot
-  aptGet
-  printf '\n' | sudo add-apt-repository ppa:webupd8team/atom
-  aptGet
-  printf 'y\n' | sudo apt-get install atom
+  #goToRoot
+  #aptGet
+  #printf '\n' | sudo add-apt-repository ppa:webupd8team/atom
+  #aptGet
+  #printf 'y\n' | sudo apt-get install atom
   #ALTERNATE METHOD BELOW(commented out)
-  #checkSoftwareFolder
-  #wget --no-check-certificate https://atom.io/download/deb
-  #mv "deb" "atom-amd64.deb"
-  #sudo dpkg -i atom-amd64.deb
-  #sudo apt-get install -f
-  #rm -rf atom-amd64.deb
-  installAtomExtensionsNonSudo
+  checkSoftwareFolder
+  wget --no-check-certificate https://atom.io/download/deb
+  mv "deb" "atom-amd64.deb"
+  sudo dpkg -i atom-amd64.deb
+  sudo apt-get install -f
+  rm -rf atom-amd64.deb
   goToRoot
 }
 
 installSmartgitByCrawl() {
   funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   # TODO: finish this implementation
   # Download the smartgit from website first and place it in the downloads folder
   if [ -z "$1" ]; then
@@ -725,6 +812,11 @@ installDocker() {
 }
 
 installSublime() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
   printf 'y\n' | sudo apt-get install apt-transport-https
   echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
@@ -752,6 +844,11 @@ installVirtualBox() {
 }
 
 installJava() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   # Install Java 8
   sudo add-apt-repository -y ppa:webupd8team/java
   aptGet
@@ -928,6 +1025,7 @@ installPackagesForSystemNonSudoFirst() {
   checkVirtualPythonEnvironmentFolder
   checkSoftwareFolder
   checkAppsFolder
+  checkMusicVideosFolder
 }
 
 installPackagesForSystemSudoSecond() {
@@ -952,36 +1050,14 @@ installPackagesForSystemNonSudoThird() {
   postgresPgpassFileInit
 }
 
-nodeExpressNpmInitiation() {
-  npm install express@latest --save
-  npm install body-parser@latest --save
-  npm install cookie-parser@latest --save
-  npm install multer@latest --save
-  npm install nodemailer@latest --save
-  npm install file-stream-rotator@latest --save
-  npm install morgan@latest --save
-  npm install connect@latest --save
-  npm install body-parser@latest --save
-  npm install compression@latest --save
-  npm install cookie-parser@latest --save
-  npm install cookie-session@latest --save
-  npm install csurf@latest --save
-  npm install errorhandler@latest --save
-  npm install express-session@latest --save
-  npm install method-override@latest --save
-  npm install response-time@latest --save
-  npm install serve-favicon@latest --save
-  npm install serve-index@latest --save
-  npm install serve-static@latest --save
-  npm install vhost@latest --save
-  npm install pm2@latest --save
-  npm install forever@latest --save
-  npm install winston@latest --save
-  npm install raven@latest --save
-  npm install helmet@latest --save
-  npm install cron@latest --save
-  npm install uglify-js@latest --save
-  npm install html-minifier@latest --save
+downloadYoutubeVideo() {
+  funcName=$(getFunctionName)
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  eval "cd $SYSTEM_MUSIC_VIDEOS_FOLDER"
+  eval "youtube-dl https://www.youtube.com/watch\?v=$1"
 }
 
 alias android="sh $SYSTEM_APPS_FOLDER/android-studio/bin/studio.sh"
@@ -1032,8 +1108,7 @@ alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
 alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
-alias ssh_non_sudo_setup=sshOperationsNonSudo
-alias ssh_sudo_setup=sshOperationsSudo
 alias system_init_non_sudo_first=installPackagesForSystemNonSudoFirst
 alias system_init_non_sudo_second=installPackagesForSystemNonSudoThird
 alias system_init_sudo=installPackagesForSystemSudoSecond
+alias ytd='downloadYoutubeVideo '
