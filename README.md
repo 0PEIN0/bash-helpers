@@ -104,5 +104,5 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 
 ### Notes:
 
-1. Take regular fetches from ***bash-helpers*** remote repository to get the latest updates/additions. After it update don't forget to source it. You can source it by running this command: `source ~/.bashrc`.
-2. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
+1. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
+2. Use command `uap` to update systems daily for ***non sudo*** users.
