@@ -1,5 +1,5 @@
 # Bash Helpers
-Bash helper scripts.
+Bash helper scripts for system package installation and python/nodejs developers. MIT license, hell yeah!
 
 Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only tested on **Ubuntu 16.04 LTS**. There will be no OS version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version.
 
@@ -106,3 +106,10 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 
 1. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
 2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for sudo user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.
+
+### Other Similar Projects:
+
+1. [Brilliant Bash](https://github.com/roytenberg/brilliant-bash) by [Ben Roytenberg](https://github.com/roytenberg).
+2. [shell-scripts](https://github.com/trevordmiller/shell-scripts) by [Trevor D. Miller](https://github.com/trevordmiller).
+3. [Bash Startup Scripts](https://github.com/wd5gnr/bashrc) by [wd5gnr](https://github.com/wd5gnr)
+3. [aliasme](https://github.com/Jintin/aliasme) by [Jintin](https://github.com/Jintin).
