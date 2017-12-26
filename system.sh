@@ -329,6 +329,11 @@ sshOperationsNonSudo() {
 }
 
 systemUpdatesNonSudo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   cd /
   upgrade_oh_my_zsh
   youtube-dl -U
