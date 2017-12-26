@@ -334,7 +334,7 @@ systemUpdatesNonSudo() {
   apmUpdates
 }
 
-alias admin='sudo -i'
+alias admin='sudo su'
 alias allow_port_sudo='sudo ufw allow '
 alias apache_reload='/etc/init.d/apache2 reload'
 alias apt_get=aptGetUpgrade
