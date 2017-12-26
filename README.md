@@ -105,7 +105,7 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 ### Usage Notes:
 
 1. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
-2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for sudo user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.
+2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.
 
 ### Other Similar Projects:
 
