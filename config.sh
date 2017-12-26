@@ -15,3 +15,7 @@ fi;
 if [ -f $BASH_HELPER_GIT_FOLDER/django.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/django.sh
 fi;
+
+if [ -f $BASH_HELPER_GIT_FOLDER/nodejs.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/nodejs.sh
+fi;
