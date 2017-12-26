@@ -338,10 +338,10 @@ systemUpdatesNonSudo() {
   upgrade_oh_my_zsh
   youtube-dl -U
   apmUpdates
+  sshOperationsNonSudo
   cd $BASH_HELPER_GIT_FOLDER
   git_f
   gitResetHard
-  sshOperationsNonSudo
   cd /
 }
 
