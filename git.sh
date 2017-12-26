@@ -1,10 +1,5 @@
 #!/bin/bash
 
-gitInstall(){
-  # Install Git
-  printf 'y\n' | sudo apt-get install git git-core
-}
-
 git config --global user.name "$SYSTEM_USER_FULL_NAME"
 GIT_COMMITTER_NAME="$SYSTEM_USER_FULL_NAME"
 GIT_AUTHOR_NAME="$SYSTEM_USER_FULL_NAME"
@@ -12,40 +7,15 @@ git config --global user.email "$SYSTEM_USER_EMAIL"
 GIT_COMMITTER_EMAIL="$SYSTEM_USER_EMAIL"
 GIT_AUTHOR_EMAIL="$SYSTEM_USER_EMAIL"
 
-sshOperationsSudo() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  ssh_agent_verify
-  ssh_agent_add_root
-  github_keyscan_sudo
-  bitbucket_keyscan_sudo
-  github_auth
-  bitbucket_auth
-}
-
-sshOperationsNonSudo() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  ssh_agent_verify
-  ssh_agent_add
-  github_keyscan_non_sudo
-  bitbucket_keyscan_non_sudo
-  github_auth
-  bitbucket_auth
+gitInstall(){
+  # Install Git
+  printf 'y\n' | sudo apt-get install git git-core
 }
 
 gitResetHard() {
   branchName="$(git rev-parse --abbrev-ref HEAD)"
   git reset --hard origin/"${branchName}"
 }
-
-
 
 gitCheckout() {
   funcName=$(getFunctionName)

@@ -102,7 +102,7 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 31. Restart machine.
 32. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
 
-### Notes:
+### Usage Notes:
 
-1. Take regular fetches from ***bash-helpers*** remote repository to get the latest updates/additions. After it update don't forget to source it. You can source it by running this command: `source ~/.bashrc`.
-2. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
+1. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
+2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for sudo user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.

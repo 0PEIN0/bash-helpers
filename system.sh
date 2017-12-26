@@ -329,9 +329,35 @@ sshOperationsNonSudo() {
 }
 
 systemUpdatesNonSudo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  cd /
   upgrade_oh_my_zsh
   youtube-dl -U
   apmUpdates
+  sshOperationsNonSudo
+  cd $BASH_HELPER_GIT_FOLDER
+  git_f
+  gitResetHard
+  cd /
+}
+
+systemUpdatesSudo() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  cd /
+  coreSystemUpdate
+  upgrade_oh_my_zsh
+  youtube-dl -U
+  nodeUpdates
+  pip_update
+  cd /
 }
 
 alias admin='sudo su'
@@ -367,5 +393,6 @@ alias ssh_non_sudo_setup=sshOperationsNonSudo
 alias ssh_sudo_setup=sshOperationsSudo
 alias tar_install='tar -xzf '
 alias uap=systemUpdatesNonSudo
+alias uar=systemUpdatesSudo
 alias up='cd ..'
 alias zrc='~/.zshrc'
