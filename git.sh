@@ -45,8 +45,6 @@ gitResetHard() {
   git reset --hard origin/"${branchName}"
 }
 
-
-
 gitCheckout() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then

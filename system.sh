@@ -329,9 +329,14 @@ sshOperationsNonSudo() {
 }
 
 systemUpdatesNonSudo() {
+  cd /
   upgrade_oh_my_zsh
   youtube-dl -U
   apmUpdates
+  cd $BASH_HELPER_GIT_FOLDER
+  git_f
+  gitResetHard
+  cd /
 }
 
 alias admin='sudo su'
