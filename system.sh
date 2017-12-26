@@ -345,6 +345,21 @@ systemUpdatesNonSudo() {
   cd /
 }
 
+systemUpdatesSudo() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  cd /
+  coreSystemUpdate
+  upgrade_oh_my_zsh
+  youtube-dl -U
+  nodeUpdates
+  pip_update
+  cd /
+}
+
 alias admin='sudo su'
 alias allow_port_sudo='sudo ufw allow '
 alias apache_reload='/etc/init.d/apache2 reload'
@@ -378,5 +393,6 @@ alias ssh_non_sudo_setup=sshOperationsNonSudo
 alias ssh_sudo_setup=sshOperationsSudo
 alias tar_install='tar -xzf '
 alias uap=systemUpdatesNonSudo
+alias uar=systemUpdatesSudo
 alias up='cd ..'
 alias zrc='~/.zshrc'
