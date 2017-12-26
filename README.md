@@ -3,6 +3,11 @@ Bash helper scripts.
 
 Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only tested on **Ubuntu 16.04 LTS**. There will be no OS version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version.
 
+>Legends:
+
+1. `bash-helpers` is the name of the repository and the folder name where this repository is cloned.
+2. `helper-scripts` is that place where you place your `personal.sh` bash files as well as your other scripts that are meant to customize your local machine  environment.
+
 # New System Installation Instructions
 
 ### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO USER MODE
