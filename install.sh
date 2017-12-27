@@ -6,8 +6,8 @@ LATEST_VSCODE_FILE_NAME="code_1.19.0-1513245498_amd64.deb"
 LATEST_SLACK_VERSION="3.0.0"
 LATEST_ROBOMONGO_VERSION="1.1.1"
 LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-c93c6b0"
-LATEST_PHANTOMJS_VERSION="2.5.0"
-LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-beta-linux-ubuntu-xenial-x86_64"
+LATEST_PHANTOMJS_VERSION="2.1.1"
+LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-linux-x86_64.tar.bz2"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
 LATEST_POSTGIS_VERSION="postgis-2.3.3"
@@ -769,13 +769,16 @@ installPhantomJs() {
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
+  rm -rf /usr/local/share/phantomjs
+  rm -rf /usr/local/bin/phantomjs
+  rm -rf /usr/bin/phantomjs
   cd /usr/local/share
-  sudo wget -O $1.tar.gz https://bitbucket.org/ariya/phantomjs/downloads/$1.tar.gz
-  sudo tar xjf $1.tar.gz
-  sudo ln -s /usr/local/share/$1/bin/phantomjs /usr/local/share/phantomjs
-  sudo ln -s /usr/local/share/$1/bin/phantomjs /usr/local/bin/phantomjs
-  sudo ln -s /usr/local/share/$1/bin/phantomjs /usr/bin/phantomjs
+  rm -rf $1.tar.gz
+  wget -O $1.tar.gz https://bitbucket.org/ariya/phantomjs/downloads/$1.tar.gz
+  tar xvfz $1.tar.gz
   phantomjs --version
+  rm -rf $1.tar.gz
+  export PATH="$PATH:/usr/local/share/$1/bin"
   goToRoot
 }
 
