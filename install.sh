@@ -6,6 +6,8 @@ LATEST_VSCODE_FILE_NAME="code_1.19.0-1513245498_amd64.deb"
 LATEST_SLACK_VERSION="3.0.0"
 LATEST_ROBOMONGO_VERSION="1.1.1"
 LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-c93c6b0"
+LATEST_PHANTOMJS_VERSION="2.5.0"
+LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-beta-linux-ubuntu-xenial-x86_64"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
 LATEST_POSTGIS_VERSION="postgis-2.3.3"
@@ -757,6 +759,26 @@ installWine() {
   /opt/wine-staging/bin/winecfg
 }
 
+installPhantomJs() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  cd /usr/local/share
+  sudo wget -O $1.tar.gz https://bitbucket.org/ariya/phantomjs/downloads/$1.tar.gz
+  sudo tar xjf $1.tar.gz
+  sudo ln -s /usr/local/share/$1/bin/phantomjs /usr/local/share/phantomjs
+  sudo ln -s /usr/local/share/$1/bin/phantomjs /usr/local/bin/phantomjs
+  sudo ln -s /usr/local/share/$1/bin/phantomjs /usr/bin/phantomjs
+  phantomjs --version
+  goToRoot
+}
+
 installMonoDevelop() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1079,6 +1101,7 @@ alias install_hack_lang=installHackLang
 alias install_java=installJava
 alias install_laravel=installLaravelNonSudo
 alias install_mongo=installMongoDb
+alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL"
 alias install_php=installPhp
 alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
