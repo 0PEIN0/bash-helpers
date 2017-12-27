@@ -769,12 +769,17 @@ installPhantomJs() {
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
+  if [ -z "$2" ]; then
+    echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $2
+  fi;
   rm -rf /usr/local/share/phantomjs
   rm -rf /usr/local/bin/phantomjs
   rm -rf /usr/bin/phantomjs
   cd /usr/local/share
   rm -rf $1.tar.gz
-  wget -O $1.tar.gz https://bitbucket.org/ariya/phantomjs/downloads/$1.tar.gz
+  wget -O $1.tar.gz https://github.com/Medium/phantomjs/releases/download/v$2/$1.tar.bz2
+  #wget -O $1.tar.gz https://bitbucket.org/ariya/phantomjs/downloads/$1.tar.gz
   tar xvfz $1.tar.gz
   phantomjs --version
   rm -rf $1.tar.gz
@@ -1104,7 +1109,7 @@ alias install_hack_lang=installHackLang
 alias install_java=installJava
 alias install_laravel=installLaravelNonSudo
 alias install_mongo=installMongoDb
-alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL"
+alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL $LATEST_PHANTOMJS_VERSION"
 alias install_php=installPhp
 alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
