@@ -796,7 +796,7 @@ installMonoDevelop() {
   printf '\n' | sudo add-apt-repository ppa:alexlarsson/flatpak
   aptGet
   printf 'y\n' | sudo apt install flatpak
-  printf 'y\n' | flatpak install --user --from https://download.mono-project.com/repo/monodevelop.flatpakref
+  flatpak install --user --from https://download.mono-project.com/repo/monodevelop.flatpakref
 }
 
 installPhp() {
