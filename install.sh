@@ -8,6 +8,8 @@ LATEST_ROBOMONGO_VERSION="1.1.1"
 LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-c93c6b0"
 LATEST_PHANTOMJS_VERSION="2.1.1"
 LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-linux-x86_64.tar.bz2"
+LATEST_GOLANG_VERSION="1.9.2"
+LATEST_GOLANG_VERSION_FULL="go$LATEST_GOLANG_VERSION.linux-amd64"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
 LATEST_POSTGIS_VERSION="postgis-2.3.3"
@@ -49,7 +51,7 @@ installPythonAndPostgres() {
   aptGet
   printf "y\n" | sudo apt autoremove
   aptGet
-  wget http://postgis.net/stuff/$LATEST_POSTGIS_VERSION.tar.gz
+  wget -O $LATEST_POSTGIS_VERSION.tar.gz http://postgis.net/stuff/$LATEST_POSTGIS_VERSION.tar.gz
   tar xvfz $LATEST_POSTGIS_VERSION.tar.gz
   cd $LATEST_POSTGIS_VERSION
   ./configure
@@ -79,45 +81,6 @@ installPythonAndPostgres() {
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
 }
-installPythonAndPostgres() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  goToRoot
-  aptGet
-  printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme python-coverage
-  printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-  printf 'y\n' | sudo apt-get install python-pyaudio python-numpy
-  printf 'y\n' | sudo apt-get install postgresql-server-dev-9.5
-  #geo-spatial packages
-  printf 'y\n' | sudo apt-get install binutils libproj-dev gdal-bin libgdal-dev postgis
-  checkSoftwareFolder
-  sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -sc)-pgdg main" >> /etc/apt/sources.list'
-  wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-  aptGet
-  sudo apt-get install -y postgresql-9.6
-  sudo apt-get install -y postgresql-9.6-postgis-2.3-scripts
-  sudo apt-get install -y postgresql-contrib-9.6
-  aptGet
-  printf "y\n" | sudo apt autoremove
-  aptGet
-  wget http://postgis.net/stuff/$LATEST_POSTGIS_VERSION.tar.gz
-  tar xvfz $LATEST_POSTGIS_VERSION.tar.gz
-  cd $LATEST_POSTGIS_VERSION
-  ./configure
-  make
-  make install
-  cd ..
-  rm -rf $LATEST_POSTGIS_VERSION.tar.gz
-  rm -rf $LATEST_POSTGIS_VERSION
-  goToRoot
-  pip install --upgrade pip WeasyPrint apiai django virtualenv jsbeautifier autopep8 isort coursera-dl setuptools html5lib docker-compose awscli pyOpenSSL==16.2.0 selenium python-language-server pylint coverage
-  sudo service postgresql restart
-  #the following command is for postgis installation in postgres in 9.3
-  #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
-}
 
 installGeos() {
   funcName=$(getFunctionName)
@@ -128,7 +91,7 @@ installGeos() {
   goToRoot
   checkSoftwareFolder
   cd $softwareFolder/
-  wget http://download.osgeo.org/geos/$LATEST_GEOS_VERSION.tar.bz2
+  wget -O $LATEST_GEOS_VERSION.tar.bz2 http://download.osgeo.org/geos/$LATEST_GEOS_VERSION.tar.bz2
   tar xjf $LATEST_GEOS_VERSION.tar.bz2
   cd $LATEST_GEOS_VERSION
   ./configure
@@ -162,7 +125,7 @@ installPython() {
   #latest python version
   mkdir -p /opt/python3.6
   cd /opt/python3.6
-  wget https://www.python.org/ftp/python/$LATEST_PYTHON_VERSION/Python-$LATEST_PYTHON_VERSION.tgz
+  wget -O Python-$LATEST_PYTHON_VERSION.tgz --no-check-certificate https://www.python.org/ftp/python/$LATEST_PYTHON_VERSION/Python-$LATEST_PYTHON_VERSION.tgz
   sudo tar xzf Python-$LATEST_PYTHON_VERSION.tgz
   cd Python-$LATEST_PYTHON_VERSION
   sudo ./configure
@@ -201,7 +164,7 @@ installBracket() {
   printf '\n' | sudo add-apt-repository ppa:webupd8team/brackets
   aptGet
   printf 'y\n' | sudo apt-get install brackets
-  #wget https://github.com/adobe/brackets/releases/download/release-$1/Brackets.Release.$1.64-bit.deb
+  #wget -O Brackets.Release.$1.64-bit.deb --no-check-certificate https://github.com/adobe/brackets/releases/download/release-$1/Brackets.Release.$1.64-bit.deb
   #printf 'y\n' | sudo apt install $SYSTEM_SOFTWARE_FOLDER/Brackets.Release.$1.64-bit.deb
   #sudo dpkg -i $SYSTEM_SOFTWARE_FOLDER/Brackets.Release.$1.64-bit
   #printf 'y\n' | sudo apt-get install -f
@@ -236,8 +199,8 @@ installVisualStudioCode() {
   aptGet
   checkSoftwareFolder
   printf 'y\n' | sudo apt-get install gvfs-bin
-  wget -O $1 "https://go.microsoft.com/fwlink/?LinkID=760868"
-  #wget --no-check-certificate https://az764295.vo.msecnd.net/stable/e6b4afa53e9c0f54edef1673de9001e9f0f547ae/code_1.3.1-1468329898_amd64.deb
+  wget -O $1 --no-check-certificate "https://go.microsoft.com/fwlink/?LinkID=760868"
+  #wget -O code_1.3.1-1468329898_amd64.deb --no-check-certificate https://az764295.vo.msecnd.net/stable/e6b4afa53e9c0f54edef1673de9001e9f0f547ae/code_1.3.1-1468329898_amd64.deb
   sudo dpkg -i $1
   rm -rf $1
   goToRoot
@@ -320,7 +283,7 @@ powerlineFontInstallationSudo() {
   goToRoot
   aptGet
   checkSoftwareFolder
-  wget --no-check-certificate https://github.com/powerline/fonts/archive/master.zip
+  wget -O master.zip --no-check-certificate https://github.com/powerline/fonts/archive/master.zip
   unzip master.zip
   sh fonts-master/install.sh
   rm -rf master.zip
@@ -377,7 +340,7 @@ installZoomConference() {
   fi;
   checkSoftwareFolder
   printf '\n' | sudo apt-get install libglib2.0-0 libgstreamer-plugins-base0.10-0 libxcb-shape0 libxcb-shm0 libxcb-xfixes0 libxcb-randr0 libxcb-image0 libfontconfig1 libgl1-mesa-glx libxi6 libsm6 libxrender1 libpulse0 libxcomposite1 libxslt1.1 libsqlite3-0 libxcb-keysyms1 libxcb-xtest0
-  wget -O zoom_amd64.deb "https://d11yldzmag5yn.cloudfront.net/prod/2.0.106600.0904/zoom_amd64.deb"
+  wget -O zoom_amd64.deb --no-check-certificate "https://d11yldzmag5yn.cloudfront.net/prod/2.0.106600.0904/zoom_amd64.deb"
   sudo dpkg -i zoom_amd64.deb
   printf 'y\n' | sudo apt-get install -f
 }
@@ -432,7 +395,7 @@ installRoboMongo() {
   fi;
   goToRoot
   checkSoftwareFolder
-  wget https://download.robomongo.org/$1/linux/$2.tar.gz
+  wget --no-check-certificate https://download.robomongo.org/$1/linux/$2.tar.gz
   tar -xvzf $2.tar.gz
   sudo mkdir -p /usr/local/bin/robomongo
   sudo mv $2/* /usr/local/bin/robomongo
@@ -467,7 +430,7 @@ installPyCharm() {
     return $1
   fi;
   checkSoftwareFolder
-  wget -O $1.tar.gz "https://download.jetbrains.com/python/$1.tar.gz"
+  wget -O $1.tar.gz --no-check-certificate "https://download.jetbrains.com/python/$1.tar.gz"
   tar xvfz $1.tar.gz
   mkdir -p $SYSTEM_APPS_FOLDER/$1
   rm -rf $SYSTEM_APPS_FOLDER/$1
@@ -548,7 +511,7 @@ installAtom() {
   #printf 'y\n' | sudo apt-get install atom
   #ALTERNATE METHOD BELOW(commented out)
   checkSoftwareFolder
-  wget --no-check-certificate https://atom.io/download/deb
+  wget -O deb --no-check-certificate https://atom.io/download/deb
   mv "deb" "atom-amd64.deb"
   sudo dpkg -i atom-amd64.deb
   sudo apt-get install -f
@@ -612,7 +575,7 @@ installStacer() {
   goToRoot
   aptGet
   checkSoftwareFolder
-  wget https://github.com/oguzhaninan/Stacer/releases/download/v$1/Stacer_$1_amd64.deb
+  wget -O Stacer_$1_amd64.deb --no-check-certificate https://github.com/oguzhaninan/Stacer/releases/download/v$1/Stacer_$1_amd64.deb
   printf 'y\n' | sudo apt install $SYSTEM_SOFTWARE_FOLDER/Stacer_$1_amd64.deb
   sudo dpkg -i Stacer_$1_amd64.deb
   printf 'y\n' | sudo apt-get install -f
@@ -666,7 +629,7 @@ installSkype() {
     return
   fi;
   checkSoftwareFolder
-  wget -O skypeforlinux-64.deb "https://repo.skype.com/latest/skypeforlinux-64.deb"
+  wget -O skypeforlinux-64.deb --no-check-certificate "https://repo.skype.com/latest/skypeforlinux-64.deb"
   sudo dpkg -i skypeforlinux-64.deb
   rm -rf skypeforlinux-64.deb
   goToRoot
@@ -685,7 +648,7 @@ installSlack() {
     return
   fi;
   checkSoftwareFolder
-  wget -O slack-desktop-$1-amd64.deb "https://downloads.slack-edge.com/linux_releases/slack-desktop-$1-amd64.deb"
+  wget -O slack-desktop-$1-amd64.deb --no-check-certificate "https://downloads.slack-edge.com/linux_releases/slack-desktop-$1-amd64.deb"
   sudo dpkg -i slack-desktop-$1-amd64.deb
   rm -rf slack-desktop-$1-amd64.deb
   goToRoot
@@ -720,7 +683,7 @@ installPostman() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+  wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz --no-check-certificate
   tar -xzf postman.tar.gz -C /opt
   rm postman.tar.gz
   ln -s /opt/Postman/Postman /usr/bin/postman
@@ -757,6 +720,30 @@ installWine() {
   printf 'y\n' | sudo apt-get install --install-recommends wine-staging
   /opt/wine-staging/bin/wine
   /opt/wine-staging/bin/winecfg
+}
+
+installGolang() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  if [ -z "$2" ]; then
+    echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $2
+  fi;
+  checkSoftwareFolder
+  wget -O $2.tar.gz --no-check-certificate https://redirector.gvt1.com/edgedl/go/$2.tar.gz
+  tar xvfz $2.tar.gz
+  mkdir -p $SYSTEM_APPS_FOLDER/$2
+  mv "$2" "$SYSTEM_APPS_FOLDER/$2"
+  rm -rf $2.tar.gz
+  rm -rf $2
+  goToRoot
 }
 
 installPhantomJs() {
@@ -1106,6 +1093,7 @@ alias forever_restart='forever restart 0'
 alias install_atom=installAtom
 alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
+alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
 alias install_java=installJava
 alias install_laravel=installLaravelNonSudo
