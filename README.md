@@ -21,7 +21,7 @@ $ cd /home/$SYSTEM_USER_NAME/Gitrepos/
 $ git clone https://github.com/0PEIN0/bash-helpers.git
 ```
 Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
-6. After cloning, create a new directory again inside of user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/helper-scripts/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. After you have created this folder, create a new file there(inside the newly created folder) called ***personal.sh***. Copy the file contents from ***sample-personal.sh*** file from the current repository to ***/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh*** file. Then just configure your info in ***personal.sh*** file like this:
+6. After cloning, create a new directory again inside of user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/helper-scripts/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. After you have created this folder, create a new file there(inside the newly created folder) called ***personal.sh***. Copy the file contents from [***sample-personal.sh***](src/bash/sample-personal.sh) file from the current repository to ***/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh*** file. Then just configure your info in ***personal.sh*** file like this:
 
 >`SYSTEM_USER_FULL_NAME="John Doe"`
 
