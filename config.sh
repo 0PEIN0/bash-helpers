@@ -12,6 +12,10 @@ if [ -f $BASH_HELPER_GIT_FOLDER/install.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/install.sh
 fi;
 
+if [ -f $BASH_HELPER_GIT_FOLDER/utils.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/utils.sh
+fi;
+
 if [ -f $BASH_HELPER_GIT_FOLDER/django.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/django.sh
 fi;

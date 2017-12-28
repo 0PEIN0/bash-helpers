@@ -17,16 +17,6 @@ LATEST_PYTHON_VERSION="3.6.3"
 LATEST_BRACKET_VERSION="1.11"
 LATEST_STACER_VERSION="1.0.6"
 
-apmUpdates() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  printf "yes\n" | apm update
-  printf "yes\n" | apm upgrade
-}
-
 installPythonAndPostgres() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -739,10 +729,12 @@ installGolang() {
   cd $SYSTEM_SOFTWARE_FOLDER
   rm -rf $2.tar.gz
   rm -rf "go"
+  rm -rf $SYSTEM_APPS_FOLDER/$2
   wget -O $2.tar.gz --no-check-certificate https://redirector.gvt1.com/edgedl/go/$2.tar.gz
   tar xvfz $2.tar.gz
   mkdir -p $SYSTEM_APPS_FOLDER/$2
-  mv "$SYSTEM_SOFTWARE_FOLDER/go" "$SYSTEM_APPS_FOLDER/$2"
+  mv "$SYSTEM_SOFTWARE_FOLDER/go/*" "$SYSTEM_APPS_FOLDER/$2"
+  chmod $DEFAULT_PERMISSION_VALUE $SYSTEM_APPS_FOLDER/$2
   rm -rf $2.tar.gz
   rm -rf "go"
   goToRoot
@@ -1070,28 +1062,6 @@ installPackagesForSystemNonSudoThird() {
   postgresPgpassFileInit
 }
 
-downloadYoutubeVideo() {
-  funcName=$(getFunctionName)
-  if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
-    return $1
-  fi;
-  eval "cd $SYSTEM_MUSIC_VIDEOS_FOLDER"
-  eval "youtube-dl https://www.youtube.com/watch\?v=$1"
-}
-
-alias android="sh $SYSTEM_APPS_FOLDER/android-studio/bin/studio.sh"
-alias apache_reload='/etc/init.d/apache2 reload'
-alias atom_up=apmUpdates
-alias fb_d='firebase deploy'
-alias fb_i='firebase init'
-alias fb_l='firebase list'
-alias fb_lo='firebase login'
-alias fb_o='firebase open'
-alias fb_s='firebase serve'
-alias fb_v='firebase --version'
-alias forever_list='forever list'
-alias forever_restart='forever restart 0'
 alias install_atom=installAtom
 alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
@@ -1114,19 +1084,6 @@ alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
 alias install_postman=installPostman
 alias jenkins_install=installJenkins
-alias jenkins_start='/etc/init.d/jenkins start'
-alias jenkins_stop='/etc/init.d/jenkins stop'
-alias karma_test='karma start --browsers Chrome'
-alias loc_count='cloc '
-alias node_update=nodeUpdates
-alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
-alias protractor_test='protractor conf.js'
-alias proxy_remove="kill -9 $(ps -efda | grep ssh | tail -n1 | awk '{print $2}')"
-alias redis_check='redis-cli ping'
-alias redis_start='nohup redis-server &'
-alias redis_stop='redis-cli shutdown'
-alias run_mono_develop='nohup flatpak run com.xamarin.MonoDevelop &'
-alias sg="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/smartgit/bin/smartgit.sh"
 alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
@@ -1134,4 +1091,3 @@ alias ssh_keygen='ssh-keygen -t rsa -b 4096 -C "$SYSTEM_USER_EMAIL"'
 alias system_init_non_sudo_first=installPackagesForSystemNonSudoFirst
 alias system_init_non_sudo_second=installPackagesForSystemNonSudoThird
 alias system_init_sudo=installPackagesForSystemSudoSecond
-alias ytd='downloadYoutubeVideo '
