@@ -21,7 +21,7 @@ $ cd /home/$SYSTEM_USER_NAME/Gitrepos/
 $ git clone https://github.com/0PEIN0/bash-helpers.git
 ```
 Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
-6. After cloning, create a new directory again inside of user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/helper-scripts/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. After you have created this folder, create a new file there(inside the newly created folder) called ***personal.sh***. Copy the file contents from ***sample-personal.sh*** file from the current repository to ***/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh*** file. Then just configure your info in ***personal.sh*** file like this:
+6. After cloning, create a new directory again inside of user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/bash-helpers/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. After you have created this folder, create a new file there(inside the newly created folder) called ***personal.sh***. Copy the file contents from ***sample-personal.sh*** file from the current repository to ***/home/$SYSTEM_USER_NAME/bash-helpers/personal.sh*** file. Then just configure your info in ***personal.sh*** file like this:
 
 >`SYSTEM_USER_FULL_NAME="John Doe"`
 
@@ -29,11 +29,11 @@ Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubunt
 
 >`SYSTEM_USER_NAME="john"`
 
-7. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
-8. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
+7. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/bash-helpers/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
+8. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. 
 ```bash
-if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
-    . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
+if [ -f ~/bash-helpers/personal.sh ]; then
+    . ~/bash-helpers/personal.sh
 fi;
 ```
 9. Run `source ~/.bashrc` command.
