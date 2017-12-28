@@ -20,6 +20,12 @@ downloadYoutubeVideo() {
   eval "youtube-dl https://www.youtube.com/watch\?v=$1"
 }
 
+startGoogleChrome() {
+  goToRoot
+  nohup gnome-keyring-daemon --start --replace --foreground --components=secrets,ssh,pcks11 &
+  nohup google-chrome-stable &
+}
+
 alias android="sh $SYSTEM_APPS_FOLDER/android-studio/bin/studio.sh"
 alias apache_reload='/etc/init.d/apache2 reload'
 alias atom_up=apmUpdates
@@ -32,6 +38,7 @@ alias fb_s='firebase serve'
 alias fb_v='firebase --version'
 alias forever_list='forever list'
 alias forever_restart='forever restart 0'
+alias gc=startGoogleChrome
 alias jenkins_start='/etc/init.d/jenkins start'
 alias jenkins_stop='/etc/init.d/jenkins stop'
 alias karma_test='karma start --browsers Chrome'
