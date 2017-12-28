@@ -5,10 +5,10 @@ BASH_TEMP_FOLDER="$SYSTEM_ROOT_FOLDER/helper-scripts"
 SYSTEM_ROOT_GIT_REPO_FOLDER="$SYSTEM_ROOT_FOLDER/Gitrepos"
 SYSTEM_DOWNLOAD_FOLDER="$SYSTEM_ROOT_FOLDER/Downloads"
 SYSTEM_SOFTWARE_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Softwares"
-SYSTEM_APPS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Apps"
-SYSTEM_MUSIC_VIDEOS_FOLDER="$SYSTEM_DOWNLOAD_FOLDER/Music Videos"
+SYSTEM_APPS_FOLDER="$SYSTEM_ROOT_FOLDER/Apps"
+SYSTEM_MUSIC_VIDEOS_FOLDER="$SYSTEM_ROOT_FOLDER/Music\ Videos"
 BASH_HELPER_GIT_FOLDER="$SYSTEM_ROOT_GIT_REPO_FOLDER/bash-helpers"
-DEFAULT_PERMISSION_VALUE=777
+DEFAULT_PERMISSION_VALUE=640
 
 goToRoot() {
   cd /
@@ -335,13 +335,15 @@ systemUpdatesNonSudo() {
     return
   fi;
   cd /
+  bash_refresh
   upgrade_oh_my_zsh
   youtube-dl -U
   apmUpdates
-  sshOperationsNonSudo
+  eval "sshOperationsNonSudo"
   cd $BASH_HELPER_GIT_FOLDER
-  git_f
-  gitResetHard
+  eval "gitResetHard"
+  eval "git_f"
+  eval "gitResetHard"
   cd /
 }
 
@@ -352,6 +354,7 @@ systemUpdatesSudo() {
     return
   fi;
   cd /
+  bash_refresh
   coreSystemUpdate
   upgrade_oh_my_zsh
   youtube-dl -U

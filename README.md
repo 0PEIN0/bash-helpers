@@ -76,36 +76,12 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 5. Run `get_ssh` command.
 6. Add the ssh public key at Github and Bitbucket.
 7. Run `ssh_non_sudo_setup` command.
-8. Open "Atom" -> There will be a pop-up showing list of dependencies to install, press "Yes" to install them.
-9. Open "Dropbox" from dash -> Login to Dropbox.
-10. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login.
-11. Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
-12. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
-13. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
-14. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "Don't suspend on lid close" -> Select "No".
-15.  Open "Tweak Tool" -> "Startup Applications" -> Add applications like "Google Chrome", "Atom", "Terminal", "System Monitor", "Files", "Dropbox", "Slack", "Sublime Text", "VLC Media Player", "Smartgit", "Skype", "Spotify".
-16. Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Appearance" -> "Position" -> Select "Bottom".
-17. Open "Unity Tweak Tool" -> "Unity" -> "Launcher" -> "Icons" -> "Icon Size" -> Make it "32".
-18. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Show my name".
-19. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Power" -> "Always visible".
-20. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> "Default Player" -> Select "Vlc.desktop".
-21. Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
-22. Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
-23. Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
-24. Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
-25. Open "System Settings" -> "Brightness & Lock" -> Select "Never" for "Turn screen off when inactive for".
-26. Open "System Settings" -> "Time & Date" -> "Clock" -> Select "Weekday" and "Date", Month", "Year", "Seconds" and "Include week numbers".
-27. Open "System Settings" -> "Software and Updates" -> "Ubuntu Software" -> Select "Main Server" for "Download From" option.
-28. Open "System Settings" -> "Software and Updates" -> "Additional Drivers" -> Select "Using NVIDIA binary driver" for allowing proprietary software from NVIDIA to be installed on the machine in case NVIDIA graphics card is present -> Press "Apply Changes" button.
-29. Open "System Settings" -> "Language Support" -> Drag "English(United States)" at the top of the order.
-30. Open "System Settings" -> "Language Support" -> "Regional Formats" -> Select "English(United States)" -> Press "Apply System Wide" button.
-31. Restart machine.
-32. Open "Terminal" -> "Edit" menu -> "Profile Preferences" -> "Text Appearance" -> "Custom Font" -> "Choose A Terminal Font" -> Select "Meslo LG L DZ for Powerline Bold" -> Make font size "16".
+8. Cheers! You're all set.
 
 ### Usage Notes:
 
 1. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
-2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for sudo user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.
+2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.
 
 ### Other Similar Projects:
 
