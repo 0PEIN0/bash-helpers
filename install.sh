@@ -733,7 +733,7 @@ installGolang() {
   wget -O $2.tar.gz --no-check-certificate https://redirector.gvt1.com/edgedl/go/$2.tar.gz
   tar xvfz $2.tar.gz
   mkdir -p $SYSTEM_APPS_FOLDER/$2
-  mv "$SYSTEM_SOFTWARE_FOLDER/go/*" "$SYSTEM_APPS_FOLDER/$2"
+  mv "$SYSTEM_SOFTWARE_FOLDER/go/" "$SYSTEM_APPS_FOLDER/$2"
   chmod $DEFAULT_PERMISSION_VALUE $SYSTEM_APPS_FOLDER/$2
   rm -rf $2.tar.gz
   rm -rf "go"
