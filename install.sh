@@ -41,7 +41,7 @@ installPythonAndPostgres() {
   printf 'y\n' | sudo apt-get install postgresql-server-dev-9.5
   #geo-spatial packages
   printf 'y\n' | sudo apt-get install binutils libproj-dev gdal-bin libgdal-dev postgis
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -sc)-pgdg main" >> /etc/apt/sources.list'
   wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
   aptGet
@@ -89,7 +89,7 @@ installGeos() {
     return
   fi;
   goToRoot
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   cd $softwareFolder/
   wget -O $LATEST_GEOS_VERSION.tar.bz2 http://download.osgeo.org/geos/$LATEST_GEOS_VERSION.tar.bz2
   tar xjf $LATEST_GEOS_VERSION.tar.bz2
@@ -160,7 +160,7 @@ installBracket() {
   fi;
   goToRoot
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   printf '\n' | sudo add-apt-repository ppa:webupd8team/brackets
   aptGet
   printf 'y\n' | sudo apt-get install brackets
@@ -197,7 +197,7 @@ installVisualStudioCode() {
   fi;
   goToRoot
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   printf 'y\n' | sudo apt-get install gvfs-bin
   wget -O $1 --no-check-certificate "https://go.microsoft.com/fwlink/?LinkID=760868"
   #wget -O code_1.3.1-1468329898_amd64.deb --no-check-certificate https://az764295.vo.msecnd.net/stable/e6b4afa53e9c0f54edef1673de9001e9f0f547ae/code_1.3.1-1468329898_amd64.deb
@@ -282,7 +282,7 @@ powerlineFontInstallationSudo() {
   fi;
   goToRoot
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -O master.zip --no-check-certificate https://github.com/powerline/fonts/archive/master.zip
   unzip master.zip
   sh fonts-master/install.sh
@@ -322,7 +322,7 @@ installZshSudo() {
   powerlineFontInstallation
   printf '\n' | sudo apt-get install zsh
   goToRoot
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   #in both sudo and non sudo mode(the below two lines of code only)
   #sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" (either this line or the one below)
   sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -338,7 +338,7 @@ installZoomConference() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   printf '\n' | sudo apt-get install libglib2.0-0 libgstreamer-plugins-base0.10-0 libxcb-shape0 libxcb-shm0 libxcb-xfixes0 libxcb-randr0 libxcb-image0 libfontconfig1 libgl1-mesa-glx libxi6 libsm6 libxrender1 libpulse0 libxcomposite1 libxslt1.1 libsqlite3-0 libxcb-keysyms1 libxcb-xtest0
   wget -O zoom_amd64.deb --no-check-certificate "https://d11yldzmag5yn.cloudfront.net/prod/2.0.106600.0904/zoom_amd64.deb"
   sudo dpkg -i zoom_amd64.deb
@@ -355,7 +355,7 @@ installSmartgit() {
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -O $1 "http://www.syntevo.com/static/smart/download/smartgit/$1"
   printf 'y\n' | sudo apt install $1
   sudo dpkg -i $1
@@ -369,7 +369,7 @@ installRedis() {
     return
   fi;
   goToRoot
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget http://download.redis.io/redis-stable.tar.gz
   tar xvzf redis-stable.tar.gz
   cd redis-stable
@@ -394,7 +394,7 @@ installRoboMongo() {
     return $2
   fi;
   goToRoot
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget --no-check-certificate https://download.robomongo.org/$1/linux/$2.tar.gz
   tar -xvzf $2.tar.gz
   sudo mkdir -p /usr/local/bin/robomongo
@@ -429,7 +429,7 @@ installPyCharm() {
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -O $1.tar.gz --no-check-certificate "https://download.jetbrains.com/python/$1.tar.gz"
   tar xvfz $1.tar.gz
   mkdir -p $SYSTEM_APPS_FOLDER/$1
@@ -510,7 +510,7 @@ installAtom() {
   #aptGet
   #printf 'y\n' | sudo apt-get install atom
   #ALTERNATE METHOD BELOW(commented out)
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -O deb --no-check-certificate https://atom.io/download/deb
   mv "deb" "atom-amd64.deb"
   sudo dpkg -i atom-amd64.deb
@@ -574,7 +574,7 @@ installStacer() {
   fi;
   goToRoot
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -O Stacer_$1_amd64.deb --no-check-certificate https://github.com/oguzhaninan/Stacer/releases/download/v$1/Stacer_$1_amd64.deb
   printf 'y\n' | sudo apt install $SYSTEM_SOFTWARE_FOLDER/Stacer_$1_amd64.deb
   sudo dpkg -i Stacer_$1_amd64.deb
@@ -590,7 +590,7 @@ installJenkins() {
   fi;
   goToRoot
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
   sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   aptGet
@@ -628,7 +628,7 @@ installSkype() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -O skypeforlinux-64.deb --no-check-certificate "https://repo.skype.com/latest/skypeforlinux-64.deb"
   sudo dpkg -i skypeforlinux-64.deb
   rm -rf skypeforlinux-64.deb
@@ -647,7 +647,7 @@ installSlack() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
   wget -O slack-desktop-$1-amd64.deb --no-check-certificate "https://downloads.slack-edge.com/linux_releases/slack-desktop-$1-amd64.deb"
   sudo dpkg -i slack-desktop-$1-amd64.deb
   rm -rf slack-desktop-$1-amd64.deb
@@ -736,13 +736,15 @@ installGolang() {
     echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $2
   fi;
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER
+  rm -rf $2.tar.gz
+  rm -rf "go"
   wget -O $2.tar.gz --no-check-certificate https://redirector.gvt1.com/edgedl/go/$2.tar.gz
   tar xvfz $2.tar.gz
   mkdir -p $SYSTEM_APPS_FOLDER/$2
-  mv "$2" "$SYSTEM_APPS_FOLDER/$2"
+  mv "$SYSTEM_SOFTWARE_FOLDER/go" "$SYSTEM_APPS_FOLDER/$2"
   rm -rf $2.tar.gz
-  rm -rf $2
+  rm -rf "go"
   goToRoot
 }
 
