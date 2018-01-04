@@ -4,6 +4,6 @@ SYSTEM_USER_FULL_NAME="PLEASE_PROVIDE_YOUR_FULL_NAME"
 SYSTEM_USER_EMAIL="PLEASE_PROVIDE_YOUR_EMAIL_THAT_IS_USED_IN_GIT_PROVIDERS"
 SYSTEM_USER_NAME="PLEASE_PROVIDE_YOUR_UBUNTU_OS_USERNAME"
 
-if [ -f /home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers/config.sh ]; then
-    . /home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers/config.sh
+if [ -f /home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers/src/bash/config.sh ]; then
+    . /home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers/src/bash/config.sh
 fi;

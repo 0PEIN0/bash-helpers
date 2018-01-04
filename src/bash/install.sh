@@ -737,6 +737,7 @@ installGolang() {
   chmod $DEFAULT_PERMISSION_VALUE $SYSTEM_APPS_FOLDER/$2
   rm -rf $2.tar.gz
   rm -rf "go"
+  export PATH="$PATH:$SYSTEM_APPS_FOLDER/$2/go/bin"
   goToRoot
 }
 
