@@ -51,4 +51,5 @@ alias redis_start='nohup redis-server &'
 alias redis_stop='redis-cli shutdown'
 alias run_mono_develop='nohup flatpak run com.xamarin.MonoDevelop &'
 alias sg="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/smartgit/bin/smartgit.sh"
+alias system_cpu_usage='lscpu | grep MHz'
 alias ytd='downloadYoutubeVideo '

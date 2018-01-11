@@ -255,6 +255,7 @@ djangoPsqlReset() {
     echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
+  chmod 600 ~/.pgpass
   psql -U $1 -h localhost -f $2 $1
 }
 
