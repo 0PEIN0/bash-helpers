@@ -995,11 +995,6 @@ installPackagesForSystemSudo() {
   # Install Open ssh
   printf 'y\n' | sudo apt-get install openssh-server
   sudo service ssh restart
-  # Install powerline fonts
-  powerlineFontInstallationSudo
-  # Install ZSH
-  aptGet
-  installZshSudo
   # Install blender
   installBlender
   # Install Ansible
@@ -1015,17 +1010,22 @@ installPackagesForSystemSudo() {
   sudo ufw allow 'Nginx HTTPS'
   sudo service apache2 start
   # Install Bracket editor
-  install_bracket
+  installBracket $LATEST_BRACKET_VERSION
   # Install vscode editor
-  install_vscode
+  installVisualStudioCode $LATEST_VSCODE_FILE_NAME
   # Install java
-  install_java
+  installJava
   # Install smartgit
-  install_smartgit
+  installSmartgit $LATEST_SMARTGIT_FILE_NAME
   # Install pycharm
-  install_pycharm
+  installPyCharm $LATEST_PYCHARM_VERSION
   # Install slack chat app
-  install_slack
+  installSlack $LATEST_SLACK_VERSION
+  # Install powerline fonts
+  powerlineFontInstallationSudo
+  # Install ZSH
+  aptGet
+  installZshSudo
   goToRoot
 }
 

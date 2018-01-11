@@ -53,30 +53,32 @@ fi;
 5. Restart machine.
 6. Enter sudo user mode again after restart by running `admin` command.
 7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
-8. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value.
+8. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
+9. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value.
 ```sql
-'ALTER USER postgres PASSWORD "$SYSTEM_USER_NAME"; ALTER role postgres PASSWORD "$SYSTEM_USER_NAME"; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";CREATE USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME"; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD "$SYSTEM_USER_NAME";alter USER $SYSTEM_USER_NAME WITH PASSWORD "$SYSTEM_USER_NAME";ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO "utf8"; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO "read committed" ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO "UTC";alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;'
+"ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;"
 ```
 Its also possible to run the above sql queries directly from command line as well, like the following.
 ```bash
 sudo -u postgres psql -c '<SQL_QUERY>'
 ```
-9. Run `ssh_keygen` command.
-10. Run `get_ssh` command.
-11. Add the ssh public key at Github and Bitbucket.
-12. Run `ssh_sudo_setup` command.
-13. Open "Terminal" and run this command to install all the necessary global packages via npm: `node_update`.
-14. Run `exit` command.
+10. Run `ssh_keygen` command.
+11. Run `get_ssh` command.
+12. Add the ssh public key at Github and Bitbucket.
+13. Run `ssh_sudo_setup` command.
+14. Open "Terminal" and run this command to install all the necessary global packages via npm: `node_update`.
+15. Run `exit` command.
 
 ### SWITCH BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
 2. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
-3. Run `source ~/.zshrc`.
-4. Run `ssh_keygen` command.
-5. Run `get_ssh` command.
-6. Add the ssh public key at Github and Bitbucket.
-7. Run `ssh_non_sudo_setup` command.
-8. Cheers! You're all set.
+3. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
+4. Run `source ~/.zshrc`.
+5. Run `ssh_keygen` command.
+6. Run `get_ssh` command.
+7. Add the ssh public key at Github and Bitbucket.
+8. Run `ssh_non_sudo_setup` command.
+9. Cheers! You're all set.
 
 ### Usage Notes:
 
