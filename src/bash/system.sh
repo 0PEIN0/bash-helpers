@@ -306,12 +306,12 @@ sshOperationsSudo() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  ssh_agent_verify
-  ssh_agent_add_root
-  github_keyscan_sudo
-  bitbucket_keyscan_sudo
-  github_auth
-  bitbucket_auth
+  eval "$(ssh-agent -s)"
+  ssh-add /root/.ssh/id_rsa
+  ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+  ssh-keyscan -t rsa bitbucket.com >> /root/.ssh/known_hosts
+  printf "yes\n" | ssh -T git@github.com
+  printf "yes\n" | ssh -T git@bitbucket.com
 }
 
 sshOperationsNonSudo() {
@@ -320,12 +320,12 @@ sshOperationsNonSudo() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  ssh_agent_verify
-  ssh_agent_add
-  github_keyscan_non_sudo
-  bitbucket_keyscan_non_sudo
-  github_auth
-  bitbucket_auth
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+  ssh-keyscan -t rsa github.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
+  ssh-keyscan -t rsa bitbucket.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
+  printf "yes\n" | ssh -T git@github.com
+  printf "yes\n" | ssh -T git@bitbucket.com
 }
 
 systemUpdatesNonSudo() {
