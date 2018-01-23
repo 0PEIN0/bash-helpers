@@ -29,6 +29,8 @@ Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubunt
 
 >`SYSTEM_USER_NAME="john"`
 
+>`DEFAULT_PERMISSION_VALUE=777`
+
 7. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
 8. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
