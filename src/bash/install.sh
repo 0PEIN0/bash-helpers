@@ -965,7 +965,7 @@ installPackagesForSystemSudo() {
   aptGet
   printf 'y\n' | sudo apt-get install ultra-flat-icons ultra-flat-icons-green ultra-flat-icons-orange
   # Postman installation
-  install_postman
+  installPostman
   # Stacer installation
   installStacer $LATEST_STACER_VERSION
   # Docker installation
@@ -1069,6 +1069,7 @@ alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
 alias install_java=installJava
+alias install_jenkins=installJenkins
 alias install_laravel=installLaravelNonSudo
 alias install_mongo=installMongoDb
 alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL $LATEST_PHANTOMJS_VERSION"
@@ -1083,8 +1084,6 @@ alias install_smartgit="installSmartgit $LATEST_SMARTGIT_FILE_NAME"
 alias install_sublime="installSublime"
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
-alias install_postman=installPostman
-alias jenkins_install=installJenkins
 alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
