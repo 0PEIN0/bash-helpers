@@ -8,3 +8,5 @@ BASH_HELPER_GIT_FOLDER="/home/$SYSTEM_USER_NAME/Gitrepos/bash-helpers"
 if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/config.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/src/bash/config.sh
 fi;
+
+DEFAULT_PERMISSION_VALUE=777
