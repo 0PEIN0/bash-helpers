@@ -91,3 +91,6 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 2. [shell-scripts](https://github.com/trevordmiller/shell-scripts) by [Trevor D. Miller](https://github.com/trevordmiller).
 3. [Bash Startup Scripts](https://github.com/wd5gnr/bashrc) by [wd5gnr](https://github.com/wd5gnr)
 3. [aliasme](https://github.com/Jintin/aliasme) by [Jintin](https://github.com/Jintin).
+4. [dotfiles](https://github.com/shazow/dotfiles) by [Andrey Petrov](https://github.com/shazow).
+5. [bash-common-helpers](https://github.com/martinburger/bash-common-helpers) by [Martin Burger](https://github.com/martinburger).
+6. [git-bash-helpers](https://github.com/jonathantneal/git-bash-helpers) by [Jonathan Neal](https://github.com/jonathantneal).
