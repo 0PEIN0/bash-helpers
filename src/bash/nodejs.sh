@@ -42,7 +42,7 @@ nodeUpdates() {
   npm install -g webpack@latest
   npm install -g cordova@latest
   npm install -g ionic@latest
-  npm install -g electron@latest
+  npm install -g electron@latest --unsafe-perm=true --allow-root
   webdriver-manager update
   goToRoot
 }
