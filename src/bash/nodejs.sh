@@ -5,7 +5,7 @@ installNodejs() {
   aptGet
   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   sudo apt-get install -y nodejs
-  #nodeUpdates
+  nodeUpdates
 }
 
 nodeUpdates() {
@@ -42,6 +42,7 @@ nodeUpdates() {
   npm install -g webpack@latest
   npm install -g cordova@latest
   npm install -g ionic@latest
+  npm install -g electron@latest
   webdriver-manager update
   goToRoot
 }
