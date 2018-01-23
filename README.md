@@ -65,9 +65,10 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 10. Run `ssh_keygen` command.
 11. Run `get_ssh` command.
 12. Add the ssh public key at Github and Bitbucket.
-13. Run `ssh_sudo_setup` command.
-14. Open "Terminal" and run this command to install all the necessary global packages via npm: `node_update`.
-15. Run `exit` command.
+13. Run `ssh_sudo_setup` command to authenticate with Github and Bitbucket from command line.
+14. Run `install_nodejs` command to install nodejs.
+15. Run this command to install all the necessary global packages via npm: `node_update`.
+16. Run `exit` command.
 
 ### SWITCH BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
@@ -77,7 +78,7 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 5. Run `ssh_keygen` command.
 6. Run `get_ssh` command.
 7. Add the ssh public key at Github and Bitbucket.
-8. Run `ssh_non_sudo_setup` command.
+8. Run `ssh_non_sudo_setup` command to authenticate with Github and Bitbucket from command line.
 9. Cheers! You're all set.
 
 ### Usage Notes:
