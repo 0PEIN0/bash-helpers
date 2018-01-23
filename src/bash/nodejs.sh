@@ -42,6 +42,7 @@ nodeUpdates() {
   npm install -g webpack@latest
   npm install -g cordova@latest
   npm install -g ionic@latest
+  npm install -g electron@latest
   webdriver-manager update
   goToRoot
 }
