@@ -173,22 +173,6 @@ coreSystemUpdate() {
   aptGet
 }
 
-checkVirtualPythonEnvironmentFolder() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  goToRoot
-  if [ -d "$SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER" ]; then
-    cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER/
-  else
-    cd $SYSTEM_ROOT_FOLDER/
-    mkdir -p $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME
-    cd $SYSTEM_ROOT_VIRTUAL_PYTHON_ENVIRONMENT_FOLDER_NAME/
-  fi;
-}
-
 checkSoftwareFolder() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName

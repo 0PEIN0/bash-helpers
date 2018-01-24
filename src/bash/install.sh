@@ -1035,7 +1035,7 @@ installPackagesForSystemNonSudoFirst() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  checkVirtualPythonEnvironmentFolder
+  checkRootVirtualPythonEnvironmentFolder
   checkSoftwareFolder
   checkAppsFolder
   checkMusicVideosFolder
