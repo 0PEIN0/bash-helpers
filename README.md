@@ -97,3 +97,5 @@ sudo -u postgres psql -c '<SQL_QUERY>'
 4. [dotfiles](https://github.com/shazow/dotfiles) by [Andrey Petrov](https://github.com/shazow).
 5. [bash-common-helpers](https://github.com/martinburger/bash-common-helpers) by [Martin Burger](https://github.com/martinburger).
 6. [git-bash-helpers](https://github.com/jonathantneal/git-bash-helpers) by [Jonathan Neal](https://github.com/jonathantneal).
+7. [Bash helpers gist](https://gist.github.com/mpneuried/5916618) by [M. Peter](https://github.com/mpneuried)
+8. [bash-it](https://github.com/Bash-it/bash-it) by [Bash-it](https://github.com/Bash-it)
