@@ -15,13 +15,21 @@ Intended to help software engineers working on python/django and nodejs environm
 2. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
 3. Login to Chrome as user.
 4. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
-5. Open "Chrome" and go to [Bash Helper's Repository](https://github.com/0PEIN0/bash-helpers) and clone it in Gitrepos folder by running following commands:
+5. Run `sudo su` command(enter into the sudo user mode).
+
+### SWITCH TO SUDO USER MODE
+1. Run `sudo apt-get update` command.
+2. Run `sudo apt-get install git` command to install **git** package.
+3. Run `exit` command to exit from sudo mode user.
+
+### SWITCH TO NON SUDO USER MODE
+1. Open "Chrome" and go to [Bash Helper's Repository](https://github.com/0PEIN0/bash-helpers) and clone it in Gitrepos folder by running following commands:
 ```sh
 $ cd /home/$SYSTEM_USER_NAME/Gitrepos/
 $ git clone https://github.com/0PEIN0/bash-helpers.git
 ```
 Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
-6. After cloning, create a new directory again inside of user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/helper-scripts/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. After you have created this folder, create a new file there(inside the newly created folder) called ***personal.sh***. Copy the file contents from [***sample-personal.sh***](src/bash/sample-personal.sh) file from the current repository to ***/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh*** file. Then just configure your info in ***personal.sh*** file like this:
+2. After cloning, create a new directory again inside of user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/helper-scripts/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. After you have created this folder, create a new file there(inside the newly created folder) called ***personal.sh***. Copy the file contents from [***sample-personal.sh***](src/bash/sample-personal.sh) file from the current repository to ***/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh*** file. Then just configure your info in ***personal.sh*** file like this:
 
 >`SYSTEM_USER_FULL_NAME="John Doe"`
 
@@ -31,18 +39,18 @@ Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubunt
 
 >`DEFAULT_PERMISSION_VALUE=777`
 
-7. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
-8. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
+3. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
+4. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
 if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
 fi;
 ```
-9. Run `source ~/.bashrc` command.
-10. Run `system_init_non_sudo_first` command.
-11. Run `admin` command(enter into the sudo user mode).
+5. Run `source ~/.bashrc` command.
+6. Run `system_init_non_sudo_first` command.
+7. Run `admin` command(enter into the sudo user mode).
 
-### SWITCH TO SUDO USER MODE
+### SWITCH BACK TO SUDO USER MODE
 1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
 2. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
