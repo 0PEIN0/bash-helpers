@@ -10,7 +10,7 @@ Intended to help software engineers working on python/django and nodejs environm
 
 # New System Installation Instructions
 
-### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO USER MODE
+### LOGIN TO THE SYSTEM FOR THE FIRST TIME
 1. Open `System Settings` in Ubuntu.
 2. Go to `Brightness & Lock` -> Uncheck `Dim screen to save power`.
 3. Go to `Brightness & Lock` -> Set `Turn screen off when inactive for` value to `Never`.
@@ -24,9 +24,12 @@ Intended to help software engineers working on python/django and nodejs environm
 11. Go to `Power` -> `When the lid is closed` -> `When plugged in` -> Select `Do nothing`.
 12. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
 13. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
-14. Login to Chrome as user.
-15. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
-16. Run `sudo su` command(enter into the sudo user mode).
+14. Login to Chrome with google account.
+15. Open terminal.
+
+### IN NON SUDO USER MODE
+1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
+2. Run `sudo su` command(enter into the sudo user mode).
 
 ### SWITCH TO SUDO USER MODE
 1. Run `sudo apt-get update` command.
@@ -77,7 +80,7 @@ fi;
 8. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 9. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value.
 ```sql
-"ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;"
+ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;
 ```
 Its also possible to run the above sql queries directly from command line as well, like the following.
 ```bash
