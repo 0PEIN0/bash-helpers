@@ -87,6 +87,7 @@ Its also possible to run the above sql queries directly from command line as wel
 sudo -u postgres psql -c '<SQL_QUERY>'
 ```
 Type and enter `\q` to exit from postgres shell.
+
 10. Run `ssh_keygen` command.
 11. Run `get_ssh` command.
 12. Add the ssh public key at Github and Bitbucket.
