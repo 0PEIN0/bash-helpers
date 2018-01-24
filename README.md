@@ -11,11 +11,22 @@ Intended to help software engineers working on python/django and nodejs environm
 # New System Installation Instructions
 
 ### LOGIN TO THE SYSTEM FOR THE FIRST TIME AND IN NON SUDO USER MODE
-1. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
-2. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
-3. Login to Chrome as user.
-4. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
-5. Run `sudo su` command(enter into the sudo user mode).
+1. Open `System Settings` in Ubuntu.
+2. Go to `Brightness & Lock` -> Uncheck `Dim screen to save power`.
+3. Go to `Brightness & Lock` -> Set `Turn screen off when inactive for` value to `Never`.
+4. Go to `Brightness & Lock` -> Set `Lock` switch to `OFF`.
+5. Go to `Brightness & Lock` -> Uncheck `Require my password when waking from suspend`.
+6. Open `System Settings` in Ubuntu.
+7. Go to `Power` -> `Suspend when inactive for` -> `On battery power` -> Select `Don't suspend`.
+8. Go to `Power` -> `Suspend when inactive for` -> `When plugged in` -> Select `Don't suspend`.
+9. Go to `Power` -> `When power critically low` -> `On battery power` -> Select `empty`.
+10. Go to `Power` -> `When the lid is closed` -> `On battery power` -> Select `Do nothing`.
+11. Go to `Power` -> `When the lid is closed` -> `When plugged in` -> Select `Do nothing`.
+12. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
+13. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox.
+14. Login to Chrome as user.
+15. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
+16. Run `sudo su` command(enter into the sudo user mode).
 
 ### SWITCH TO SUDO USER MODE
 1. Run `sudo apt-get update` command.
