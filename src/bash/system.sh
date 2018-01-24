@@ -218,8 +218,8 @@ checkMusicVideosFolder() {
   goToRoot
   musicVideosFolder="$SYSTEM_MUSIC_VIDEOS_FOLDER/"
   if [ ! -d "$musicVideosFolder" ]; then
-    mkdir -p $musicVideosFolder
-    chmod $DEFAULT_PERMISSION_VALUE $musicVideosFolder
+    mkdir -p "$musicVideosFolder"
+    chmod $DEFAULT_PERMISSION_VALUE "$musicVideosFolder"
   fi;
   cd $musicVideosFolder/
 }
