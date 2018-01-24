@@ -676,7 +676,9 @@ installPostman() {
   wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz --no-check-certificate
   tar -xzf postman.tar.gz -C /opt
   rm postman.tar.gz
+  rm -rf /usr/bin/postman
   ln -s /opt/Postman/Postman /usr/bin/postman
+  export PATH="$PATH:/usr/bin/postman"
 
  cat > ~/.local/share/applications/postman.desktop <<EOL
   [Desktop Entry]
