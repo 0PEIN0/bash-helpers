@@ -41,6 +41,7 @@ nodeUpdates() {
   npm install -g grunt-cli@latest
   npm install -g webpack@latest
   npm install -g webpack-dev-server@latest
+  npm install -g vue-cli@latest
   npm install -g cordova@latest
   npm install -g ionic@latest
   npm install -g electron@latest --unsafe-perm=true --allow-root
