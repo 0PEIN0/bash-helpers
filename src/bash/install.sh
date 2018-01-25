@@ -485,6 +485,7 @@ installAtomExtensionsNonSudo() {
   apm install ide-php
   apm install ide-python
   apm install ide-cpp
+  apm install language-vue
   goToRoot
 }
 
