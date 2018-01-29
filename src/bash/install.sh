@@ -1086,6 +1086,7 @@ alias install_smartgit="installSmartgit $LATEST_SMARTGIT_FILE_NAME"
 alias install_sublime="installSublime"
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
+alias install_zoom="installZoomConference"
 alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'
