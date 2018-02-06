@@ -76,15 +76,17 @@ fi;
 4. Run `system_init_sudo` command. This command will take approximately 2 hours, have a snack/coffee in this period.
 5. Restart machine.
 6. Enter sudo user mode again after restart by running `admin` command.
-7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
+7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
+```bash
+if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
+    . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
+fi;
+```
+
 8. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
-9. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value.
+9. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value in the sql script below. You can enter the postgres shell by entering `postgres_shell_sudo` command.
 ```sql
 ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;
-```
-Its also possible to run the above sql queries directly from command line as well, like the following.
-```bash
-sudo -u postgres psql -c '<SQL_QUERY>'
 ```
 Type and enter `\q` to exit from postgres shell.
 
@@ -93,19 +95,26 @@ Type and enter `\q` to exit from postgres shell.
 12. Add the ssh public key at Github and Bitbucket.
 13. Run `ssh_sudo_setup` command to authenticate with Github and Bitbucket from command line.
 14. Run `install_nodejs` command to install nodejs.
-15. Run this command to install all the necessary global packages via npm: `node_update`.
+15. Run this command to install all the necessary global packages via npm: `node_update`. If there is a infinite for loop message that is appearing in console, press `Ctrl + C` to stop it. Run this command at some other time in that case.
 16. Run `exit` command.
 
 ### SWITCH BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
-2. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder).
+2. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
+```bash
+if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
+    . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
+fi;
+```
+
 3. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
-4. Run `source ~/.zshrc`.
-5. Run `ssh_keygen` command.
-6. Run `get_ssh` command.
-7. Add the ssh public key at Github and Bitbucket.
-8. Run `ssh_non_sudo_setup` command to authenticate with Github and Bitbucket from command line.
-9. Cheers! You're all set.
+4. Run `source ~/.zshrc`. If you see some weird bash error when sourcing, just ignore it. It should be fixed after restarting the machine.
+5. Restart machine.
+6. Run `ssh_keygen` command.
+7. Run `get_ssh` command.
+8. Add the ssh public key at Github and Bitbucket.
+9. Run `ssh_non_sudo_setup` command to authenticate with Github and Bitbucket from command line.
+10. Cheers! You're all set.
 
 ### Usage Notes:
 
