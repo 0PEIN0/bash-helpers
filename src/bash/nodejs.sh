@@ -88,6 +88,7 @@ nodeExpressNpmInitiation() {
 
 alias node_update=nodeUpdates
 alias install_nodejs=installNodejs
-alias npm_adduser="npm adduser"# asks for username, password and public-email in the prompt
-alias npm_publish="npm publish"# don't forget to upgrade the version before publishing
+alias npm_adduser="npm adduser" # asks for username, password and public-email in the prompt
+alias npm_i="npm install"
+alias npm_publish="npm publish" # don't forget to upgrade the version before publishing
 alias npm_whoami="npm whoami"
