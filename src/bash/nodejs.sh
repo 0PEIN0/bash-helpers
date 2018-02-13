@@ -93,5 +93,6 @@ alias npm_build="npm run build"
 alias npm_i="npm install"
 alias npm_publish="npm publish" # don't forget to upgrade the version before publishing
 alias npm_update="npm update"
+alias npm_update_watch="npm_update && npm_watch"
 alias npm_watch="npm_build && npm run start"
 alias npm_whoami="npm whoami"
