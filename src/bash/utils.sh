@@ -16,7 +16,7 @@ downloadYoutubeVideo() {
     echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
-  eval "cd $SYSTEM_MUSIC_VIDEOS_FOLDER"
+  eval "cd \"$SYSTEM_MUSIC_VIDEOS_FOLDER\""
   eval "youtube-dl https://www.youtube.com/watch\?v=$1"
 }
 

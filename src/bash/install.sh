@@ -1,19 +1,19 @@
 #!/bin/bash
 
-LATEST_PYCHARM_VERSION="pycharm-community-2017.3.1"
+LATEST_PYCHARM_VERSION="pycharm-community-2017.3.3"
 LATEST_SMARTGIT_FILE_NAME="smartgit-17_1_3.deb"
-LATEST_VSCODE_FILE_NAME="code_1.19.0-1513245498_amd64.deb"
-LATEST_SLACK_VERSION="3.0.0"
+LATEST_VSCODE_FILE_NAME="code_1.19.2-1515599945_amd64.deb"
+LATEST_SLACK_VERSION="3.0.5"
 LATEST_ROBOMONGO_VERSION="1.1.1"
 LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-c93c6b0"
 LATEST_PHANTOMJS_VERSION="2.1.1"
 LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-linux-x86_64.tar.bz2"
-LATEST_GOLANG_VERSION="1.9.2"
+LATEST_GOLANG_VERSION="1.9.3"
 LATEST_GOLANG_VERSION_FULL="go$LATEST_GOLANG_VERSION.linux-amd64"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
 LATEST_POSTGIS_VERSION="postgis-2.3.3"
-LATEST_PYTHON_VERSION="3.6.3"
+LATEST_PYTHON_VERSION="3.6.4"
 LATEST_BRACKET_VERSION="1.11"
 LATEST_STACER_VERSION="1.0.6"
 
@@ -67,6 +67,8 @@ installPythonAndPostgres() {
   pip install --upgrade pyOpenSSL==16.2.0
   pip install --upgrade selenium
   pip install --upgrade python-language-server
+  pip install --upgrade jupyter
+  pip install --upgrade leo
   sudo service postgresql restart
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
@@ -485,6 +487,7 @@ installAtomExtensionsNonSudo() {
   apm install ide-php
   apm install ide-python
   apm install ide-cpp
+  apm install language-vue
   goToRoot
 }
 
@@ -676,7 +679,9 @@ installPostman() {
   wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz --no-check-certificate
   tar -xzf postman.tar.gz -C /opt
   rm postman.tar.gz
+  rm -rf /usr/bin/postman
   ln -s /opt/Postman/Postman /usr/bin/postman
+  export PATH="$PATH:/usr/bin/postman"
 
  cat > ~/.local/share/applications/postman.desktop <<EOL
   [Desktop Entry]
@@ -1083,6 +1088,7 @@ alias install_smartgit="installSmartgit $LATEST_SMARTGIT_FILE_NAME"
 alias install_sublime="installSublime"
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
+alias install_zoom="installZoomConference"
 alias ssh_agent_add='ssh-add ~/.ssh/id_rsa'
 alias ssh_agent_add_root='ssh-add /root/.ssh/id_rsa'
 alias ssh_agent_verify='eval "$(ssh-agent -s)"'

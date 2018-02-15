@@ -5,7 +5,6 @@ installNodejs() {
   aptGet
   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   sudo apt-get install -y nodejs
-  nodeUpdates
 }
 
 nodeUpdates() {
@@ -40,9 +39,12 @@ nodeUpdates() {
   npm install -g redux-devtools@latest
   npm install -g grunt-cli@latest
   npm install -g webpack@latest
+  npm install -g webpack-dev-server@latest
+  npm install -g vue-cli@latest
   npm install -g cordova@latest
   npm install -g ionic@latest
   npm install -g electron@latest --unsafe-perm=true --allow-root
+  npm install -g http-server@latest
   webdriver-manager update
   goToRoot
 }
@@ -86,3 +88,11 @@ nodeExpressNpmInitiation() {
 
 alias node_update=nodeUpdates
 alias install_nodejs=installNodejs
+alias npm_adduser="npm adduser" # asks for username, password and public-email in the prompt
+alias npm_build="npm run build"
+alias npm_i="npm install"
+alias npm_publish="npm publish" # don't forget to upgrade the version before publishing
+alias npm_update="npm update"
+alias npm_update_watch="npm_update && npm_watch"
+alias npm_watch="npm_build && npm run start"
+alias npm_whoami="npm whoami"
