@@ -348,7 +348,7 @@ installSmartgit() {
     return $1
   fi;
   cd $SYSTEM_SOFTWARE_FOLDER
-  wget -O $1 "http://www.syntevo.com/static/smart/download/smartgit/$1"
+  wget -O $1 "https://www.syntevo.com/downloads/smartgit/$1"
   printf 'y\n' | sudo apt install $1
   sudo dpkg -i $1
   printf 'y\n' | sudo apt-get install -f
