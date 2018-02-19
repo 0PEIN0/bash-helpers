@@ -488,6 +488,7 @@ installAtomExtensionsNonSudo() {
   apm install ide-python
   apm install ide-cpp
   apm install language-vue
+  apm install teletype
   goToRoot
 }
 
