@@ -31,12 +31,12 @@ Intended to help software engineers working on python/django and nodejs environm
 1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
 2. Run `sudo su` command(enter into the sudo user mode).
 
-### SWITCH TO SUDO USER MODE
+### SWITCHED TO SUDO USER MODE
 1. Run `sudo apt-get update` command.
 2. Run `sudo apt-get install git` command to install **git** package.
 3. Run `exit` command to exit from sudo mode user.
 
-### SWITCH TO NON SUDO USER MODE
+### SWITCHED TO NON SUDO USER MODE
 1. Open "Chrome" and go to [Bash Helper's Repository](https://github.com/0PEIN0/bash-helpers) and clone it in Gitrepos folder by running following commands:
 ```sh
 $ cd /home/$SYSTEM_USER_NAME/Gitrepos/
@@ -64,7 +64,7 @@ fi;
 6. Run `system_init_non_sudo_first` command.
 7. Run `admin` command(enter into the sudo user mode).
 
-### SWITCH BACK TO SUDO USER MODE
+### SWITCHED BACK TO SUDO USER MODE
 1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
 2. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
@@ -90,15 +90,15 @@ ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '
 ```
 Type and enter `\q` to exit from postgres shell.
 
-10. Run `ssh_keygen` command.
-11. Run `get_ssh` command.
+10. Run `ssh_keygen` command. Press `Enter` when prompted to choose file `/root/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
+11. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
 12. Add the ssh public key at Github and Bitbucket.
 13. Run `ssh_sudo_setup` command to authenticate with Github and Bitbucket from command line.
 14. Run `install_nodejs` command to install nodejs.
 15. Run this command to install all the necessary global packages via npm: `node_update`. If there is a infinite for loop message that is appearing in console, press `Ctrl + C` to stop it. Run this command at some other time in that case.
 16. Run `exit` command.
 
-### SWITCH BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
+### SWITCHED BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
 2. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
@@ -110,8 +110,8 @@ fi;
 3. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 4. Run `source ~/.zshrc`. If you see some weird bash error when sourcing, just ignore it. It should be fixed after restarting the machine.
 5. Restart machine.
-6. Run `ssh_keygen` command.
-7. Run `get_ssh` command.
+6. Run `ssh_keygen` command. Press `Enter` when prompted to choose file `/home/$SYSTEM_USER_NAME/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
+7. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
 8. Add the ssh public key at Github and Bitbucket.
 9. Run `ssh_non_sudo_setup` command to authenticate with Github and Bitbucket from command line.
 10. Cheers! You're all set.
@@ -121,7 +121,7 @@ fi;
 1. Estimated total installation time is 2-3 hours for fresh new OS installation, although will vary based on machine and network connection performance.
 2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.
 
-### Other Similar Projects:
+### Other similar projects that inspired this repo:
 
 1. [Brilliant Bash](https://github.com/roytenberg/brilliant-bash) by [Ben Roytenberg](https://github.com/roytenberg).
 2. [shell-scripts](https://github.com/trevordmiller/shell-scripts) by [Trevor D. Miller](https://github.com/trevordmiller).

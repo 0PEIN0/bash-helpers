@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LATEST_PYCHARM_VERSION="pycharm-community-2017.3.3"
-LATEST_SMARTGIT_FILE_NAME="smartgit-17_1_3.deb"
+LATEST_SMARTGIT_FILE_NAME="smartgit-18_1-preview-5.deb"
 LATEST_VSCODE_FILE_NAME="code_1.19.2-1515599945_amd64.deb"
 LATEST_SLACK_VERSION="3.0.5"
 LATEST_ROBOMONGO_VERSION="1.1.1"
@@ -348,7 +348,7 @@ installSmartgit() {
     return $1
   fi;
   cd $SYSTEM_SOFTWARE_FOLDER
-  wget -O $1 "http://www.syntevo.com/static/smart/download/smartgit/$1"
+  wget -O $1 "https://www.syntevo.com/downloads/smartgit/$1"
   printf 'y\n' | sudo apt install $1
   sudo dpkg -i $1
   printf 'y\n' | sudo apt-get install -f
@@ -488,6 +488,7 @@ installAtomExtensionsNonSudo() {
   apm install ide-python
   apm install ide-cpp
   apm install language-vue
+  apm install teletype
   goToRoot
 }
 
