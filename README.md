@@ -90,7 +90,7 @@ ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '
 ```
 Type and enter `\q` to exit from postgres shell.
 
-10. Run `ssh_keygen` command. Press `Enter` when prompted to choose file `/root/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
+10. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/root/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
 11. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
 12. Add the ssh public key at Github and Bitbucket.
 13. Run `ssh_sudo_setup` command to authenticate with Github and Bitbucket from command line.
@@ -110,7 +110,7 @@ fi;
 3. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 4. Run `source ~/.zshrc`. If you see some weird bash error when sourcing, just ignore it. It should be fixed after restarting the machine.
 5. Restart machine.
-6. Run `ssh_keygen` command. Press `Enter` when prompted to choose file `/home/$SYSTEM_USER_NAME/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
+6. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/home/$SYSTEM_USER_NAME/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
 7. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
 8. Add the ssh public key at Github and Bitbucket.
 9. Run `ssh_non_sudo_setup` command to authenticate with Github and Bitbucket from command line.
