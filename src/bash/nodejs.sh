@@ -18,7 +18,6 @@ nodeUpdates() {
   npm i -g npm
   npm install -g @angular/cli
   npm install -g mongodb@latest
-  npm install -g socket.io@latest
   npm install -g gulp gulp-cli@latest
   npm install -g bower@latest
   npm install -g mocha@latest
@@ -31,8 +30,6 @@ nodeUpdates() {
   npm install -g pm2@latest
   npm install -g forever@latest
   npm install -g prettyjson@latest
-  npm install -g uglify-js@latest
-  npm install -g html-minifier@latest
   npm install -g react@latest
   npm install -g redux@latest
   npm install -g react-redux@latest
