@@ -320,10 +320,10 @@ systemUpdatesNonSudo() {
   fi;
   cd /
   bash_refresh
+  eval "sshOperationsNonSudo"
   upgrade_oh_my_zsh
   youtube-dl -U
   apmUpdates
-  eval "sshOperationsNonSudo"
   cd $BASH_HELPER_GIT_FOLDER
   eval "gitResetHard"
   eval "git_f"
