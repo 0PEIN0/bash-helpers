@@ -118,7 +118,7 @@ fi;
 
 ### Usage Notes:
 
-1. Estimated total installation time is 2-5 hours for fresh new OS installation, although will vary based on machine and network connection performance.
+1. Estimated total installation time is 2-5 hours for fresh new OS installation, although it will vary based on machine and network connection performance.
 2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s). The `uap` command will ensure the daily fetch for latest changes on `bash-helpers` repository.
 
 ### Other similar projects that inspired this repo:
