@@ -308,8 +308,10 @@ sshOperationsNonSudo() {
   ssh-add ~/.ssh/id_rsa
   ssh-keyscan -t rsa github.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
   ssh-keyscan -t rsa bitbucket.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
+  ssh-keyscan -t rsa gitlab.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
   printf "yes\n" | ssh -T git@github.com
   printf "yes\n" | ssh -T git@bitbucket.com
+  printf "yes\n" | ssh -T git@gitlab.com
 }
 
 systemUpdatesNonSudo() {
@@ -319,15 +321,14 @@ systemUpdatesNonSudo() {
     return
   fi;
   cd /
-  bash_refresh
+  pein_bash_refresh
   eval "sshOperationsNonSudo"
   upgrade_oh_my_zsh
   youtube-dl -U
   apmUpdates
   cd $BASH_HELPER_GIT_FOLDER
-  eval "gitResetHard"
-  eval "git_f"
-  eval "gitResetHard"
+  cd src/python/
+  python3 git_pull_all.py
   cd /
 }
 
