@@ -294,8 +294,10 @@ sshOperationsSudo() {
   ssh-add /root/.ssh/id_rsa
   ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
   ssh-keyscan -t rsa bitbucket.com >> /root/.ssh/known_hosts
+  ssh-keyscan -t rsa gitlab.com >> /root/.ssh/known_hosts
   printf "yes\n" | ssh -T git@github.com
   printf "yes\n" | ssh -T git@bitbucket.com
+  printf "yes\n" | ssh -T git@gitlab.com
 }
 
 sshOperationsNonSudo() {
