@@ -92,7 +92,7 @@ Type and enter `\q` to exit from postgres shell.
 
 10. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/root/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
 11. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
-12. Add the ssh public key at Github, Gitlab and Bitbucket.
+12. Add the ssh public key at [Github](https://github.com/settings/ssh/new), [Gitlab](https://gitlab.com/profile/keys) and [Bitbucket](https://bitbucket.org/account/user/PEIN/ssh-keys/).
 13. Run `ssh_sudo_setup` command to authenticate with Github, Gitlab and Bitbucket from command line.
 14. Run `install_nodejs` command to install nodejs.
 15. Run this command to install all the necessary global packages via npm: `node_update`. If there is a infinite for loop message that is appearing in console, press `Ctrl + C` to stop it. Run this command at some other time in that case.
@@ -112,7 +112,7 @@ fi;
 5. Restart machine.
 6. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/home/$SYSTEM_USER_NAME/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
 7. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
-8. Add the ssh public key at Github, Gitlab and Bitbucket.
+8. Add the ssh public key at [Github](https://github.com/settings/ssh/new), [Gitlab](https://gitlab.com/profile/keys) and [Bitbucket](https://bitbucket.org/account/user/PEIN/ssh-keys/).
 9. Run `ssh_non_sudo_setup` command to authenticate with Github, Gitlab and Bitbucket from command line.
 10. Cheers! You're all set.
 
