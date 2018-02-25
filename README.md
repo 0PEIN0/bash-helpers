@@ -90,13 +90,9 @@ ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '
 ```
 Type and enter `\q` to exit from postgres shell.
 
-10. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/root/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
-11. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
-12. Add the ssh public key at [Github](https://github.com/settings/ssh/new), [Gitlab](https://gitlab.com/profile/keys) and [Bitbucket](https://bitbucket.org/account/user/PEIN/ssh-keys/).
-13. Run `ssh_sudo_setup` command to authenticate with Github, Gitlab and Bitbucket from command line.
-14. Run `install_nodejs` command to install nodejs.
-15. Run this command to install all the necessary global packages via npm: `node_update`. If there is a infinite for loop message that is appearing in console, press `Ctrl + C` to stop it. Run this command at some other time in that case.
-16. Run `exit` command.
+10. Run `install_nodejs` command to install nodejs.
+11. Run this command to install all the necessary global packages via npm: `node_update`. If there is a infinite for loop message that is appearing in console, press `Ctrl + C` to stop it. Run this command at some other time in that case.
+12. Run `exit` command.
 
 ### NOW SWITCHED BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
@@ -110,7 +106,11 @@ fi;
 3. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 4. Run `source ~/.zshrc`. If you see some weird bash error when sourcing, just ignore it. It should be fixed after restarting the machine.
 5. Restart machine.
-6. Cheers! You're all set.
+6. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/home/$SYSTEM_USER_NAME/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
+7. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
+8. Add the ssh public key at [Github](https://github.com/settings/ssh/new), [Gitlab](https://gitlab.com/profile/keys) and [Bitbucket](https://bitbucket.org/account/user/PEIN/ssh-keys/).
+9. Run `ssh_non_sudo_setup` command to authenticate with Github, Gitlab and Bitbucket from command line.
+10. Cheers! You're all set.
 
 ### Usage Notes:
 
