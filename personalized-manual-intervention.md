@@ -2,7 +2,7 @@
 
 1. Open "Atom" -> There will be a pop-up showing list of dependencies to install, press "Yes" to install them.
 2. Open "Dropbox" from dash -> Login to Dropbox.
-3. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login. Install CS:GO in default location when prompted.
+3. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login. Install CS:GO in default location when prompted. ***(Of course I play and follow CS:GO, are you kidding me?! Already have 3700+ hours on it. Rank: Legendary Eagle)***
 4. Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
 5. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
 6. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
