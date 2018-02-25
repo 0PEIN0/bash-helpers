@@ -75,7 +75,7 @@ fi;
 3. Run `source ~/.bashrc` command.
 4. Run `system_init_sudo` command. This command will take approximately 2-4 hours, have a snack/coffee in this period.
 5. Restart machine.
-6. Enter sudo user mode again after restart by running `admin` command.
+6. Enter sudo user mode again after restart by running `admin` command after opening terminal.
 7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
 if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
