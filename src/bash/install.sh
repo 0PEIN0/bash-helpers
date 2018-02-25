@@ -1030,6 +1030,8 @@ installPackagesForSystemSudo() {
   # Install ZSH
   aptGet
   installZshSudo
+  # Install nodejs
+  installNodejs
   goToRoot
 }
 
