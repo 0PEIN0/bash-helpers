@@ -108,7 +108,7 @@ fi;
 5. Restart machine.
 6. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/home/$SYSTEM_USER_NAME/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase.
 7. Run `get_ssh` command. This will copy the generated ssh public key to clipboard.
-8. Add the ssh public key at [Github](https://github.com/settings/ssh/new), [Gitlab](https://gitlab.com/profile/keys) and [Bitbucket](https://bitbucket.org/account/user/PEIN/ssh-keys/).
+8. Add the ssh public key at [Github](https://github.com/settings/ssh/new), [Gitlab](https://gitlab.com/profile/keys) and [Bitbucket](https://bitbucket.org/account).
 9. Run `ssh_non_sudo_setup` command to authenticate with Github, Gitlab and Bitbucket from command line.
 10. Cheers! You're all set.
 
