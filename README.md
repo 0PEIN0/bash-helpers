@@ -112,13 +112,13 @@ fi;
 9. Run `ssh_non_sudo_setup` command to authenticate with Github, Gitlab and Bitbucket from command line.
 10. Cheers! You're all set.
 
-### Usage Notes:
+# Usage Notes:
 
 1. Estimated total installation time is 2-5 hours for fresh new OS installation, although it will vary based on machine and network connection performance.
 2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s), for example: `root` user. The `uap` command will ensure the daily pull for latest changes on repositories that resides in `~/Gitrepos` folder.
 3. For further OS customization, you can take a look into [this](personalized-manual-intervention.md) file. This is a personalized OS environment file for myself, but you might get some idea as to what some of the customizations may look like.
 
-### Other similar projects that inspired this repository:
+## Other similar projects that inspired this repository:
 
 1. [Brilliant Bash](https://github.com/roytenberg/brilliant-bash) by [Ben Roytenberg](https://github.com/roytenberg).
 2. [shell-scripts](https://github.com/trevordmiller/shell-scripts) by [Trevor D. Miller](https://github.com/trevordmiller).
