@@ -1068,6 +1068,7 @@ installPackagesForSystemNonSudoThird() {
 }
 
 alias install_atom=installAtom
+alias install_atom_extensions=installAtomExtensionsNonSudo
 alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
