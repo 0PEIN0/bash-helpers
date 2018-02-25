@@ -61,7 +61,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
 fi;
 ```
 5. Run `source ~/.bashrc` command.
-6. Run `system_init_non_sudo_first` command.
+6. Run `system_init_non_sudo_first` command. Ignore any error that may show up in the terminal after running this command.
 7. Run `admin` command(enter into the sudo user mode).
 
 ### NOW SWITCHED BACK TO SUDO USER MODE
