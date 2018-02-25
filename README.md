@@ -23,7 +23,7 @@ Intended to help software engineers working on python/django and nodejs environm
 10. Go to `Power` -> `When the lid is closed` -> `On battery power` -> Select `Do nothing`.
 11. Go to `Power` -> `When the lid is closed` -> `When plugged in` -> Select `Do nothing`.
 12. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
-13. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox. ***Why would you not use Dropbox when it provides backups to your most useful files and is present in all major OS which being free to use upto the necessary limit?!***
+13. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox. ***Why would you not use Dropbox when it provides backups to your most useful files and is present in all major OS while being free to use upto the necessary limit?!***
 14. Login to Chrome with google account.
 15. Open terminal.
 
