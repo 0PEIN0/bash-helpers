@@ -1,7 +1,6 @@
 #!/bin/bash
 
 LATEST_PYCHARM_VERSION="pycharm-community-2017.3.3"
-LATEST_SMARTGIT_FILE_NAME="smartgit-18_1-preview-5.deb"
 LATEST_VSCODE_FILE_NAME="code_1.19.2-1515599945_amd64.deb"
 LATEST_SLACK_VERSION="3.0.5"
 LATEST_ROBOMONGO_VERSION="1.1.1"
@@ -337,23 +336,6 @@ installZoomConference() {
   printf 'y\n' | sudo apt-get install -f
 }
 
-installSmartgit() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
-    return $1
-  fi;
-  cd $SYSTEM_SOFTWARE_FOLDER
-  wget -O $1 "https://www.syntevo.com/downloads/smartgit/$1"
-  printf 'y\n' | sudo apt install $1
-  sudo dpkg -i $1
-  printf 'y\n' | sudo apt-get install -f
-}
-
 installRedis() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -511,49 +493,6 @@ installAtom() {
   sudo apt-get install -f
   rm -rf atom-amd64.deb
   goToRoot
-}
-
-installSmartgitByCrawl() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  # TODO: finish this implementation
-  # Download the smartgit from website first and place it in the downloads folder
-  if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
-    return $1
-  fi;
-  fileName=""
-  startPartternString="<a href=\"./download?file=smartgit"
-  endPartternString="\""
-  dataString=$(getWebsiteData "http://www.syntevo.com/smartgit/download")
-  dataStringLen=${#dataString}
-  startPartternStringLen=${#startPartternString}
-  endPartternStringLen=${#endPartternString}
-  dataStringLen=$(($dataStringLen-1))
-  for i in {0..$dataStringLen}; do
-    limitEnd=$(($i+$startPartternStringLen-1))
-    substring=''
-    for j in {$i..$limitEnd}; do
-      singleChar=${dataString:$j:1}
-      substring=$substring$singleChar
-    done
-    if [[ "$substring" == "$startPartternString" ]]; then
-      #res=''
-      #limitStart=$(($limitEnd+1))
-      #substring=''
-      #for j in {$limitStart..$dataStringLen}; do
-      #  singleChar=${dataString:$j:1}
-      #  substring=$substring$singleChar
-      #done
-      echo "$substring"
-    fi
-  done
-  printf 'y\n' | sudo apt install $fileName
-  sudo dpkg -i $fileName
-  printf 'y\n' | sudo apt-get install -f
 }
 
 installStacer() {
@@ -1019,8 +958,6 @@ installPackagesForSystemSudo() {
   installVisualStudioCode $LATEST_VSCODE_FILE_NAME
   # Install java
   installJava
-  # Install smartgit
-  installSmartgit $LATEST_SMARTGIT_FILE_NAME
   # Install pycharm
   installPyCharm $LATEST_PYCHARM_VERSION
   # Install slack chat app
@@ -1088,7 +1025,6 @@ alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"
-alias install_smartgit="installSmartgit $LATEST_SMARTGIT_FILE_NAME"
 alias install_sublime="installSublime"
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
