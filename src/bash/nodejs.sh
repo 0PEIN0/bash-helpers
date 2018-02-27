@@ -20,8 +20,7 @@ nodeUpdates() {
   npm install -g mongodb@latest
   npm install -g gulp gulp-cli@latest
   npm install -g bower@latest
-  npm install -g mocha@latest
-  npm install -g coffee-script@latest
+  npm install -g coffeescript@latest
   npm install -g karma-cli@latest
   npm install -g nodemon@latest
   npm install -g npm@latest
