@@ -905,7 +905,7 @@ installPackagesForSystemSudo() {
   printf '\n' | sudo add-apt-repository ppa:qos/pulseaudio-dlna
   aptGet
   printf 'y\n' | sudo apt-get install pulseaudio-dlna
-  # Install noobs-lacb icons
+  # Install noobs-lab icons
   printf '\n' | sudo add-apt-repository ppa:noobslab/icons
   aptGet
   printf 'y\n' | sudo apt-get install ultra-flat-icons ultra-flat-icons-green ultra-flat-icons-orange
