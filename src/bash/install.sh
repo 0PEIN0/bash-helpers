@@ -28,6 +28,7 @@ installPythonAndPostgres() {
   printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
   printf 'y\n' | sudo apt-get install python-pyaudio python-numpy
   printf 'y\n' | sudo apt-get install postgresql-server-dev-9.5
+  printf 'y\n' | sudo apt-get install python-scipy
   #geo-spatial packages
   printf 'y\n' | sudo apt-get install binutils libproj-dev gdal-bin libgdal-dev postgis
   cd $SYSTEM_SOFTWARE_FOLDER
@@ -72,6 +73,7 @@ installPythonAndPostgres() {
   pip install --upgrade quandl
   pip install --upgrade sklearn
   pip install --upgrade numpy
+  pip install --upgrade scipy
   sudo service postgresql restart
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
