@@ -10,7 +10,7 @@ Intended to help software engineers working on python/django and nodejs environm
 
 # New System Installation Instructions
 
-### LOGIN TO THE SYSTEM FOR THE FIRST TIME
+### LOGIN TO THE SYSTEM FOR THE FIRST TIME (OPTIONAL)
 1. Open `System Settings` in Ubuntu.
 2. Go to `Brightness & Lock` -> Uncheck `Dim screen to save power`.
 3. Go to `Brightness & Lock` -> Set `Turn screen off when inactive for` value to `Never`.
@@ -71,7 +71,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
 fi;
 ```
 2. Run `source ~/.bashrc` command.
-3. Run `system_init_sudo` command. This command will take approximately 2-4 hours, have a snack/coffee in this period.
+3. Run `system_init_sudo` command. This command will take approximately 2-4 hours, have a snack/coffee in this period. Will install all the required packages in sudo mode. All the packages that will installed from this command can be found [here](docs/list-of-packages.md).
 4. Restart machine.
 5. Enter sudo user mode again after restart by running `admin` command after opening terminal.
 6. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
@@ -113,7 +113,7 @@ fi;
 
 1. Estimated total installation time is 2-5 hours for fresh new OS installation, although it will vary based on machine and network connection performance.
 2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s), for example: `root` user. The `uap` command will ensure the daily pull for latest changes on repositories that resides in `~/Gitrepos` folder.
-3. For further OS customization, you can take a look into [this](personalized-manual-intervention.md) file. This is a personalized OS environment file for myself, but you might get some idea as to what some of the customizations may look like.
+3. For further OS customization, you can take a look into [this](docs/personalized-manual-intervention.md) file. This is a personalized OS environment file for myself, but you might get some idea as to what some of the customizations may look like.
 
 # Other similar projects that inspired this repository:
 
