@@ -69,7 +69,7 @@ installPythonAndPostgres() {
   pip install --upgrade jupyter
   pip install --upgrade leo
   pip install --upgrade pandas
-  pip install --upgrade qandl
+  pip install --upgrade quandl
   pip install --upgrade sklearn
   pip install --upgrade numpy
   sudo service postgresql restart
