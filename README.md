@@ -53,45 +53,43 @@ Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubunt
 
 >`DEFAULT_PERMISSION_VALUE=777`
 
-3. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
-4. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
+3. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
 if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
 fi;
 ```
-5. Run `source ~/.bashrc` command.
-6. Run `system_init_non_sudo_first` command. Ignore any error that may show up in the terminal after running this command.
-7. Run `admin` command(enter into the sudo user mode).
+4. Run `source ~/.bashrc` command.
+5. Run `system_init_non_sudo_first` command. Ignore any error that may show up in the terminal after running this command.
+6. Run `admin` command(enter into the sudo user mode).
 
 ### NOW SWITCHED BACK TO SUDO USER MODE
-1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file.
-2. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
+1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
 if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
 fi;
 ```
-3. Run `source ~/.bashrc` command.
-4. Run `system_init_sudo` command. This command will take approximately 2-4 hours, have a snack/coffee in this period.
-5. Restart machine.
-6. Enter sudo user mode again after restart by running `admin` command after opening terminal.
-7. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
+2. Run `source ~/.bashrc` command.
+3. Run `system_init_sudo` command. This command will take approximately 2-4 hours, have a snack/coffee in this period.
+4. Restart machine.
+5. Enter sudo user mode again after restart by running `admin` command after opening terminal.
+6. Run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
 ```bash
 if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
 fi;
 ```
 
-8. ***Optional*** Do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
-9. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value in the sql script below. You can enter the postgres shell by entering `postgres_shell_sudo` command.
+7. ***Optional*** Do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
+8. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value in the sql script below. You can enter the postgres shell by entering `postgres_shell_sudo` command.
 ```sql
 ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;
 ```
 Type and enter `\q` to exit from postgres shell.
 
-10. Run this command to install all the necessary global packages via npm: `node_update`. If there is a infinite for loop message that is appearing in console, press `Ctrl + C` to stop it. Run this command at some other time in that case.
-11. Run `exit` command.
+9. Run this command to install all the necessary global packages via npm: `node_update`. If there is a infinite for loop message that is appearing in console, press `Ctrl + C` to stop it. Run this command at some other time in that case.
+10. Run `exit` command.
 
 ### NOW SWITCHED BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
 1. Run `system_init_non_sudo_second` command.
