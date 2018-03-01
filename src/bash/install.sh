@@ -68,6 +68,9 @@ installPythonAndPostgres() {
   pip install --upgrade python-language-server
   pip install --upgrade jupyter
   pip install --upgrade leo
+  pip install --upgrade pandas
+  pip install --upgrade qandl
+  pip install --upgrade sklearn
   sudo service postgresql restart
   #the following command is for postgis installation in postgres in 9.3
   #sudo apt-get install postgresql-9.3-postgis-scripts postgresql-9.3-postgis-2.1-scripts
