@@ -1,2 +1,4 @@
 .DS_Store
 .ropeproject
+local_settings.py
+*.pyc
