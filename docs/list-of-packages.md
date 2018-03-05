@@ -141,3 +141,94 @@
 `electron`
 
 `http-server`
+
+90. PIP global packages:
+
+`WeasyPrint`
+
+`pip`
+
+`apiai`
+
+`django`
+
+`virtualenv`
+
+`jsbeautifier`
+
+`autopep8`
+
+`isort`
+
+`coursera-dl`
+
+`setuptools`
+
+`html5lib`
+
+`docker-compose`
+
+`awscli`
+
+`pyOpenSSL==16.2.0`
+
+`selenium`
+
+`python-language-server`
+
+`jupyter`
+
+`leo`
+
+`pandas`
+
+`quandl`
+
+`sklearn`
+
+`numpy`
+
+`scipy`
+
+91. `python-software-properties`
+92. `python-pip`
+93. `python-dev`
+94. `python3-dev`
+95. `libpq-dev`
+96. `postgresql`
+97. `postgresql-contrib`
+98. `pgadmin3`
+99. `libxml2-dev`
+100. `libxslt1-dev`
+101. `libjpeg-dev`
+102. `python-gpgme`
+103. `python-lxml`
+104. `python-cffi`
+105. `libcairo2`
+106. `libpango1.0-0`
+107. `libgdk-pixbuf2.0-0`
+108. `shared-mime-info`
+109. `libxslt-dev`
+110. `libffi-dev`
+111. `libcairo2-dev`
+112. `libpango1.0-dev`
+113. `libreadline-gplv2-dev`
+114. `libncursesw5-dev`
+115. `libssl-dev`
+116. `libsqlite3-dev`
+117. `tk-dev`
+118. `libgdbm-dev`
+119. `libc6-dev`
+120. `libbz2-dev`
+121. `python-pyaudio`
+122. `python-numpy`
+123. `postgresql-server-dev-9.5`
+124. `python-scipy`
+125. `binutils`
+126. `libproj-dev`
+127. `gdal-bin`
+128. `libgdal-dev`
+129. `postgis`
+130. `postgresql-9.6`
+131. `postgresql-9.6-postgis-2.3-scripts`
+132. `postgresql-contrib-9.6`
