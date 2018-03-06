@@ -463,7 +463,7 @@ installAtomExtensionsNonSudo() {
   apm install script
   apm install project-manager
   apm install merge-conflicts
-  apm install activate-power-mode
+  #apm install activate-power-mode
   apm install linter-jshint
   #apm install nuclide
   apm install autoclose-html
