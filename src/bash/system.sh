@@ -350,7 +350,7 @@ systemUpdatesSudo() {
   cd /
 }
 
-pullBashHelpersRepo() {
+fetchBashHelpersRepo() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
   if [ "${?}" = "0" ] ; then
@@ -360,6 +360,16 @@ pullBashHelpersRepo() {
   eval "gitResetHard"
   eval "git_f"
   eval "gitResetHard"
+  goToRoot
+}
+
+pullBashHelpersRepo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  fetchBashHelpersRepo
   eval "git_rd"
   eval "git_p"
   goToRoot
@@ -370,6 +380,7 @@ alias allow_port_sudo='sudo ufw allow '
 alias apache_reload='/etc/init.d/apache2 reload'
 alias apt_get=aptGetUpgrade
 alias bash_refresh=bashRefresh
+alias bash_helpers_fetch=fetchBashHelpersRepo
 alias bash_helpers_pull=pullBashHelpersRepo
 alias brc='~/.bashrc'
 alias check_ubuntu_version='lsb_release -a'
