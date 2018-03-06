@@ -360,6 +360,7 @@ fetchBashHelpersRepo() {
   eval "gitResetHard"
   eval "git_f"
   eval "gitResetHard"
+  bash_refresh
   goToRoot
 }
 
@@ -372,6 +373,7 @@ pullBashHelpersRepo() {
   fetchBashHelpersRepo
   eval "git_rd"
   eval "git_p"
+  bash_refresh
   goToRoot
 }
 
