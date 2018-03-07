@@ -988,6 +988,7 @@ installPackagesForSystemNonSudoFirst() {
   checkSoftwareFolder
   checkAppsFolder
   checkMusicVideosFolder
+  echo "FOLDER CREATION COMPLETED."
 }
 
 installPackagesForSystemSudoSecond() {
@@ -997,6 +998,7 @@ installPackagesForSystemSudoSecond() {
     return
   fi;
   installPackagesForSystemSudo
+  echo "SYSTEM PACKAGE INSTALLATION COMPLETED. YOU MAY REBOOT YOUR SYSTEM NOW."
 }
 
 installPackagesForSystemNonSudoThird() {
@@ -1010,6 +1012,7 @@ installPackagesForSystemNonSudoThird() {
   installVSCodeExtensionsNonSudo
   installAtomExtensionsNonSudo
   postgresPgpassFileInit
+  echo "SYSTEM PACKAGE INSTALLATION FOR NON SUDO USER COMPLETED."
 }
 
 alias install_atom=installAtom
