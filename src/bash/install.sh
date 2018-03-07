@@ -975,6 +975,7 @@ installPackagesForSystemNonSudoFirst() {
   checkSoftwareFolder
   checkAppsFolder
   checkMusicVideosFolder
+  goToRoot
   echo "FOLDER CREATION COMPLETED."
 }
 
