@@ -371,6 +371,7 @@ pullBashHelpersRepo() {
     return
   fi;
   fetchBashHelpersRepo
+  cd $BASH_HELPER_GIT_FOLDER
   eval "git_rd"
   eval "git_p"
   bash_refresh
