@@ -775,19 +775,6 @@ installDocker() {
   usermod -aG docker ${USER}
 }
 
-installSublime() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-  printf 'y\n' | sudo apt-get install apt-transport-https
-  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-  aptGet
-  printf 'y\n' | sudo apt-get install sublime-text
-}
-
 installHerokuToolbelt() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1034,7 +1021,6 @@ alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"
-alias install_sublime="installSublime"
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
 alias install_zoom="installZoomConference"
