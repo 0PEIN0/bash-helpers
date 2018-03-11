@@ -960,6 +960,9 @@ installPackagesForSystemSudo() {
   # Install ZSH
   aptGet
   installZshSudo
+  # Install gparted
+  aptGet
+  printf "y\n" | sudo apt-get install gparted
   # Install nodejs
   installNodejs
   goToRoot
