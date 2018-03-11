@@ -963,6 +963,9 @@ installPackagesForSystemSudo() {
   # Install gparted
   aptGet
   printf "y\n" | sudo apt-get install gparted
+  # Install 7z unpacking package
+  aptGet
+  printf "y\n" | sudo apt-get install p7zip-full
   # Install nodejs
   installNodejs
   goToRoot
