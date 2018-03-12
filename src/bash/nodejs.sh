@@ -16,7 +16,7 @@ nodeUpdates() {
   aptGet
   goToRoot
   npm i -g npm
-  npm install -g @angular/cli
+  #npm install -g @angular/cli
   npm install -g mongodb@latest
   npm install -g gulp gulp-cli@latest
   npm install -g bower@latest
