@@ -22,10 +22,12 @@ Intended to help software engineers working on python/django and nodejs environm
 9. Go to `Power` -> `When power critically low` -> `On battery power` -> Select `empty`.
 10. Go to `Power` -> `When the lid is closed` -> `On battery power` -> Select `Do nothing`.
 11. Go to `Power` -> `When the lid is closed` -> `When plugged in` -> Select `Do nothing`.
-12. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
-13. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox. ***Why would you not use Dropbox when it provides backups to your most useful files and is present in all major OS while being free to use upto the necessary limit?!***
-14. Login to Chrome with google account.
-15. Open terminal.
+12. Open `System Settings` in Ubuntu.
+13. Go to `Software & Updates` -> `Ubuntu Software` -> `Download from:` -> Select `Main server` -> Click `Close`.
+14. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
+15. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox. ***Why would you not use Dropbox when it provides backups to your most useful files and is present in all major OS while being free to use upto the necessary limit?!***
+16. Login to Chrome with google account.
+17. Open terminal.
 
 ### IN NON SUDO USER MODE
 1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
