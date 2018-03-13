@@ -330,7 +330,7 @@ systemUpdatesNonSudo() {
   apmUpdates
   cd $BASH_HELPER_GIT_FOLDER
   cd src/python/
-  python3 git_pull_all.py
+  python3 git_fetch_all_repo.py
   cd /
 }
 

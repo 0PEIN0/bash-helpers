@@ -114,7 +114,7 @@ fi;
 # Usage Notes:
 
 1. Estimated total installation time is 2-5 hours for fresh new OS installation, although it will vary based on machine and network connection performance.
-2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s), for example: `root` user. The `uap` command will ensure the daily pull for latest changes on repositories that resides in `~/Gitrepos` folder.
+2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s), for example: `root` user. The `uap` command will ensure the daily pull for latest changes on repositories that resides in `~/Gitrepos` folder. To use `uap` command, first create a new file in `src/python/` directory of current repository. Then add a file called `local_settings.py`. Yes, exactly this file name. After creating the file copy contents from `sample_local_settings.py` file to `local_settings.py` file. Override property values in `local_settings.py` to your necessity.
 3. For further OS customization, you can take a look into [this](docs/personalized-manual-intervention.md) file. This is a personalized OS environment file for myself, but you might get some idea as to what some of the customizations may look like.
 
 # Other similar projects that inspired this repository:
