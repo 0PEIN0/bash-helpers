@@ -9,6 +9,7 @@ LATEST_PHANTOMJS_VERSION="2.1.1"
 LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-linux-x86_64.tar.bz2"
 LATEST_GOLANG_VERSION="1.10"
 LATEST_GOLANG_VERSION_FULL="go$LATEST_GOLANG_VERSION.linux-amd64"
+LATEST_ANGRY_IP_SCAN_VERSION="3.5.2"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
 LATEST_POSTGIS_VERSION="postgis-2.3.3"
@@ -706,6 +707,7 @@ installPhantomJs() {
     echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $2
   fi;
+  checkSoftwareFolder
   rm -rf /usr/local/share/phantomjs
   rm -rf /usr/local/bin/phantomjs
   rm -rf /usr/bin/phantomjs
@@ -740,6 +742,7 @@ installPhp() {
     return
   fi;
   aptGet
+  checkSoftwareFolder
   printf 'y\n' | sudo apt-get install apache2
   aptGet
   printf 'y\n' | sudo apt-get install apache2 php7.0 libapache2-mod-php7.0
@@ -751,6 +754,7 @@ installPhp() {
   sudo phpenmod mbstring
   sudo a2enmod rewrite
   sudo systemctl restart apache2
+  goToRoot
 }
 
 installDocker() {
@@ -760,6 +764,7 @@ installDocker() {
     return
   fi;
   aptGet
+  checkSoftwareFolder
   printf "y\n" | sudo apt-get install apt-transport-https ca-certificates
   printf "y\n" | sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -773,6 +778,7 @@ installDocker() {
   #sudo apt-cache policy docker-engine
   sudo service docker start
   usermod -aG docker ${USER}
+  goToRoot
 }
 
 installHerokuToolbelt() {
@@ -782,16 +788,26 @@ installHerokuToolbelt() {
     return
   fi;
   aptGet
+  checkSoftwareFolder
   #wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   printf '\n' | sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
   curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
   aptGet
   printf 'y\n' | sudo apt-get install heroku
+  goToRoot
 }
 
 installVirtualBox() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
   # Install virtual-box
+  goToRoot
+  aptGet
   printf 'y\n' | sudo apt install virtualbox virtualbox-ext-pack
+  goToRoot
 }
 
 installJava() {
@@ -801,10 +817,30 @@ installJava() {
     return
   fi;
   # Install Java 8
+  goToRoot
   sudo add-apt-repository -y ppa:webupd8team/java
   aptGet
   echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
   sudo apt-get install -y oracle-java8-installer
+  goToRoot
+}
+
+installAngryIpScan() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  aptGet
+  checkSoftwareFolder
+  wget -O ipscan_$1_amd64.deb https://github.com/angryip/ipscan/releases/download/$1/ipscan_$1_amd64.deb
+  sudo dpkg -i ipscan_$1_amd64.deb
+  printf 'y\n' | sudo apt-get install -f
+  goToRoot
 }
 
 installPackagesForSystemSudo() {
@@ -1009,6 +1045,7 @@ installPackagesForSystemNonSudoThird() {
   echo "SYSTEM PACKAGE INSTALLATION FOR NON SUDO USER COMPLETED."
 }
 
+alias install_angry_ip_scan="installAngryIpScan $LATEST_ANGRY_IP_SCAN_VERSION"
 alias install_atom=installAtom
 alias install_atom_extensions=installAtomExtensionsNonSudo
 alias install_blender=installBlender
