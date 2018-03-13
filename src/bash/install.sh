@@ -861,8 +861,9 @@ installClangD() {
   sudo sh -c 'echo "deb-src http://apt.llvm.org/$(lsb_release -sc)/ llvm-toolchain-$(lsb_release -sc)-5.0 main" >> /etc/apt/sources.list'
   aptGet
   wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
-  printf 'y\n' | apt-get install clang-$1 lldb-$1
-  printf 'y\n' | apt-get install clang-$1 clang-tools-$1 clang-$1-doc libclang-common-$1-dev libclang-$1-dev libclang1-$1 libclang1-$1-dbg libllvm$1 libllvm$1-dbg lldb-$1 llvm-$1 llvm-$1-dev libllvm-$1-ocaml-dev llvm-$1-doc llvm-$1-examples llvm-$1-runtime clang-format-$1 python-clang-$1 libfuzzer-$1-dev
+  printf 'y\n' | sudo apt-get install clang-$1 lldb-$1
+  printf 'y\n' | sudo apt-get install clang-$1 clang-tools-$1 clang-$1-doc libclang-common-$1-dev libclang-$1-dev libclang1-$1 libclang1-$1-dbg libllvm$1 libllvm$1-dbg lldb-$1 llvm-$1 llvm-$1-dev llvm-$1-doc llvm-$1-examples llvm-$1-runtime clang-format-$1 python-clang-$1 libfuzzer-$1-dev
+  printf 'y\n' | sudo apt-get install libllvm-$1-ocaml-dev
   goToRoot
 }
 
