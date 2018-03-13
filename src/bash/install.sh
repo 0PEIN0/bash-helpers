@@ -10,6 +10,7 @@ LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-linux-x86_64.
 LATEST_GOLANG_VERSION="1.10"
 LATEST_GOLANG_VERSION_FULL="go$LATEST_GOLANG_VERSION.linux-amd64"
 LATEST_ANGRY_IP_SCAN_VERSION="3.5.2"
+LATEST_CLANGD_VERSION="5.0"
 
 LATEST_GEOS_VERSION="geos-3.6.1"
 LATEST_POSTGIS_VERSION="postgis-2.3.3"
@@ -250,7 +251,7 @@ installDotNetCore() {
   # Dependent on ubuntu version
   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
   sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod \"$(lsb_release -sc)\" main" > /etc/apt/sources.list.d/dotnetdev.list'
+  sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-\"$(lsb_release -sc)\"-prod \"$(lsb_release -sc)\" main" > /etc/apt/sources.list.d/dotnetdev.list'
   aptGet
   printf 'y\n' | sudo apt-get install dotnet-sdk-2.0.0
   goToRoot
@@ -707,7 +708,7 @@ installPhantomJs() {
     echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $2
   fi;
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER/
   rm -rf /usr/local/share/phantomjs
   rm -rf /usr/local/bin/phantomjs
   rm -rf /usr/bin/phantomjs
@@ -742,7 +743,7 @@ installPhp() {
     return
   fi;
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER/
   printf 'y\n' | sudo apt-get install apache2
   aptGet
   printf 'y\n' | sudo apt-get install apache2 php7.0 libapache2-mod-php7.0
@@ -764,7 +765,7 @@ installDocker() {
     return
   fi;
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER/
   printf "y\n" | sudo apt-get install apt-transport-https ca-certificates
   printf "y\n" | sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -788,7 +789,7 @@ installHerokuToolbelt() {
     return
   fi;
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER/
   #wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   printf '\n' | sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
   curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
@@ -836,10 +837,32 @@ installAngryIpScan() {
     return $1
   fi;
   aptGet
-  checkSoftwareFolder
+  cd $SYSTEM_SOFTWARE_FOLDER/
   wget -O ipscan_$1_amd64.deb https://github.com/angryip/ipscan/releases/download/$1/ipscan_$1_amd64.deb
   sudo dpkg -i ipscan_$1_amd64.deb
   printf 'y\n' | sudo apt-get install -f
+  goToRoot
+}
+
+installClangD() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  aptGet
+  cd $SYSTEM_SOFTWARE_FOLDER/
+  #TODO: replace 5.0 value in the next 2 lines with $1 variable value
+  sudo sh -c 'echo "deb http://apt.llvm.org/$(lsb_release -sc)/ llvm-toolchain-$(lsb_release -sc)-5.0 main" >> /etc/apt/sources.list'
+  sudo sh -c 'echo "deb-src http://apt.llvm.org/$(lsb_release -sc)/ llvm-toolchain-$(lsb_release -sc)-5.0 main" >> /etc/apt/sources.list'
+  aptGet
+  wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key|sudo apt-key add -
+  printf 'y\n' | apt-get install clang-$1 lldb-$1
+  printf 'y\n' | apt-get install clang-$1 clang-tools-$1 clang-$1-doc libclang-common-$1-dev libclang-$1-dev libclang1-$1 libclang1-$1-dbg libllvm$1 libllvm$1-dbg lldb-$1 llvm-$1 llvm-$1-dev libllvm-$1-ocaml-dev llvm-$1-doc llvm-$1-examples llvm-$1-runtime clang-format-$1 python-clang-$1 libfuzzer-$1-dev
   goToRoot
 }
 
@@ -1050,6 +1073,7 @@ alias install_atom=installAtom
 alias install_atom_extensions=installAtomExtensionsNonSudo
 alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
+alias install_clangd="installClangD $LATEST_CLANGD_VERSION"
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
 alias install_java=installJava
