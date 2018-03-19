@@ -17,3 +17,16 @@ class FileHelper(object):
         file_obj = open(dir_path, 'w')
         file_obj.write(file_content)
         file_obj.close()
+
+    def copy_and_replace_single_file(self,
+                                     source_path,
+                                     destination_path):
+        file_content = self.read_file(dir_path=source_path)
+        self.write_on_file_force(dir_path=destination_path,
+                                 file_content=file_content)
+
+    def copy_and_replace_files(self,
+                               file_path_def_list):
+        for item in file_path_def_list:
+            self.copy_and_replace_single_file(source_path=item['source'],
+                                              destination_path=item['destination'])
