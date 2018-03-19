@@ -54,6 +54,3 @@ class YoutubeMusicVideoSync(object):
                     r'(\'YOUTUBE_VIDEO_ID_LIST\': \[)', r'\1{replace_str}'.format(replace_str=replace_str), file_content)
                 self.file_helper_obj.write_on_file_force(dir_path=file_path,
                                                          file_content=file_content)
-
-
-YoutubeMusicVideoSync().sync_mvs()
