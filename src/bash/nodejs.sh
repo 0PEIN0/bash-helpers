@@ -3,6 +3,9 @@
 installNodejs() {
   # Install NodeJS and NPM along with required global node modules
   aptGet
+  printf 'y\n' | sudo apt-get remove nodejs
+  sudo rm -rf /usr/lib/node_modules/
+  sudo rm -rf /usr/local/lib/node_modules/
   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
   sudo apt-get install -y nodejs
 }
