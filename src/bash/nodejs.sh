@@ -1,7 +1,7 @@
 #!/bin/bash
 
 installNodejs() {
-  # Install NodeJS and NPM along with required global node modules
+  # Install NodeJS
   aptGet
   printf 'y\n' | sudo apt-get remove nodejs
   sudo rm -rf /usr/lib/node_modules/
