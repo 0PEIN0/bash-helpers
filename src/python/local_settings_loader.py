@@ -13,5 +13,5 @@ class LocalSettingsLoader(object):
 
     def _initializer_empty_lists(self):
         for item in ['FILE_REPLACE_DEF_LIST', 'YOUTUBE_VIDEO_ID_LIST', ]:
-            if self.LOCAL_SETTINGS[item] is None:
+            if item not in self.LOCAL_SETTINGS:
                 self.LOCAL_SETTINGS[item] = []
