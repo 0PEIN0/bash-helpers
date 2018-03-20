@@ -73,7 +73,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
 fi;
 ```
 
-7. ***Optional*** Do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
+7. ***Optional Step*** Do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 8. Do the following postgres operation after replacing ***$SYSTEM_USER_NAME*** value in the sql script below. You can enter the postgres shell by entering `postgres_shell_sudo` command.
 ```sql
 ALTER USER postgres PASSWORD '$SYSTEM_USER_NAME'; ALTER role postgres PASSWORD '$SYSTEM_USER_NAME'; CREATE ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';CREATE USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME'; alter ROLE $SYSTEM_USER_NAME LOGIN PASSWORD '$SYSTEM_USER_NAME';alter USER $SYSTEM_USER_NAME WITH PASSWORD '$SYSTEM_USER_NAME';ALTER ROLE $SYSTEM_USER_NAME SET client_encoding TO 'utf8'; ALTER ROLE $SYSTEM_USER_NAME SET default_transaction_isolation TO 'read committed' ;ALTER ROLE $SYSTEM_USER_NAME SET timezone TO 'UTC';alter role $SYSTEM_USER_NAME superuser;CREATE EXTENSION postgis;CREATE EXTENSION postgis_topology;CREATE EXTENSION postgis_sfcgal;CREATE EXTENSION fuzzystrmatch;CREATE EXTENSION address_standardizer;CREATE EXTENSION address_standardizer_data_us;CREATE EXTENSION postgis_tiger_geocoder;
@@ -92,7 +92,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
 fi;
 ```
 
-3. ***Optional*** Do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
+3. ***Optional Step*** Do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 4. Run `source ~/.zshrc`. If you see some weird bash error when sourcing, just ignore it. It should be fixed after restarting the machine.
 5. Restart machine.
 6. Run `ssh_keygen` command. Press `Enter` when prompted to choose `/home/$SYSTEM_USER_NAME/.ssh/id_rsa` file. Then provide a passphrase for the ssh. Do remember this passphrase for future usage.

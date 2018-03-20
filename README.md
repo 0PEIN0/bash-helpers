@@ -11,7 +11,7 @@ Intended to help software engineers working on python/django and nodejs environm
 # Usage Instruction
 
 For usage instruction ***with*** new OS installations, follow [these](docs/new-os-setup.md) instructions.
-Otherwise open new terminal for usage instruction without new OS installations.
+Otherwise, open new terminal for usage instruction without new OS installations.
 
 ### IN NON SUDO USER MODE
 1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
@@ -62,7 +62,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
 fi;
 ```
-4. ***Optional*** Assuming you have **ZSH** shell setup, do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
+4. ***Optional Step*** Assuming you have **ZSH** shell setup, do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 5. Run `exit` command.
 
 ### NOW SWITCHED BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER
@@ -72,7 +72,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
     . /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh
 fi;
 ```
-2. ***Optional*** Assuming you have **ZSH** shell setup, do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
+2. ***Optional Step*** Assuming you have **ZSH** shell setup, do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 3. Assuming you have **ZSH** shell setup, run `source ~/.zshrc`. If you see some weird bash error when sourcing, just ignore it. It should be fixed after restarting the machine.
 4. Restart machine.
 5. Cheers! You're all set.
