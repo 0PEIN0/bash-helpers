@@ -118,11 +118,7 @@
 
 `prettyjson`
 
-`react`
-
-`redux`
-
-`react-redux`
+`create-react-app`
 
 `redux-devtools`
 
@@ -137,6 +133,8 @@
 `cordova`
 
 `ionic`
+
+`newman`
 
 `electron`
 
