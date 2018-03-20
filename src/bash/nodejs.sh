@@ -32,9 +32,7 @@ nodeUpdates() {
   npm install -g pm2@latest
   npm install -g forever@latest
   npm install -g prettyjson@latest
-  npm install -g react@latest
-  npm install -g redux@latest
-  npm install -g react-redux@latest
+  npm install -g create-react-app@latest
   npm install -g redux-devtools@latest
   npm install -g grunt-cli@latest
   npm install -g webpack@latest
