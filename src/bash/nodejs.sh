@@ -74,8 +74,6 @@ nodeExpressNpmInitiation() {
   npm install serve-index@latest --save
   npm install serve-static@latest --save
   npm install vhost@latest --save
-  npm install pm2@latest --save
-  npm install forever@latest --save
   npm install winston@latest --save
   npm install raven@latest --save
   npm install helmet@latest --save
