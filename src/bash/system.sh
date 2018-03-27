@@ -330,7 +330,7 @@ systemUpdatesNonSudo() {
   apmUpdates
   cd $BASH_HELPER_GIT_FOLDER
   cd src/python/
-  python3 daily_local_machine_operations.py
+  python3 daily_local_machine_operations.py -before-file-replace -music-sync -git-repos-sync -after-file-replace
   cd /
 }
 
