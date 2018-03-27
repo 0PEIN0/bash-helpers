@@ -26,7 +26,18 @@ class FileHelper(object):
                                  file_content=file_content)
 
     def copy_and_replace_files(self,
-                               file_path_def_list):
+                               file_path_def_list,
+                               indice_list=[],
+                               reverse=False):
+        cn = -1
         for item in file_path_def_list:
-            self.copy_and_replace_single_file(source_path=item['source'],
-                                              destination_path=item['destination'])
+            cn += 1
+            if len(indice_list) > 0 and cn not in indice_list:
+                continue
+            source_path = item['source']
+            destination_path = item['destination']
+            if reverse is True:
+                destination_path = item['source']
+                source_path = item['destination']
+            self.copy_and_replace_single_file(source_path=source_path,
+                                              destination_path=destination_path)
