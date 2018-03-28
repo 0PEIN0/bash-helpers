@@ -2,7 +2,7 @@
 
 1. Open "Atom" -> There will be a pop-up showing list of dependencies to install, press "Yes" to install them.
 2. Open "Dropbox" from dash -> Login to Dropbox.
-3. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login. Install CS:GO in default location when prompted. ***(Of course I play and follow CS:GO, are you kidding me?! Already have 3700+ hours on it. Rank: Legendary Eagle)***
+3. Open "Terminal" and install Steam by running this command: `sudo apt-get install steam`. Open ***Steam*** and login. Install CS:GO in default location when prompted. ***(Of course I play and follow CS:GO, are you kidding me?! Already have 4000+ hours on it. Max rank: Legendary Eagle)***
 4. Open "Tweak Tool" -> "Appearance" -> "Icons" -> Select "Ultra-Flat_orange".
 5. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "On Battery Power" -> Select "Nothing".
 6. Open "Tweak Tool" -> "Power" -> "When laptop lid is closed" -> "When plugged in" -> Select "Nothing".
@@ -13,7 +13,7 @@
 11. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Show my name".
 12. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> Select "Power" -> "Always visible".
 13. Open "Unity Tweak Tool" -> "Unity" -> "Panel" -> "Indicators" -> "Default Player" -> Select "Vlc.desktop".
-14. Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Sublime".
+14. Make ".txt", ".md", ".py", ".js", ".html", ".sh", ".css" file open default application to "Atom".
 15. Make ".mkv", ".mp4", ".webm" file open default application to "VLC Player".
 16. Open "System Settings" -> "Power" -> Select "Do nothing" for both of the options named as "When lid is closed".
 17. Open "System Settings" -> "Brightness & Lock" -> Unselect "Dim screen to save power".
