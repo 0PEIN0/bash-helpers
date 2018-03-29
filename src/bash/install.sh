@@ -777,6 +777,7 @@ installDocker() {
   #printf '\n' | sudo add-apt-repository 'deb https://apt.dockerproject.org/repo ubuntu-"$(lsb_release -sc)" main'
   #printf 'y\n' | sudo apt-get install docker-engine
   #sudo apt-cache policy docker-engine
+  curl -sSL test.docker.com |sh
   sudo service docker start
   usermod -aG docker ${USER}
   goToRoot
