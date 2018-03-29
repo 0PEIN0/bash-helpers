@@ -385,7 +385,7 @@ pullBashHelpersRepo() {
 alias admin='sudo su'
 alias allow_port_sudo='sudo ufw allow '
 alias apache_reload='/etc/init.d/apache2 reload'
-alias apt_get=aptGetUpgrade
+alias apt_get_upgrade=aptGetUpgrade
 alias bash_refresh=bashRefresh
 alias bash_helpers_fetch=fetchBashHelpersRepo
 alias bash_helpers_pull=pullBashHelpersRepo
