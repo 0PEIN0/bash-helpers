@@ -369,11 +369,7 @@ fetchBashHelpersRepo() {
 }
 
 pullBashHelpersRepo() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
+  goToRoot
   fetchBashHelpersRepo
   cd $BASH_HELPER_GIT_FOLDER
   eval "git_rd"
