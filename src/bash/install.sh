@@ -469,7 +469,7 @@ installAtomExtensionsNonSudo() {
   apm install linter-jshint
   #apm install nuclide
   apm install autoclose-html
-  #apm install react
+  apm install react
   apm install atom-ide-ui
   apm install ide-typescript
   apm install ide-csharp
