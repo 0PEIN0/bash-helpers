@@ -9,4 +9,4 @@ if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/config.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/src/bash/config.sh
 fi;
 
-DEFAULT_PERMISSION_VALUE=777
+DEFAULT_PERMISSION_VALUE=775
