@@ -355,11 +355,7 @@ systemUpdatesSudo() {
 }
 
 fetchBashHelpersRepo() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
+  goToRoot
   cd $BASH_HELPER_GIT_FOLDER
   eval "gitResetHard"
   eval "git_f"
