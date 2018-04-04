@@ -884,6 +884,8 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install android-tools-adb
   # Install package for ubuntu app location restore feature after machine restart
   printf 'y\n' | sudo apt-get install wmctrl
+  # Install nmap
+  printf 'y\n' | sudo apt-get install nmap
   # Install ubuntu make
   printf '\n' | sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
   aptGet
