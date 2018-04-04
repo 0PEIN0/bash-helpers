@@ -44,6 +44,7 @@ alias fb_v='firebase --version'
 alias forever_list='forever list'
 alias forever_restart='forever restart 0'
 alias gc=startGoogleChrome
+alias get_open_ports='nmap -v -sT '
 alias jenkins_start='/etc/init.d/jenkins start'
 alias jenkins_stop='/etc/init.d/jenkins stop'
 alias karma_test='karma start --browsers Chrome'
