@@ -296,6 +296,11 @@ sshOperationsSudo() {
   fi;
   eval "$(ssh-agent -s)"
   ssh-add /root/.ssh/id_rsa
+  if [ -f /root/.ssh/known_hosts ]; then
+    echo "known_hosts file already exists!"
+  else
+    touch /root/.ssh/known_hosts
+  fi;
   ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
   ssh-keyscan -t rsa bitbucket.com >> /root/.ssh/known_hosts
   ssh-keyscan -t rsa gitlab.com >> /root/.ssh/known_hosts
@@ -312,6 +317,11 @@ sshOperationsNonSudo() {
   fi;
   eval "$(ssh-agent -s)"
   ssh-add ~/.ssh/id_rsa
+  if [ -f $SYSTEM_ROOT_FOLDER/.ssh/known_hosts ]; then
+    echo "known_hosts file already exists!"
+  else
+    touch $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
+  fi;
   ssh-keyscan -t rsa github.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
   ssh-keyscan -t rsa bitbucket.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
   ssh-keyscan -t rsa gitlab.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts
