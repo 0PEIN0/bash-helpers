@@ -903,7 +903,9 @@ installPackagesForSystemSudo() {
   # Install youtube video downloader
   printf 'y\n' | sudo apt-get install youtube-dl
   # Install Codeblocks
-  printf 'y\n' | sudo apt-get install codeblocks
+  sudo add-apt-repository ppa:damien-moore/codeblocks-stable
+  aptGet
+  printf 'y\n' | sudo apt-get install codeblocks codeblocks-contrib
   # Install expect
   printf "y\n" | sudo apt-get install expect expect-dev
   # Install media players
