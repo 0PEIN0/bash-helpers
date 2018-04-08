@@ -766,6 +766,7 @@ installDocker() {
   fi;
   aptGet
   cd $SYSTEM_SOFTWARE_FOLDER/
+  printf "y\n" | sudo apt-get remove docker docker-engine docker.io
   printf "y\n" | sudo apt-get install apt-transport-https ca-certificates
   printf "y\n" | sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
