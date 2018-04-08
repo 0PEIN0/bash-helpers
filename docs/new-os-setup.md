@@ -21,7 +21,7 @@
 
 ### IN NON SUDO USER MODE
 1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
-2. Run `sudo su` command(enter into the sudo user mode). Enter OS user password when prompted.
+2. Run `sudo su` command(enter into the sudo user mode). Enter sudo user password when prompted.
 
 ### NOW SWITCHED TO SUDO USER MODE
 1. Run `sudo apt-get update` command.
@@ -53,7 +53,7 @@ fi;
 ```
 4. Run `source ~/.bashrc` command.
 5. Run `system_init_non_sudo_first` command. Ignore any error that may show up in the terminal after running this command.
-6. Run `admin` command(enter into the sudo user mode). Enter OS user password when prompted.
+6. Run `admin` command(enter into the sudo user mode). Enter sudo user password when prompted.
 
 ### NOW SWITCHED BACK TO SUDO USER MODE
 1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
