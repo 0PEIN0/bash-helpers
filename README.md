@@ -15,7 +15,7 @@ Otherwise, open new terminal for usage instruction without new OS installations.
 
 ### IN NON SUDO USER MODE
 1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
-2. Run `sudo su` command(enter into the sudo user mode). Enter OS user password when prompted.
+2. Run `sudo su` command(enter into the sudo user mode). Enter sudo user password when prompted.
 
 ### NOW SWITCHED TO SUDO USER MODE
 1. Run `sudo apt-get update` command.
@@ -46,7 +46,7 @@ if [ -f /home/$SYSTEM_USER_NAME/helper-scripts/personal.sh ]; then
 fi;
 ```
 4. Run `source ~/.bashrc` command.
-5. Run `admin` command(enter into the sudo user mode). Enter OS user password when prompted.
+5. Run `admin` command(enter into the sudo user mode). Enter sudo user password when prompted.
 
 ### NOW SWITCHED BACK TO SUDO USER MODE
 1. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it. Run `gedit ~/.bash_aliases` from command line to open up the file. Below is a sample example for import of personal bash file in ***~/.bash_aliases*** file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
@@ -87,10 +87,10 @@ fi;
 
 1. [Brilliant Bash](https://github.com/roytenberg/brilliant-bash) by [Ben Roytenberg](https://github.com/roytenberg).
 2. [shell-scripts](https://github.com/trevordmiller/shell-scripts) by [Trevor D. Miller](https://github.com/trevordmiller).
-3. [Bash Startup Scripts](https://github.com/wd5gnr/bashrc) by [wd5gnr](https://github.com/wd5gnr)
+3. [Bash Startup Scripts](https://github.com/wd5gnr/bashrc) by [wd5gnr](https://github.com/wd5gnr).
 3. [aliasme](https://github.com/Jintin/aliasme) by [Jintin](https://github.com/Jintin).
 4. [dotfiles](https://github.com/shazow/dotfiles) by [Andrey Petrov](https://github.com/shazow).
 5. [bash-common-helpers](https://github.com/martinburger/bash-common-helpers) by [Martin Burger](https://github.com/martinburger).
 6. [git-bash-helpers](https://github.com/jonathantneal/git-bash-helpers) by [Jonathan Neal](https://github.com/jonathantneal).
-7. [Bash helpers gist](https://gist.github.com/mpneuried/5916618) by [M. Peter](https://github.com/mpneuried)
-8. [bash-it](https://github.com/Bash-it/bash-it) by [Bash-it](https://github.com/Bash-it)
+7. [Bash helpers gist](https://gist.github.com/mpneuried/5916618) by [M. Peter](https://github.com/mpneuried).
+8. [bash-it](https://github.com/Bash-it/bash-it) by [Bash-it](https://github.com/Bash-it).
