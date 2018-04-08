@@ -868,6 +868,15 @@ installClangD() {
   goToRoot
 }
 
+installNginx() {
+  sudo service apache2 stop
+  printf "y\n" | sudo apt-get install nginx
+  sudo ufw allow 'Nginx Full'
+  sudo ufw allow 'Nginx HTTP'
+  sudo ufw allow 'Nginx HTTPS'
+  sudo service apache2 start
+}
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1004,12 +1013,7 @@ installPackagesForSystemSudo() {
   aptGet
   printf "y\n" | sudo apt-get install ansible
   # Install ngnix
-  sudo service apache2 stop
-  printf "y\n" | sudo apt-get install nginx
-  sudo ufw allow 'Nginx Full'
-  sudo ufw allow 'Nginx HTTP'
-  sudo ufw allow 'Nginx HTTPS'
-  sudo service apache2 start
+  installNginx
   # Install Bracket editor
   installBracket $LATEST_BRACKET_VERSION
   # Install vscode editor
@@ -1083,6 +1087,7 @@ alias install_clangd="installClangD $LATEST_CLANGD_VERSION"
 alias install_docker="installDocker"
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
+alias install_nginx=installNginx
 alias install_java=installJava
 alias install_jenkins=installJenkins
 alias install_laravel=installLaravelNonSudo
