@@ -55,6 +55,7 @@ alias git_r=gitRebase
 alias git_repo="cd $SYSTEM_ROOT_GIT_REPO_FOLDER"
 alias git_rc='git rebase --continue'
 alias git_rd='gitRebase develop'
+alias git_rdp='git_rd && git_p'
 alias git_remove_last_commit='git reset --hard HEAD^'
 alias git_rh='git_f && gitResetHard'
 alias git_rl='git_f && git reflog'
