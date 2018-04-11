@@ -40,6 +40,8 @@ class YoutubeMusicVideoSync(object):
                 existing_mv_list.append(file_name)
         for item in self.YOUTUBE_VIDEO_ID_LIST:
             if item not in existing_mv_list:
+                print('INFO: New video found to sync with id: {video_id}'.format(
+                    video_id=video_id))
                 self.shell_executor.execute_shell_command(
                     cmd='downloadYoutubeVideo {video_id}'.format(video_id=item))
         for item in existing_mv_list:
