@@ -872,12 +872,32 @@ installClangD() {
 }
 
 installNginx() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
   sudo service apache2 stop
   printf "y\n" | sudo apt-get install nginx
   sudo ufw allow 'Nginx Full'
   sudo ufw allow 'Nginx HTTP'
   sudo ufw allow 'Nginx HTTPS'
   sudo service apache2 start
+  goToRoot
+}
+
+installCodeblocks() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  sudo add-apt-repository ppa:damien-moore/codeblocks-stable
+  aptGet
+  printf 'y\n' | sudo apt-get install codeblocks codeblocks-contrib
+  goToRoot
 }
 
 installPackagesForSystemSudo() {
@@ -915,9 +935,7 @@ installPackagesForSystemSudo() {
   # Install youtube video downloader
   printf 'y\n' | sudo apt-get install youtube-dl
   # Install Codeblocks
-  sudo add-apt-repository ppa:damien-moore/codeblocks-stable
-  aptGet
-  printf 'y\n' | sudo apt-get install codeblocks codeblocks-contrib
+  installCodeblocks
   # Install expect
   printf "y\n" | sudo apt-get install expect expect-dev
   # Install media players
@@ -1087,6 +1105,7 @@ alias install_atom_extensions=installAtomExtensionsNonSudo
 alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_clangd="installClangD $LATEST_CLANGD_VERSION"
+alias install_codeblocks=installCodeblocks
 alias install_docker="installDocker"
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
