@@ -456,7 +456,6 @@ djangoRun() {
     echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
-  bashRefresh
   eval ${1}_ve
   eval ${1}_stop_processes
   eval ${1}_start_celery
