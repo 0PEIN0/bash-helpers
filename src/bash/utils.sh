@@ -18,6 +18,10 @@ downloadYoutubeVideo() {
   fi;
   eval "cd \"$SYSTEM_MUSIC_VIDEOS_FOLDER\""
   eval "youtube-dl https://www.youtube.com/watch\?v=$1"
+  eval "cd $BASH_HELPER_GIT_FOLDER/"
+  eval "cd src/python/"
+  eval "python3 daily_local_machine_operations.py -music-sync -after-file-replace"
+  eval "cd /"
 }
 
 startGoogleChrome() {
