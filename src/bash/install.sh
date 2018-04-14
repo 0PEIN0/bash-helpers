@@ -894,7 +894,7 @@ installCodeblocks() {
     return
   fi;
   goToRoot
-  sudo add-apt-repository ppa:damien-moore/codeblocks-stable
+  printf '\n' | sudo add-apt-repository ppa:damien-moore/codeblocks-stable
   aptGet
   printf 'y\n' | sudo apt-get install codeblocks codeblocks-contrib
   goToRoot
