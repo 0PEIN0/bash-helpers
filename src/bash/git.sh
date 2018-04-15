@@ -38,6 +38,7 @@ gitRebase() {
   git rebase origin/$1
 }
 
+alias bash_helpers="cd $BASH_HELPER_GIT_FOLDER"
 alias bitbucket_auth='printf "yes\n" | ssh -T git@bitbucket.com'
 alias bitbucket_keyscan_non_sudo="ssh-keyscan -t rsa bitbucket.com >> $SYSTEM_ROOT_FOLDER/.ssh/known_hosts"
 alias bitbucket_keyscan_sudo='ssh-keyscan -t rsa bitbucket.com >> /root/.ssh/known_hosts'
