@@ -418,6 +418,7 @@ installPyCharm() {
   rm -rf $SYSTEM_APPS_FOLDER/$1
   mv "$1" "$SYSTEM_APPS_FOLDER/$1"
   rm -rf "$1"
+  goToRoot
 }
 
 installZshNonSudo() {
