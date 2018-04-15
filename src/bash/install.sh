@@ -268,7 +268,7 @@ installMongoDb() {
   # Dependent on ubuntu version
   echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
   aptGet
-  printf 'y\n' | sudo apt-get install -y mongodb-org
+  printf 'y\n' | sudo apt-get install --allow-unauthenticated -y mongodb-org
   sudo service mongod start
   goToRoot
 }
