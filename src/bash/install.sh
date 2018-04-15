@@ -264,9 +264,9 @@ installMongoDb() {
     return
   fi;
   goToRoot
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
   # Dependent on ubuntu version
-  echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+  echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
   aptGet
   printf 'y\n' | sudo apt-get install --allow-unauthenticated -y mongodb-org
   sudo service mongod start
