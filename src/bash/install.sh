@@ -3,8 +3,8 @@
 LATEST_PYCHARM_VERSION="pycharm-community-2018.1.1"
 LATEST_VSCODE_FILE_NAME="code_1.22.2-1523551015_amd64.deb"
 LATEST_SLACK_VERSION="3.1.1"
-LATEST_ROBOMONGO_VERSION="1.1.1"
-LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-c93c6b0"
+LATEST_ROBOMONGO_VERSION="1.2.1"
+LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-3e50a65"
 LATEST_PHANTOMJS_VERSION="2.1.1"
 LATEST_PHANTOMJS_VERSION_FULL="phantomjs-$LATEST_PHANTOMJS_VERSION-linux-x86_64.tar.bz2"
 LATEST_GOLANG_VERSION="1.10"
@@ -382,8 +382,8 @@ installRoboMongo() {
   sudo mkdir -p /usr/local/bin/robomongo
   sudo mv $2/* /usr/local/bin/robomongo
   cd /usr/local/bin/robomongo/bin
-  sudo chmod +x robomongo ## run command only if robomongo isn't excutable file
-  ./robomongo
+  sudo chmod +x robo3t ## run command only if robomongo isn't excutable file
+  ./robo3t
   goToRoot
 }
 
