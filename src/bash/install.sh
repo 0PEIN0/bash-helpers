@@ -489,7 +489,7 @@ installAtom() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  #ALTERNATE METHOD BELOW(commented out)
+  #ALTERNATE METHOD BELOW(commented out because this repo lags way too behind of latest atom version updates)
   #goToRoot
   #aptGet
   #printf '\n' | sudo add-apt-repository ppa:webupd8team/atom
