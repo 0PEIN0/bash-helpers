@@ -54,6 +54,7 @@ alias jenkins_status='sudo service jenkins status'
 alias jenkins_stop='/etc/init.d/jenkins stop'
 alias karma_test='karma start --browsers Chrome'
 alias loc_count='cloc '
+alias ping_test='ping google.com'
 alias pc="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/$LATEST_PYCHARM_VERSION/bin/pycharm.sh"
 alias protractor_test='protractor conf.js'
 alias proxy_remove="kill -9 $(ps -efda | grep ssh | tail -n1 | awk '{print $2}')"
