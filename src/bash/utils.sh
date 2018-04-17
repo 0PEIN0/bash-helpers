@@ -65,4 +65,4 @@ alias run_mono_develop='nohup flatpak run com.xamarin.MonoDevelop &'
 alias sg="cd $SYSTEM_ROOT_FOLDER && sh $SYSTEM_APPS_FOLDER/smartgit/bin/smartgit.sh"
 alias system_cpu_usage='lscpu | grep MHz'
 alias ytd='downloadYoutubeVideo '
-alias ytd_sync='cd $BASH_HELPER_GIT_FOLDER/src/python/ && python3 daily_local_machine_operations.py -music-sync -after-file-replace'
+alias ytd_sync='cd $BASH_HELPER_GIT_FOLDER/src/python/ && python3 daily_local_machine_operations.py -music-sync -after-file-replace && cd /'
