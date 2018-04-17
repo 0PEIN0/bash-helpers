@@ -32,4 +32,7 @@ installDocker() {
 
 alias docker_containers='docker container ls --all'
 alias docker_images='docker image ls'
+alias docker_remove_dangling_images='docker rmi "$docker_dangling_images"'
+alias docker_remove_image="docker rmi node "
+alias docker_dangling_images="docker images --filter dangling=true -q"
 alias install_docker="installDocker"
