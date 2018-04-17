@@ -377,6 +377,7 @@ installRoboMongo() {
   fi;
   goToRoot
   cd $SYSTEM_SOFTWARE_FOLDER
+  rm -rf /usr/local/bin/robomongo
   wget --no-check-certificate https://download.robomongo.org/$1/linux/$2.tar.gz
   tar -xvzf $2.tar.gz
   sudo mkdir -p /usr/local/bin/robomongo
