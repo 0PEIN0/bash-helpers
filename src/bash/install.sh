@@ -785,8 +785,14 @@ installDocker() {
   #printf 'y\n' | sudo apt-get install docker-engine
   #sudo apt-cache policy docker-engine
   curl -sSL test.docker.com |sh
-  sudo service docker start
   usermod -aG docker ${USER}
+  sudo adduser ${USER} docker
+  sudo gpasswd -a ${USER} docker
+  usermod -aG docker ${SYSTEM_USER_NAME}
+  sudo adduser ${SYSTEM_USER_NAME} docker
+  sudo gpasswd -a ${SYSTEM_USER_NAME} docker
+  newgrp docker
+  sudo service docker start
   goToRoot
 }
 
