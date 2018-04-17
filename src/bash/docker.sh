@@ -32,6 +32,7 @@ installDocker() {
 
 alias docker_containers='docker container ls --all'
 alias docker_container_logs='docker logs '
+alias docker_dangling_images="docker images --filter dangling=true -q"
 alias docker_images='docker image ls'
 alias docker_prune_all_containers='printf "y\n" | docker system prune -a'
 alias docker_remove_all_images='docker rmi $(docker images -q)'
@@ -39,5 +40,5 @@ alias docker_prune_containers='printf "y\n" | docker container prune'
 #alias docker_remove_containers='docker stop $(docker ps -aq)'#not working
 alias docker_remove_dangling_images='docker rmi "$docker_dangling_images"'
 alias docker_remove_image="docker rmi node "
-alias docker_dangling_images="docker images --filter dangling=true -q"
+alias docker_stop_containers='docker container stop '
 alias install_docker="installDocker"
