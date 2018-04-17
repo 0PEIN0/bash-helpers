@@ -40,5 +40,6 @@ alias docker_prune_containers='printf "y\n" | docker container prune'
 #alias docker_remove_containers='docker stop $(docker ps -aq)'#not working
 alias docker_remove_dangling_images='docker rmi "$docker_dangling_images"'
 alias docker_remove_image="docker rmi node "
-alias docker_stop_containers='docker container stop '
+alias docker_stop_containers='docker kill $(docker ps -q)'
+alias docker_stop_prune_containers='docker_stop_containers && docker_prune_containers'
 alias install_docker="installDocker"
