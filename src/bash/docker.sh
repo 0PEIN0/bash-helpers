@@ -34,6 +34,8 @@ installDocker() {
 
 alias docker_containers='docker container ls --all'
 alias docker_container_logs='docker logs '
+alias docker_compose_build='docker-compose build'
+alias docker_compose_up='docker-compose up'
 alias docker_dangling_images="docker images --filter dangling=true -q"
 alias docker_images='docker image ls'
 alias docker_prune_all_containers='printf "y\n" | docker system prune -a'
