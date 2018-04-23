@@ -14,7 +14,7 @@ For usage instruction ***with*** new OS installations, follow [these](docs/new-o
 Otherwise, open new terminal for usage instruction without new OS installations.
 
 ### IN NON SUDO USER MODE
-1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
+1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`. If you are not sure about OS username, its the name that appears when login. To be sure, you can open up **Terminal** and see the username there. It'll in `username@machine-name` format.
 2. Run `sudo su` command(enter into the sudo user mode). Enter sudo user password when prompted.
 
 ### NOW SWITCHED TO SUDO USER MODE
