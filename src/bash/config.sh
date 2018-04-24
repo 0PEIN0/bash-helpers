@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/package-versions.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/src/bash/package-versions.sh
+fi;
+
 if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/system.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/src/bash/system.sh
 fi;
