@@ -698,12 +698,12 @@ installPhantomJs() {
   rm -rf /usr/local/bin/phantomjs
   rm -rf /usr/bin/phantomjs
   cd /usr/local/share
-  rm -rf $1.tar.gz
-  wget -O $1.tar.gz https://github.com/Medium/phantomjs/releases/download/v$2/$1.tar.bz2
-  #wget -O $1.tar.gz https://bitbucket.org/ariya/phantomjs/downloads/$1.tar.gz
-  tar xvfz $1.tar.gz
+  rm -rf $1.tar.bz2
+  #wget -O $1.tar.bz2 https://github.com/Medium/phantomjs/releases/download/v$2/$1.tar.bz2
+  wget -O $1.tar.bz2 https://bitbucket.org/ariya/phantomjs/downloads/$1.tar.bz2
+  tar xvfz $1.tar.bz2
   phantomjs --version
-  rm -rf $1.tar.gz
+  rm -rf $1.tar.bz2
   export PATH="$PATH:/usr/local/share/$1/bin"
   goToRoot
 }
