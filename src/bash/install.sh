@@ -46,7 +46,6 @@ installPythonAndPostgres() {
   pip install --upgrade coursera-dl
   pip install --upgrade setuptools
   pip install --upgrade html5lib
-  pip install --upgrade docker-compose
   pip install --upgrade awscli
   pip install --upgrade pyOpenSSL==16.2.0
   pip install --upgrade selenium
