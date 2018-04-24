@@ -35,6 +35,7 @@ installPythonAndPostgres() {
   rm -rf $LATEST_POSTGIS_VERSION.tar.gz
   rm -rf $LATEST_POSTGIS_VERSION
   goToRoot
+  pip install --upgrade requests
   pip install --upgrade WeasyPrint
   pip install --upgrade pip
   pip install --upgrade apiai
