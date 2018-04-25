@@ -37,11 +37,21 @@ installDocker() {
   newgrp docker
 }
 
+dockerEnterBash() {
+  funcName=$(getFunctionName)
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  docker container exec -it $1 bash
+}
+
 alias docker_containers='docker container ls --all'
 alias docker_container_logs='docker logs '
 alias docker_compose_build='docker-compose build'
 alias docker_compose_up='docker-compose up'
 alias docker_dangling_images="docker images --filter dangling=true -q"
+alias docker_enter_bash=dockerEnterBash
 alias docker_images='docker image ls'
 alias docker_prune_all_containers='printf "y\n" | docker system prune -a'
 alias docker_remove_all_images='docker rmi $(docker images -q)'

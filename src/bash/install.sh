@@ -574,6 +574,10 @@ installSlack() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
   cd $SYSTEM_SOFTWARE_FOLDER
   wget -O slack-desktop-$1-amd64.deb --no-check-certificate "https://downloads.slack-edge.com/linux_releases/slack-desktop-$1-amd64.deb"
   sudo dpkg -i slack-desktop-$1-amd64.deb
