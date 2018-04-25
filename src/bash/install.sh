@@ -774,6 +774,7 @@ installVirtualBox() {
   goToRoot
   aptGet
   printf 'y\n' | sudo apt install virtualbox virtualbox-ext-pack
+  # press tab and then enter when prompted
   goToRoot
 }
 
