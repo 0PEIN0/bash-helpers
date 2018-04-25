@@ -160,6 +160,7 @@ aptGetUpgrade() {
   fi;
   aptGet
   printf "y\ny\n" | sudo apt-get upgrade
+  printf "y\n" | sudo apt-get autoremove
 }
 
 coreSystemUpdate() {
