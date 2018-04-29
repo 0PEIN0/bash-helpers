@@ -54,7 +54,7 @@ Then just open up ***personal.sh*** file by running `gedit ~/helper-scripts/pers
 
 >`DEFAULT_PERMISSION_VALUE=775`
 
-3. Open ***~/.bash_aliases*** file and add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file there. Then source it.
+3. Add the import of the **/home/$SYSTEM_USER_NAME/helper-scripts/personal.sh** file in ***~/.bash_aliases*** file. Then source it.
 
 ```bash
 cat <<EOF > ~/.bash_aliases
