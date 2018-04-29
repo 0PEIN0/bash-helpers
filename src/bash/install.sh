@@ -924,10 +924,6 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install filezilla
   # Install VLC
   printf 'y\n' | sudo apt-get install vlc browser-plugin-vlc
-  # Install sublime text 3
-  printf '\n' | sudo add-apt-repository ppa:webupd8team/sublime-text-3
-  aptGet
-  printf 'y\n' | sudo apt-get install sublime-text-installer
   # Install Atom
   installAtom
   # Install Unrar
