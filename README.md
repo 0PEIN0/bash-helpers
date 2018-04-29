@@ -1,7 +1,7 @@
 # Bash Helpers
 Bash helper scripts for system package installation and python/nodejs developers. MIT license, hell yeah!
 
-Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only on **Ubuntu 16.04 LTS** and **Odroid MC1**. There will be no OS version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version, so you can expect to use **Ubuntu 18.04 LTS** somewhere in 2018 September-December.
+Intended to help software engineers working on python/django and nodejs environment. The scripts that were used below are only on **Ubuntu 16.04 LTS**, **Ubuntu 18.04 LTS** and **Odroid MC1 Ubuntu Core**. There will be no OS version specific package changes on the script until **Ubuntu 18.04 LTS** release. We will need to wait a few months after release to get all the packages for 18.04 version, so you can expect to use **Ubuntu 18.04 LTS** somewhere in 2018 September-December.
 
 >Legends:
 
