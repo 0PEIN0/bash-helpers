@@ -112,6 +112,7 @@ installPython() {
   sudo ./configure
   sudo make altinstall
   python3.6 -V
+  goToRoot
 }
 
 installHipchat() {
@@ -879,6 +880,22 @@ installPulseAudio() {
   printf 'y\n' | sudo apt-get install pulseaudio-dlna
 }
 
+installTransmission() {
+  # Install Transmission client
+  printf '\n' | sudo add-apt-repository ppa:transmissionbt/ppa
+  aptGet
+  printf 'y\n' | sudo apt-get install transmission-gtk transmission-cli transmission-common transmission-daemon
+}
+
+installEtcher() {
+  # Install Etcher
+  touch /etc/apt/sources.list.d/etcher.list
+  echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | tee /etc/apt/sources.list.d/etcher.list
+  sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
+  aptGet
+  printf "y\n" | sudo apt-get install etcher-electron
+}
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -919,12 +936,7 @@ installPackagesForSystemSudo() {
   #printf "\n" | sudo add-apt-repository ppa:me-davidsansome/clementine
   #aptGet
   #printf "y\n" | sudo apt-get install clementine
-  # Install Etcher
-  touch /etc/apt/sources.list.d/etcher.list
-  echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | tee /etc/apt/sources.list.d/etcher.list
-  sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
-  aptGet
-  printf "y\n" | sudo apt-get install etcher-electron
+  installEtcher
   # Install New fetch
   printf "\n" | sudo add-apt-repository ppa:dawidd0811/neofetch
   aptGet
@@ -939,10 +951,7 @@ installPackagesForSystemSudo() {
   installAtom
   # Install Unrar
   printf 'y\n' | sudo apt-get install unrar
-  # Install Transmission client
-  printf '\n' | sudo add-apt-repository ppa:transmissionbt/ppa
-  aptGet
-  printf 'y\n' | sudo apt-get install transmission-gtk transmission-cli transmission-common transmission-daemon
+  installTransmission
   # Install GIMP
   printf 'y\n' | sudo apt-get install gimp gimp-data gimp-plugin-registry gimp-data-extras
   aptGet
@@ -1063,6 +1072,7 @@ alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_clangd="installClangD $LATEST_CLANGD_VERSION"
 alias install_codeblocks=installCodeblocks
+alias install_etcher=installEtcher
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
 alias install_nginx=installNginx
@@ -1081,6 +1091,7 @@ alias install_pulse_audio=installPulseAudio
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"
 alias install_spotify=installSpotify
+alias install_transmission=installTransmission
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
 alias install_zoom="installZoomConference"
