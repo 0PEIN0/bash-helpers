@@ -861,6 +861,14 @@ installCodeblocks() {
   goToRoot
 }
 
+installSpotify() {
+  # Install Spotify
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+  aptGet
+  printf "y\n" | sudo apt-get install spotify-client
+}
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -909,11 +917,6 @@ installPackagesForSystemSudo() {
   sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
   aptGet
   printf "y\n" | sudo apt-get install etcher-electron
-  # Install Spotify
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-  echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-  aptGet
-  printf "y\n" | sudo apt-get install spotify-client
   # Install New fetch
   printf "\n" | sudo add-apt-repository ppa:dawidd0811/neofetch
   aptGet
@@ -960,8 +963,6 @@ installPackagesForSystemSudo() {
   installDocker
   # Install Heroku toolbelt
   installHerokuToolbelt
-  # Install Jenkins
-  installJenkins
   # Install line of code count for git repo
   aptGet
   printf 'y\n' | sudo apt-get install cloc
@@ -998,8 +999,6 @@ installPackagesForSystemSudo() {
   installJava
   # Install pycharm
   installPyCharm $LATEST_PYCHARM_VERSION
-  # Install slack chat app
-  installSlack $LATEST_SLACK_VERSION
   # Install gparted
   aptGet
   printf "y\n" | sudo apt-get install gparted
@@ -1010,6 +1009,8 @@ installPackagesForSystemSudo() {
   installNodejs
   # Install powerline fonts
   powerlineFontInstallationSudo
+  # Install slack chat app
+  installSlack $LATEST_SLACK_VERSION
   # Install ZSH
   aptGet
   installZshSudo
@@ -1077,6 +1078,7 @@ alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"
+alias install_spotify="installSpotify"
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
 alias install_zoom="installZoomConference"
