@@ -11,7 +11,7 @@ installPythonAndPostgres() {
   printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme
   printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
   printf 'y\n' | sudo apt-get install python-pyaudio python-numpy
-  printf 'y\n' | sudo apt-get install postgresql-server-dev-9.5
+  printf 'y\n' | sudo apt-get install postgresql-server-dev-9.6
   printf 'y\n' | sudo apt-get install python-scipy
   #geo-spatial packages
   printf 'y\n' | sudo apt-get install binutils libproj-dev gdal-bin libgdal-dev postgis
@@ -879,14 +879,11 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install wmctrl
   # Install nmap
   printf 'y\n' | sudo apt-get install nmap
-  # Install ubuntu make
-  printf '\n' | sudo add-apt-repository ppa:ubuntu-desktop/ubuntu-make
-  aptGet
   # Install open vpn
   printf 'y\n' | sudo apt-get install openvpn easy-rsa
   aptGet
-  printf 'y\n' | sudo apt-get install ubuntu-make
   # Install python and postgres
+  installPython
   installPythonAndPostgres
   # Install C++ code beautifier
   printf 'y\n' | sudo apt-get install uncrustify
@@ -1003,11 +1000,6 @@ installPackagesForSystemSudo() {
   installPyCharm $LATEST_PYCHARM_VERSION
   # Install slack chat app
   installSlack $LATEST_SLACK_VERSION
-  # Install powerline fonts
-  powerlineFontInstallationSudo
-  # Install ZSH
-  aptGet
-  installZshSudo
   # Install gparted
   aptGet
   printf "y\n" | sudo apt-get install gparted
@@ -1016,6 +1008,11 @@ installPackagesForSystemSudo() {
   printf "y\n" | sudo apt-get install p7zip-full
   # Install nodejs
   installNodejs
+  # Install powerline fonts
+  powerlineFontInstallationSudo
+  # Install ZSH
+  aptGet
+  installZshSudo
   goToRoot
 }
 
