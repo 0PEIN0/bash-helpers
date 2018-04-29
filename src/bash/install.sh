@@ -482,10 +482,13 @@ installAtom() {
   #aptGet
   #printf 'y\n' | sudo apt-get install atom
   cd $SYSTEM_SOFTWARE_FOLDER
-  curl -L https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-  sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-  aptGet
-  printf 'y\n' | sudo apt-get install atom
+  rm -rf deb
+  rm -rf deb atom-amd64.deb
+  wget -O deb --no-check-certificate https://atom.io/download/deb
+  mv "deb" "atom-amd64.deb"
+  sudo dpkg -i atom-amd64.deb
+  sudo apt-get install -f
+  rm -rf atom-amd64.deb
   goToRoot
 }
 
