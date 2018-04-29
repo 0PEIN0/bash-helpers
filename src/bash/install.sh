@@ -868,7 +868,7 @@ installPackagesForSystemSudo() {
   coreSystemUpdate
   # Install build essentials
   printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree xclip zip upstart preload nano vim lsof checkinstall software-properties-common libav-tools debconf-utils htop
-  printf 'y\n' | sudo apt-get install ubuntu-desktop unity compizconfig-settings-manager ffmpeg gpick
+  printf 'y\n' | sudo apt-get install ubuntu-desktop compizconfig-settings-manager ffmpeg gpick
   printf 'y\n' | sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
   printf 'y\n' | sudo apt-get install gradle
   printf 'y\n' | sudo apt-get install android-tools-adb
@@ -887,8 +887,9 @@ installPackagesForSystemSudo() {
   installPythonAndPostgres
   # Install C++ code beautifier
   printf 'y\n' | sudo apt-get install uncrustify
-  # Install tweak tool
-  printf 'y\n' | sudo apt-get install unity-tweak-tool gnome-tweak-tool
+  # Install tweak tools
+  #printf 'y\n' | sudo apt-get install unity-tweak-tool
+  printf 'y\n' | sudo apt-get install gnome-tweak-tool
   aptGet
   # Install youtube video downloader
   printf 'y\n' | sudo apt-get install youtube-dl
