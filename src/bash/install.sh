@@ -911,8 +911,6 @@ installPackagesForSystemSudo() {
   aptGet
   # Install youtube video downloader
   printf 'y\n' | sudo apt-get install youtube-dl
-  # Install Codeblocks
-  installCodeblocks
   # Install expect
   printf "y\n" | sudo apt-get install expect expect-dev
   # Install media players
