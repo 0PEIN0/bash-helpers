@@ -8,7 +8,11 @@ installPythonAndPostgres() {
   fi;
   goToRoot
   aptGet
-  printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev libpq-dev postgresql postgresql-contrib pgadmin3 libxml2-dev libxslt1-dev libjpeg-dev python-gpgme
+  printf 'y\n' | sudo apt-get install python-software-properties python-pip python-dev python3-dev
+  printf 'y\n' | sudo apt-get install libpq-dev libxml2-dev libxslt1-dev libjpeg-dev
+  printf 'y\n' | sudo apt-get install postgresql postgresql-contrib
+  printf 'y\n' | sudo apt-get install python-gpgme
+  printf 'y\n' | sudo apt-get install pgadmin3
   printf 'y\n' | sudo apt-get install python-lxml python-cffi libcairo2 libpango1.0-0 libgdk-pixbuf2.0-0 shared-mime-info libxslt-dev libffi-dev libcairo2-dev libpango1.0-dev libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
   printf 'y\n' | sudo apt-get install python-pyaudio python-numpy
   printf 'y\n' | sudo apt-get install postgresql-server-dev-9.6
