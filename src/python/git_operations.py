@@ -22,15 +22,25 @@ class GitOperations(object):
             cmd='{git_folder_path} && ls -l'.format(git_folder_path=self.git_folder_path))
         del project_folder_list[0]
         project_folder_list = project_folder_list[:-1]
-        return project_folder_list
+        project_name_list = []
+        for project_folder in project_folder_list:
+            parts = project_folder.split(' ')
+            project_name = parts[len(parts) - 1]
+            project_name_list.append(project_name)
+        return project_name_list
 
     def clone_from_provider(self, provider_name, repo_list):
-        project_folder_list = self.get_project_folder_list()
+        project_name_list = self.get_project_folder_list()
         for item in repo_list:
             repo_name = item.split('/')[1]
-            for already_cloned_item in project_folder_list:
+            found = False
+            for already_cloned_item in project_name_list:
                 if repo_name in already_cloned_item:
-                    continue
+                    found = True
+                    break
+            if found is True:
+                print('======>>>>>', item, 'PREVIOUSLY CLONED')
+                continue
             full_url = 'git@{provider_name}:{actual_path}.git'.format(
                 provider_name=provider_name,
                 actual_path=item)
@@ -43,17 +53,15 @@ class GitOperations(object):
             'BIT_BUCKET_REPO_LIST']
         gitlab_repo_list = self.local_settings_loader_obj.LOCAL_SETTINGS['GITLAB_REPO_LIST']
         self.clone_from_provider(
-            self, provider_name='github.com', repo_list=github_repo_list)
+            provider_name='github.com', repo_list=github_repo_list)
         self.clone_from_provider(
-            self, provider_name='bitbucket.org', repo_list=bit_bucket_repo_list)
+            provider_name='bitbucket.org', repo_list=bit_bucket_repo_list)
         self.clone_from_provider(
-            self, provider_name='gitlab.com', repo_list=gitlab_repo_list)
+            provider_name='gitlab.com', repo_list=gitlab_repo_list)
 
     def fetch_all_repos_and_reset_hard(self):
-        project_folder_list = self.get_project_folder_list()
-        for project_folder in project_folder_list:
-            parts = project_folder.split(' ')
-            project_name = parts[len(parts) - 1]
+        project_name_list = self.get_project_folder_list()
+        for project_name in project_name_list:
             project_folder_path = '{git_folder_path}{project_name}/'.format(
                 git_folder_path=self.git_folder_path,
                 project_name=project_name)

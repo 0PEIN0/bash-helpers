@@ -20,7 +20,7 @@ class DailyLocalMachineOperations(object):
             print('INFO: music video file sync completed.')
         if '-clone-repos' in sys.argv:
             print('INFO: git repo clone check started.....')
-            GitOperations().clone_from_provider()
+            GitOperations().clone_missing_repos()
             print('INFO: git repo clone check completed.')
         if '-git-repos-sync' in sys.argv:
             print('INFO: git repos sync started.....')
