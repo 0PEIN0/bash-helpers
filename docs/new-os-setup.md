@@ -17,7 +17,8 @@
 14. Open "Firefox" -> Visit "https://www.google.com/chrome/browser/desktop/index.html" -> Download the 64-bit deb file and install Chrome.
 15. Open "Chrome" -> Visit "https://www.dropbox.com/install-linux" -> Download the 64-bit deb file and install Dropbox. ***Why would you not use Dropbox when it provides backups to your most useful files and is present in all major OS while being free to use upto the necessary limit?!***
 16. Login to Chrome with google account.
-17. Open terminal.
+17. Run the dropbox `deb` file to install.
+18. Open terminal.
 
 ### IN NON SUDO USER MODE
 1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`.
