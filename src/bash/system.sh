@@ -147,6 +147,7 @@ aptGet() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
+  printf "y\n" | sudo apt --fix-broken install
   sudo apt-get update --fix-missing
   sudo dpkg --configure -a
   sudo apt-get update --fix-missing
