@@ -898,10 +898,10 @@ installPackagesForSystemSudo() {
   # Install expect
   printf "y\n" | sudo apt-get install expect expect-dev
   # Install media players
-  aptGet
+  #aptGet
   #printf "y\n" | sudo apt-get install banshee
   #printf "\n" | sudo add-apt-repository ppa:me-davidsansome/clementine
-  aptGet
+  #aptGet
   #printf "y\n" | sudo apt-get install clementine
   # Install Etcher
   touch /etc/apt/sources.list.d/etcher.list
