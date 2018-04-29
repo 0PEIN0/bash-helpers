@@ -18,7 +18,7 @@ class DailyLocalMachineOperations(object):
             print('INFO: music video file sync started.....')
             YoutubeMusicVideoSync().sync_mvs()
             print('INFO: music video file sync completed.')
-        if '--clone-repos' in sys.argv:
+        if '-clone-repos' in sys.argv:
             print('INFO: git repo clone check started.....')
             GitOperations().clone_from_provider()
             print('INFO: git repo clone check completed.')
