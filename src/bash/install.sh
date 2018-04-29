@@ -869,6 +869,16 @@ installSpotify() {
   printf "y\n" | sudo apt-get install spotify-client
 }
 
+installPulseAudio() {
+  # Install microphone control panel and pulseaudio android support package
+  aptGet
+  printf 'y\n' | sudo apt-get install pavucontrol
+  aptGet
+  printf '\n' | sudo add-apt-repository ppa:qos/pulseaudio-dlna
+  aptGet
+  printf 'y\n' | sudo apt-get install pulseaudio-dlna
+}
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -944,13 +954,6 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install synaptic
   # Install Laptop mode tools
   printf 'y\n' | sudo apt-get install laptop-mode-tools
-  # Install microphone control panel and pulseaudio android support package
-  aptGet
-  printf 'y\n' | sudo apt-get install pavucontrol
-  aptGet
-  printf '\n' | sudo add-apt-repository ppa:qos/pulseaudio-dlna
-  aptGet
-  printf 'y\n' | sudo apt-get install pulseaudio-dlna
   # Install noobs-lab icons
   printf '\n' | sudo add-apt-repository ppa:noobslab/icons
   aptGet
@@ -1076,9 +1079,10 @@ alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
 alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
+alias install_pulse_audio=installPulseAudio
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"
-alias install_spotify="installSpotify"
+alias install_spotify=installSpotify
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
 alias install_zoom="installZoomConference"
