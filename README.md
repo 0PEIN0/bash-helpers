@@ -26,8 +26,8 @@ Otherwise, open new terminal for usage instruction without new OS installations.
 1. Clone [Bash Helper's Repository](https://github.com/0PEIN0/bash-helpers) in Gitrepos folder by running following commands:
 
 ```sh
-$ cd /home/$SYSTEM_USER_NAME/Gitrepos/
-$ git clone https://github.com/0PEIN0/bash-helpers.git
+cd /home/$SYSTEM_USER_NAME/Gitrepos/
+git clone https://github.com/0PEIN0/bash-helpers.git
 ```
 
 Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user.
