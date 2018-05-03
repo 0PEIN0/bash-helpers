@@ -648,12 +648,14 @@ installWine() {
     return
   fi;
   aptGet
+  cd $SYSTEM_SOFTWARE_FOLDER/
   printf 'y\n' | sudo apt remove wine2.0 wine-staging wine wine1.8 wine-stable libwine* fonts-wine*
   aptGet
   printf "y\n" | sudo apt autoremove
   aptGet
-  printf '\n' | sudo add-apt-repository --remove ppa:wine/wine-builds
+  #printf '\n' | sudo add-apt-repository --remove ppa:wine/wine-builds
   sudo dpkg --add-architecture i386
+  rm -rf Release.key
   wget -nc https://dl.winehq.org/wine-builds/Release.key
   sudo apt-key add Release.key
   printf '\n' | sudo apt-add-repository 'https://dl.winehq.org/wine-builds/ubuntu/'
@@ -661,6 +663,7 @@ installWine() {
   printf 'y\n' | sudo apt-get install --install-recommends wine-staging
   /opt/wine-staging/bin/wine
   /opt/wine-staging/bin/winecfg
+  goToRoot
 }
 
 installGolang() {
@@ -761,6 +764,7 @@ installHerokuToolbelt() {
   cd $SYSTEM_SOFTWARE_FOLDER/
   #wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
   printf '\n' | sudo add-apt-repository "deb https://cli-assets.heroku.com/branches/stable/apt ./"
+  rm -rf release.key
   curl -L https://cli-assets.heroku.com/apt/release.key | sudo apt-key add -
   aptGet
   printf 'y\n' | sudo apt-get install heroku
