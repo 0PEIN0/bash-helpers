@@ -1098,6 +1098,7 @@ alias install_spotify=installSpotify
 alias install_transmission=installTransmission
 alias install_virtual_box=installVirtualBox
 alias install_vscode="installVisualStudioCode $LATEST_VSCODE_FILE_NAME"
+alias install_wine=installWine
 alias install_zoom="installZoomConference"
 alias system_init_non_sudo_first=installPackagesForSystemNonSudoFirst
 alias system_init_non_sudo_second=installPackagesForSystemNonSudoThird
