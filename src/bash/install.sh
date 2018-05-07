@@ -955,8 +955,6 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install filezilla
   # Install VLC
   printf 'y\n' | sudo apt-get install vlc browser-plugin-vlc
-  # Install Atom
-  installAtom
   # Install Unrar
   printf 'y\n' | sudo apt-get install unrar
   installTransmission
@@ -1029,6 +1027,8 @@ installPackagesForSystemSudo() {
   powerlineFontInstallationSudo
   # Install slack chat app
   installSlack $LATEST_SLACK_VERSION
+  # Install Atom
+  installAtom
   # Install ZSH
   aptGet
   installZshSudo
