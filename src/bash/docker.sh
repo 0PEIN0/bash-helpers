@@ -55,7 +55,6 @@ alias docker_dangling_images="docker images --filter dangling=true -q"
 alias docker_enter_bash=dockerEnterBash
 alias docker_images='docker image ls'
 alias docker_prune_all_containers='printf "y\n" | docker system prune -a'
-alias docker_prune_containers='printf "y\n" | docker container prune'
 alias docker_remove_all_images='docker rmi $(docker images -q)'
 alias docker_prune_containers='printf "y\n" | docker container prune && docker_containers'
 #alias docker_remove_containers='docker stop $(docker ps -aq)'#not working
