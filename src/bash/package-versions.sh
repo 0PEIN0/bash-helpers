@@ -1,7 +1,7 @@
 LATEST_PYCHARM_VERSION="pycharm-community-2018.1.2" #https://www.jetbrains.com/pycharm/download/#section=linux
 LATEST_VSCODE_VERSION="1.23.0-1525361119" #https://code.visualstudio.com/download
 LATEST_BRACKET_VERSION="1.12" #https://github.com/adobe/brackets/releases
-LATEST_GOLANG_VERSION="1.10.1" #https://golang.org/dl/
+LATEST_GOLANG_VERSION="1.10.2" #https://golang.org/dl/
 LATEST_SLACK_VERSION="3.1.1" #https://slack.com/downloads/linux
 LATEST_GEOS_VERSION="geos-3.6.2" #http://download.osgeo.org/geos/
 LATEST_POSTGIS_VERSION="postgis-2.4.4" #http://postgis.net/stuff/
