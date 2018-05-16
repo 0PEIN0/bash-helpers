@@ -557,7 +557,7 @@ rabbitMqRestart() {
   rabbitmqctl status
 }
 
-alias django_make_migration='./manage.py make_migration'
+alias django_make_migration='./manage.py make_migrations'
 alias django_migrate='./manage.py migrate'
 alias new_django_project=newDjangoProject
 alias new_django_app='./manage.py startapp '
