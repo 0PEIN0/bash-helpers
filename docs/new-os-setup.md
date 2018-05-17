@@ -66,7 +66,7 @@ Then just open up ***personal.sh*** file by running `gedit ~/helper-scripts/pers
 ```bash
 cat <<EOF > ~/.bash_aliases
 if [ -f /home/$USER/helper-scripts/personal.sh ]; then
-. /home/$USER/helper-scripts/personal.sh
+    . /home/$USER/helper-scripts/personal.sh
 fi;
 EOF
 source ~/.bash_aliases
