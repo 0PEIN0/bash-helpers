@@ -8,10 +8,11 @@ Intended to help software engineers working on python/django and nodejs environm
 1. `bash-helpers` is the name of the repository and the folder name where this repository is cloned.
 2. `helper-scripts` is that place where you place your `personal.sh` bash files as well as your other scripts that are meant to customize your local machine  environment.
 
-# Usage Instruction
-
+# New OS installations
 For usage instruction ***with*** new OS installations, follow [these](docs/new-os-setup.md) instructions.
-Otherwise, open new terminal for usage instruction without new OS installations.
+
+# Usage Instruction
+Open terminal.
 
 ### IN NON SUDO USER MODE
 1. Create ***Gitrepos*** folder in the user directory. Path will look like this: **/home/$SYSTEM_USER_NAME/Gitrepos/**. Here ***$SYSTEM_USER_NAME*** denotes the user name of the operating system(Ubuntu in this case) user, which is not the default ***root*** user. Create the folder using this command: `mkdir -p ~/Gitrepos`. If you are not sure about OS username, its the name that appears when login. To be sure, you can open up **Terminal** and see the username there. It'll be in `username@machine-name` format.
@@ -59,7 +60,7 @@ Then just open up ***personal.sh*** file by running `gedit ~/helper-scripts/pers
 ```bash
 cat <<EOF > ~/.bash_aliases
 if [ -f /home/$USER/helper-scripts/personal.sh ]; then
-. /home/$USER/helper-scripts/personal.sh
+    . /home/$USER/helper-scripts/personal.sh
 fi;
 EOF
 source ~/.bash_aliases
