@@ -97,13 +97,13 @@ fi;
 2. ***Optional Step*** Assuming you have **ZSH** shell setup, do this only if `zsh` shell does not appear in terminal after rebooting or opening a new terminal. And add a line with just only `zsh` string on a new line at the end of `~/.bash_aliases` file. Then run `source ~/.zshrc`.
 3. Assuming you have **ZSH** shell setup, run `source ~/.zshrc`. If you see some weird bash error when sourcing, just ignore it. It should be fixed after restarting the machine.
 
-# Additional Usage Notes:
+# Additional usage notes
 
 1. Estimated total installation time is 2-5 hours for fresh new OS installation, although it will vary based on machine and network connection performance.
 2. Use command `uap` to update systems daily for ***non sudo*** user(s). And `uar` command for ***sudo*** user(s), for example: `root` user. The `uap` command will ensure the daily pull for latest changes on repositories that resides in `~/Gitrepos` folder, sync youtube music videos and replace files from sources to destinations. To use `uap` command, first create a new file in `src/python/` directory of current repository. Then add a file called `local_settings.py`. Yes, exactly this file name. After creating the file copy contents from `sample_local_settings.py` file to `local_settings.py` file. Override property values in `local_settings.py` according to your necessity.
 3. For further OS customization, you can take a look into [this](docs/personalized-manual-intervention.md) file. This is a personalized OS environment file for myself, but you might get some idea as to what some of the customizations may look like.
 
-# Other alternative projects that inspired this repository:
+# Other alternative projects that inspired this repository
 
 1. [Brilliant Bash](https://github.com/roytenberg/brilliant-bash) by [Ben Roytenberg](https://github.com/roytenberg).
 2. [shell-scripts](https://github.com/trevordmiller/shell-scripts) by [Trevor D. Miller](https://github.com/trevordmiller).
