@@ -525,9 +525,12 @@ installJenkins() {
   fi;
   goToRoot
   aptGet
+  printf 'Y\n' | sudo apt-get remove jenkins
+  aptGetUpgrade
+  aptGet
   cd $SYSTEM_SOFTWARE_FOLDER
-  wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
-  sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+  wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+  sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
   aptGet
   printf 'Y\n' | sudo apt-get install jenkins
   goToRoot
@@ -785,7 +788,7 @@ installVirtualBox() {
   goToRoot
 }
 
-installJava() {
+installJavaNine() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
   if [ "${?}" = "0" ] ; then
@@ -797,6 +800,21 @@ installJava() {
   aptGet
   echo "oracle-java9-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
   sudo apt-get install -y oracle-java9-installer
+  goToRoot
+}
+
+installJavaEight() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  # Install Java 8
+  goToRoot
+  sudo add-apt-repository -y ppa:webupd8team/java
+  aptGet
+  echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
+  sudo apt-get install -y oracle-java8-installer
   goToRoot
 }
 
@@ -1012,7 +1030,7 @@ installPackagesForSystemSudo() {
   # Install vscode editor
   installVisualStudioCode $LATEST_VSCODE_FILE_NAME
   # Install java
-  installJava
+  installJavaEight
   # Install pycharm
   installPyCharm $LATEST_PYCHARM_VERSION
   # Install gparted
@@ -1084,7 +1102,8 @@ alias install_etcher=installEtcher
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
 alias install_nginx=installNginx
-alias install_java=installJava
+alias install_java_eight=installJavaEight
+alias install_java_nine=installJavaNine
 alias install_jenkins=installJenkins
 alias install_laravel=installLaravelNonSudo
 alias install_mongo=installMongoDb
