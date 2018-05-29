@@ -559,6 +559,7 @@ rabbitMqRestart() {
 
 alias django_make_migration='./manage.py makemigrations'
 alias django_migrate='./manage.py migrate'
+alias django_shell='./manage.py shell'
 alias new_django_project=newDjangoProject
 alias new_django_app='./manage.py startapp '
 alias pip_freeze='pip freeze > requirements.txt'
