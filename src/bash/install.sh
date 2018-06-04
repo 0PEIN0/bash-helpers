@@ -981,10 +981,6 @@ installPackagesForSystemSudo() {
   aptGet
   # Install postgis
   printf "y\n" | sudo apt-get install postgis
-  # Install Synaptic
-  printf 'y\n' | sudo apt-get install synaptic
-  # Install Laptop mode tools
-  printf 'y\n' | sudo apt-get install laptop-mode-tools
   # Install noobs-lab icons
   printf '\n' | sudo add-apt-repository ppa:noobslab/icons
   aptGet
