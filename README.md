@@ -11,6 +11,8 @@ Intended to help software engineers working on python/django and nodejs environm
 # New OS installations
 For usage instruction ***with*** new OS installations, follow [these](docs/new-os-setup.md) instructions.
 
+---
+
 # Usage Instruction
 Open terminal.
 
