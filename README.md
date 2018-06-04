@@ -88,6 +88,7 @@ fi;
 5. Run `exit` command.
 6. Restart machine.
 7. Cheers! You're all set.
+8. To update this `bash-helpers` repository continually, run `bash_helpers_fetch` command time to time.
 
 ### NOW SWITCHED BACK TO NON SUDO USER MODE, THAT IS YOUR PERSONAL SYSTEM USER (only for ZSH users)
 1. Assuming you have **ZSH** shell setup, run `gedit ~/.zshrc` (change the zsh theme to "agnoster", or any of your preferred theme, and add the reference to personal bash file as well located in bash-dump folder). Same operation as `gedit ~/.bash_aliases` step. Place the following script at the end of `~/.zshrc` file. Remember to replace the ***$SYSTEM_USER_NAME*** string here with actual operating system username.
