@@ -60,8 +60,8 @@
 58. `Transmission`
 59. `GIMP`
 60. `postgis`
-61. `synaptic`
-62. `laptop-mode-tools`
+61. `ZSH shell`
+62. `Nodejs`
 63. `Pulse Audio and Mic Control Panel`
 64. `noobs-lab Ultra Flat Icons`
 65. `Postman`
@@ -86,9 +86,7 @@
 84. `Pycharm`
 85. `Slack`
 86. `Powerline Fonts`
-87. `ZSH shell`
-88. `Nodejs`
-89. NPM global packages:
+87. NPM global packages:
 
 `angular/cli`
 
