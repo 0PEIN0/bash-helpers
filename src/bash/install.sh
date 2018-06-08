@@ -1079,12 +1079,12 @@ installPackagesForSystemNonSudoThird() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
-  installZshNonSudo
   powerlineFontInstallationNonSudo
   installVSCodeExtensionsNonSudo
   installAtomExtensionsNonSudo
   postgresPgpassFileInit
-  echo "SYSTEM PACKAGE INSTALLATION FOR NON SUDO USER COMPLETED."
+  installZshNonSudo
+  echo "FINAL NON SUDO USER OPERATION HAS BEEN COMPLETED. YOU NOW MAY RESTART YOUR MACHINE."
 }
 
 alias install_angry_ip_scan="installAngryIpScan $LATEST_ANGRY_IP_SCAN_VERSION"
