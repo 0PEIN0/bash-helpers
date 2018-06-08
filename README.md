@@ -65,6 +65,9 @@ if [ -f /home/$USER/helper-scripts/personal.sh ]; then
     . /home/$USER/helper-scripts/personal.sh
 fi;
 EOF
+```
+
+```bash
 source ~/.bash_aliases
 ```
 
