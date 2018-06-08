@@ -518,6 +518,7 @@ installStacer() {
 }
 
 installJenkins() {
+  # stupid jenkins requires java version 8, they are not even going to try to support version 9, will do once 10 is out
   funcName=$(getFunctionName)
   checkIfSudo $funcName
   if [ "${?}" = "0" ] ; then
