@@ -1,6 +1,6 @@
 # New System Installation Instructions
 
-### LOGIN TO THE SYSTEM FOR THE FIRST TIME (OPTIONAL)
+### LOGIN TO THE SYSTEM FOR THE FIRST TIME (OPTIONAL AND VALID ONLY FOR 16.04 DESKTOP)
 1. Open `System Settings` in Ubuntu.
 2. Go to `Brightness & Lock` -> Uncheck `Dim screen to save power`.
 3. Go to `Brightness & Lock` -> Set `Turn screen off when inactive for` value to `Never`.
