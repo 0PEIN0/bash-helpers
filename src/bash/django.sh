@@ -10,7 +10,7 @@ postgresPgpassFileInit() {
     return
   fi;
   if [ ! -f ~/.pgpass ]; then
-    touch $USER:$USER ~/.pgpass
+    touch ~/.pgpass
   fi;
   chown $USER:$USER ~/.pgpass
   chmod $DEFAULT_PERMISSION_VALUE ~/.pgpass
