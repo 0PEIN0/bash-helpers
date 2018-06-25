@@ -332,6 +332,31 @@ djangoReinitiate() {
   djangoProjectDataLoad $1 $3
 }
 
+djangoDefaultSetupWithDataLoad() {
+  djangoDefaultSetup $1 $2 $3
+  eval ${3}_init_data_load
+}
+
+djangoGitRebase() {
+  if [ -z "$1" ]; then
+    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    return $1
+  fi;
+  if [ -z "$2" ]; then
+    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    return $2
+  fi;
+  eval ${1}_ve
+  eval "git_r $2"
+  ./manage.py migrate
+  eval ${1}_init_data_load
+}
+
+djangoGitRebaseWithDataLoad() {
+  djangoGitRebase $1 $2
+  eval ${1}_init_data_load
+}
+
 djangoReinitiateClean() {
   if [ -z "$1" ]; then
     echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
