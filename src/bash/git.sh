@@ -61,6 +61,7 @@ alias git_rdp='git_rd && git_p'
 alias git_remove_last_commit='git reset --hard HEAD^'
 alias git_rh='git_f && gitResetHard'
 alias git_rl='git_f && git reflog'
+alias git_rm='git_r master'
 alias git_s='git_f && git status'
 alias git_set_name="git config --global user.name '$SYSTEM_USER_FULL_NAME'"
 alias git_set_email="git config --global user.email '$SYSTEM_USER_EMAIL'"
