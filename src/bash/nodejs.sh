@@ -21,29 +21,30 @@ nodeUpdates() {
   goToRoot
   npm i -g npm
   #npm install -g @angular/cli
-  npm install -g mongodb@latest
-  npm install -g gulp gulp-cli@latest
   npm install -g bower@latest
   npm install -g coffeescript@latest
+  npm install -g cordova@latest
+  npm install -g create-react-app@latest
+  npm install -g electron@latest --unsafe-perm=true --allow-root
+  npm install -g firebase-tools@latest
+  npm install -g forever@latest
+  npm install -g grunt-cli@latest
+  npm install -g gulp gulp-cli@latest
+  npm install -g http-server@latest
+  npm install -g ionic@latest
   npm install -g karma-cli@latest
+  npm install -g mongodb@latest
+  npm install -g newman@latest
   npm install -g nodemon@latest
   npm install -g npm@latest
   npm install -g protractor@latest
-  npm install -g firebase-tools@latest
   npm install -g pm2@latest
-  npm install -g forever@latest
   npm install -g prettyjson@latest
-  npm install -g create-react-app@latest
   npm install -g redux-devtools@latest
-  npm install -g grunt-cli@latest
   npm install -g webpack@latest
   npm install -g webpack-dev-server@latest
-  npm install -g vue-cli@latest
-  npm install -g cordova@latest
-  npm install -g ionic@latest
-  npm install -g newman@latest
-  npm install -g electron@latest --unsafe-perm=true --allow-root
-  npm install -g http-server@latest
+  npm uninstall -g vue-cli
+  npm install -g @vue/cli
   webdriver-manager update
   goToRoot
 }
