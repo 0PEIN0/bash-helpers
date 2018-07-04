@@ -933,7 +933,7 @@ installPackagesForSystemSudo() {
   goToRoot
   coreSystemUpdate
   # Install essential packages
-  printf 'y\n' | sudo apt-get install build-essential autoconf automake unzip curl gcc g++ wget sshpass pwgen tree xclip zip preload nano vim lsof checkinstall software-properties-common debconf-utils htop
+  printf 'y\n' | sudo apt-get install build-essential autoconf make automake unzip curl gcc g++ wget sshpass pwgen tree xclip zip preload nano vim lsof checkinstall software-properties-common debconf-utils htop
   printf 'y\n' | sudo apt-get install ubuntu-desktop compizconfig-settings-manager ffmpeg gpick
   printf 'y\n' | sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
   printf 'y\n' | sudo apt-get install gradle
