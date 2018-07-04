@@ -45,6 +45,7 @@ nodeUpdates() {
   npm install -g webpack-dev-server@latest
   npm uninstall -g vue-cli
   npm install -g @vue/cli
+  npm install -g @vue/cli-init
   webdriver-manager update
   goToRoot
 }
