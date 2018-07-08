@@ -23,6 +23,16 @@ installVueJs() {
   npm install -g @vue/cli-init
 }
 
+installAngular() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  npm install -g @angular/cli
+}
+
 nodeUpdates() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -32,7 +42,6 @@ nodeUpdates() {
   aptGet
   goToRoot
   npm i -g npm
-  #npm install -g @angular/cli
   npm install -g bower@latest
   npm install -g coffeescript@latest
   npm install -g cordova@latest
@@ -94,6 +103,7 @@ nodeExpressNpmInitiation() {
 }
 
 alias node_update=nodeUpdates
+alias install_angular=installAngular
 alias install_nodejs=installNodejs
 alias install_vuejs=installVueJs
 alias npm_adduser="npm adduser" # asks for username, password and public-email in the prompt
