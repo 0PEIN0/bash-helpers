@@ -11,6 +11,18 @@ installNodejs() {
   sudo apt-get install -y npm
 }
 
+installVueJs() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  npm uninstall -g vue-cli
+  npm install -g @vue/cli
+  npm install -g @vue/cli-init
+}
+
 nodeUpdates() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -43,9 +55,7 @@ nodeUpdates() {
   npm install -g redux-devtools@latest
   npm install -g webpack@latest
   npm install -g webpack-dev-server@latest
-  npm uninstall -g vue-cli
-  npm install -g @vue/cli
-  npm install -g @vue/cli-init
+  installVueJs
   webdriver-manager update
   goToRoot
 }
@@ -85,6 +95,7 @@ nodeExpressNpmInitiation() {
 
 alias node_update=nodeUpdates
 alias install_nodejs=installNodejs
+alias install_vuejs=installVueJs
 alias npm_adduser="npm adduser" # asks for username, password and public-email in the prompt
 alias npm_build="npm run build"
 alias npm_i="npm install"
