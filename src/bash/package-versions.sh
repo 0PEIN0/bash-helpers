@@ -8,6 +8,7 @@ LATEST_POSTGIS_VERSION="postgis-2.4.4" #http://postgis.net/stuff/
 LATEST_PYTHON_VERSION="3.6.5" #https://www.python.org/downloads/
 LATEST_CLANGD_VERSION="5.0" #http://releases.llvm.org/download.html
 LATEST_DOCKER_COMPOSE_VERSION="1.21.2" #https://docs.docker.com/compose/install/
+LATEST_SCALA_VERSION='2.12.6' #https://www.scala-lang.org/download/
 LATEST_ROBOMONGO_VERSION="1.2.1" #https://robomongo.org/download
 LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-3e50a65"
 LATEST_STACER_VERSION="1.0.9" #https://github.com/oguzhaninan/Stacer/releases

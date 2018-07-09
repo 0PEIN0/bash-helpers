@@ -759,6 +759,32 @@ installPhp() {
   goToRoot
 }
 
+installScala() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  if [ -z "$1" ]; then
+    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    return $1
+  fi;
+  aptGet
+  cd $SYSTEM_SOFTWARE_FOLDER/
+  # Scala
+  sudo apt-get remove scala-library scala
+  sudo wget http://scala-lang.org/files/archive/scala-$1.deb
+  sudo dpkg -i scala-$1.deb
+  sudo apt-get update
+  sudo apt-get install scala
+  # SBT
+  echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+  sudo apt-get update
+  sudo apt-get install sbt
+  goToRoot
+}
+
 installHerokuToolbelt() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1114,6 +1140,7 @@ alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
 alias install_pulse_audio=installPulseAudio
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
+alias install_scala="installScala LATEST_SCALA_VERSION"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"
 alias install_spotify=installSpotify
 alias install_transmission=installTransmission
