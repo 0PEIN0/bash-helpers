@@ -92,6 +92,7 @@ nodeExpressNpmInitiation() {
   npm install multer@latest --save
   npm install morgan@latest --save
   npm install nodemailer@latest --save
+  npm install nodemon@latest --save-dev
   npm install raven@latest --save
   npm install response-time@latest --save
   npm install serve-favicon@latest --save
