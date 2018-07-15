@@ -46,6 +46,7 @@ alias bitbucket_keyscan_sudo='ssh-keyscan -t rsa bitbucket.com >> /root/.ssh/kno
 alias git_install=gitInstall
 alias git_a='git add '
 alias git_b='git_f && git rev-parse --abbrev-ref HEAD'
+alias git_bc='git_f && gitCheckout '
 alias git_c=gitCheckout
 alias git_cc='git commit -m "Rebased and resolved conflicts after rebasing from base branch."'
 alias git_clone='git_repo && git clone '
