@@ -1053,24 +1053,24 @@ installPackagesForSystemSudo() {
   installBracket $LATEST_BRACKET_VERSION
   # Install vscode editor
   installVisualStudioCode $LATEST_VSCODE_FILE_NAME
-  # Install java
-  installJavaEight
-  # Install pycharm
-  installPyCharm $LATEST_PYCHARM_VERSION
   # Install gparted
   aptGet
   printf "y\n" | sudo apt-get install gparted
   # Install 7z unpacking package
   aptGet
   printf "y\n" | sudo apt-get install p7zip-full
-  # Install nodejs
-  installNodejs
   # Install powerline fonts
   powerlineFontInstallationSudo
   # Install slack chat app
   installSlack $LATEST_SLACK_VERSION
   # Install Atom
   installAtom
+  # Install nodejs
+  installNodejs
+  # Install java
+  installJavaEight
+  # Install pycharm
+  installPyCharm $LATEST_PYCHARM_VERSION
   # Install ZSH
   aptGet
   installZshSudo
