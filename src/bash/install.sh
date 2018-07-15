@@ -917,14 +917,29 @@ installCodeblocks() {
 }
 
 installSpotify() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  checkSoftwareFolder
   # Install Spotify
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
   echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
   aptGet
   printf "y\n" | sudo apt-get install spotify-client
+  goToRoot
 }
 
 installPulseAudio() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  checkSoftwareFolder
   # Install microphone control panel and pulseaudio android support package
   aptGet
   printf 'y\n' | sudo apt-get install pavucontrol
@@ -932,22 +947,52 @@ installPulseAudio() {
   printf '\n' | sudo add-apt-repository ppa:qos/pulseaudio-dlna
   aptGet
   printf 'y\n' | sudo apt-get install pulseaudio-dlna
+  goToRoot
 }
 
 installTransmission() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  checkSoftwareFolder
   # Install Transmission client
   printf '\n' | sudo add-apt-repository ppa:transmissionbt/ppa
   aptGet
   printf 'y\n' | sudo apt-get install transmission-gtk transmission-cli transmission-common transmission-daemon
+  goToRoot
 }
 
 installEtcher() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
   # Install Etcher
   touch /etc/apt/sources.list.d/etcher.list
   echo "deb https://dl.bintray.com/resin-io/debian stable etcher" | tee /etc/apt/sources.list.d/etcher.list
   sudo apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 379CE192D401AB61
   aptGet
   printf "y\n" | sudo apt-get install etcher-electron
+}
+
+installPopularMediaPlayers() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  # Install media players
+  aptGet
+  printf "y\n" | sudo apt-get install banshee
+  printf "\n" | sudo add-apt-repository ppa:me-davidsansome/clementine
+  aptGet
+  printf "y\n" | sudo apt-get install clementine
 }
 
 installPackagesForSystemSudo() {
@@ -984,12 +1029,6 @@ installPackagesForSystemSudo() {
   printf 'y\n' | sudo apt-get install youtube-dl
   # Install expect
   printf "y\n" | sudo apt-get install expect expect-dev
-  # Install media players
-  #aptGet
-  #printf "y\n" | sudo apt-get install banshee
-  #printf "\n" | sudo add-apt-repository ppa:me-davidsansome/clementine
-  #aptGet
-  #printf "y\n" | sudo apt-get install clementine
   installEtcher
   # Install New fetch
   printf "\n" | sudo add-apt-repository ppa:dawidd0811/neofetch
@@ -1098,6 +1137,7 @@ installPackagesForSystemSudoSecond() {
     return
   fi;
   installPackagesForSystemSudo
+  goToRoot
   echo "SYSTEM PACKAGE INSTALLATION COMPLETED. YOU MAY REBOOT YOUR SYSTEM NOW."
 }
 
@@ -1112,6 +1152,7 @@ installPackagesForSystemNonSudoThird() {
   installAtomExtensionsNonSudo
   postgresPgpassFileInit
   installZshNonSudo
+  goToRoot
   echo "FINAL NON SUDO USER OPERATION HAS BEEN COMPLETED. YOU NOW MAY RESTART YOUR MACHINE."
 }
 
