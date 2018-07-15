@@ -71,7 +71,7 @@ nodeUpdates() {
 
 nodeExpressNpmInitiation() {
   funcName=$(getFunctionName)
-  checkIfSudo $funcName
+  checkIfNotSudo $funcName
   if [ "${?}" = "0" ] ; then
     return
   fi;
@@ -106,6 +106,7 @@ alias node_update=nodeUpdates
 alias install_angular=installAngular
 alias install_nodejs=installNodejs
 alias install_vuejs=installVueJs
+alias node_express_new_app=nodeExpressNpmInitiation
 alias npm_adduser="npm adduser" # asks for username, password and public-email in the prompt
 alias npm_build="npm run build"
 alias npm_i="npm install"
