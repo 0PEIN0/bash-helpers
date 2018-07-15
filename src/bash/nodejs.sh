@@ -75,30 +75,46 @@ nodeExpressNpmInitiation() {
   if [ "${?}" = "0" ] ; then
     return
   fi;
+  npm install async@latest --save
+  npm install bluebird@latest --save
   npm install body-parser@latest --save
+  npm install chai@latest --save-dev
+  npm install concurrently@latest --save-dev
+  npm install connect-mongo@latest --save
   npm install cookie-parser@latest --save
   npm install cookie-session@latest --save
   npm install compression@latest --save
   npm install connect@latest --save
   npm install cron@latest --save
   npm install csurf@latest --save
+  npm install dotenv@latest --save
   npm install errorhandler@latest --save
   npm install express@latest --save
   npm install express-session@latest --save
+  npm install express-validator@latest --save
   npm install file-stream-rotator@latest --save
   npm install helmet@latest --save
   npm install html-minifier@latest --save
+  npm install jest@latest --save-dev
+  npm install lodash@latest --save
   npm install method-override@latest --save
   npm install multer@latest --save
+  npm install mongoose@latest --save
   npm install morgan@latest --save
   npm install nodemailer@latest --save
   npm install nodemon@latest --save-dev
+  npm install passport@latest --save
+  npm install passport-local@latest --save
+  npm install pug@latest --save
   npm install raven@latest --save
+  npm install request@latest --save
+  npm install request-promise@latest --save
   npm install response-time@latest --save
   npm install serve-favicon@latest --save
   npm install serve-index@latest --save
   npm install serve-static@latest --save
-  npm install uglify-js@latest --save
+  npm install shelljs@latest --save
+  npm install supertest@latest --save-dev
   npm install vhost@latest --save
   npm install winston@latest --save
 }
@@ -110,36 +126,53 @@ nodeExpressNpmInitiationTypeScript() {
     return
   fi;
   nodeExpressNpmInitiation
+  npm install @types/async@latest --save-dev
+  npm install @types/bluebird@latest --save-dev
   npm install @types/body-parser@latest --save-dev
+  npm install @types/chai@latest --save-dev
+  npm install @types/concurrently@latest --save-dev
+  npm install @types/connect-mongo@latest --save-dev
   npm install @types/cookie-parser@latest --save-dev
   npm install @types/cookie-session@latest --save-dev
   npm install @types/compression@latest --save-dev
   npm install @types/connect@latest --save-dev
   npm install @types/cron@latest --save-dev
   npm install @types/csurf@latest --save-dev
+  npm install @types/dotenv@latest --save-dev
   npm install @types/errorhandler@latest --save-dev
   npm install @types/express@latest --save-dev
   npm install @types/express-session@latest --save-dev
+  npm install @types/express-validator@latest --save-dev
   npm install @types/file-stream-rotator@latest --save-dev
   npm install @types/helmet@latest --save-dev
   npm install @types/html-minifier@latest --save-dev
+  npm install @types/jest@latest --save-dev
+  npm install @types/lodash@latest --save-dev
   npm install @types/method-override@latest --save-dev
   npm install @types/multer@latest --save-dev
+  npm install @types/mongoose@latest --save-dev
   npm install @types/morgan@latest --save-dev
   npm install @types/nodemailer@latest --save-dev
+  npm install @types/nodemon@latest --save-dev
+  npm install @types/passport@latest --save-dev
+  npm install @types/passport-local@latest --save-dev
+  npm install @types/pug@latest --save-dev
   npm install @types/raven@latest --save-dev
+  npm install @types/request@latest --save-dev
+  npm install @types/request-promise@latest --save-dev
   npm install @types/response-time@latest --save-dev
   npm install @types/serve-favicon@latest --save-dev
   npm install @types/serve-index@latest --save-dev
   npm install @types/serve-static@latest --save-dev
-  npm install @types/uglify-js@latest --save-dev
+  npm install @types/shelljs@latest --save-dev
+  npm install @types/supertest@latest --save-dev
   npm install @types/vhost@latest --save-dev
   npm install @types/winston@latest --save-dev
-  npm install grunt@latest --save-dev
-  npm install grunt-contrib-copy@latest --save-dev
-  npm install grunt-ts@latest --save-dev
-  npm install grunt-contrib-watch@latest --save-dev
+  npm install ts-jest@latest --save-dev
+  npm install ts-node@latest --save-dev
+  npm install tslint@latest --save-dev
   npm install typescript@latest --save-dev
+
 }
 
 alias node_update=nodeUpdates
