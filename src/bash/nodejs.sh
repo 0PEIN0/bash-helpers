@@ -102,11 +102,51 @@ nodeExpressNpmInitiation() {
   npm install winston@latest --save
 }
 
+nodeExpressNpmInitiationTypeScript() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  nodeExpressNpmInitiation
+  npm install @types/body-parser@latest --save-dev
+  npm install @types/cookie-parser@latest --save-dev
+  npm install @types/cookie-session@latest --save-dev
+  npm install @types/compression@latest --save-dev
+  npm install @types/connect@latest --save-dev
+  npm install @types/cron@latest --save-dev
+  npm install @types/csurf@latest --save-dev
+  npm install @types/errorhandler@latest --save-dev
+  npm install @types/express@latest --save-dev
+  npm install @types/express-session@latest --save-dev
+  npm install @types/file-stream-rotator@latest --save-dev
+  npm install @types/helmet@latest --save-dev
+  npm install @types/html-minifier@latest --save-dev
+  npm install @types/method-override@latest --save-dev
+  npm install @types/multer@latest --save-dev
+  npm install @types/morgan@latest --save-dev
+  npm install @types/nodemailer@latest --save-dev
+  npm install @types/raven@latest --save-dev
+  npm install @types/response-time@latest --save-dev
+  npm install @types/serve-favicon@latest --save-dev
+  npm install @types/serve-index@latest --save-dev
+  npm install @types/serve-static@latest --save-dev
+  npm install @types/uglify-js@latest --save-dev
+  npm install @types/vhost@latest --save-dev
+  npm install @types/winston@latest --save-dev
+  npm install grunt@latest --save-dev
+  npm install grunt-contrib-copy@latest --save-dev
+  npm install grunt-ts@latest --save-dev
+  npm install grunt-contrib-watch@latest --save-dev
+  npm install typescript@latest --save-dev
+}
+
 alias node_update=nodeUpdates
 alias install_angular=installAngular
 alias install_nodejs=installNodejs
 alias install_vuejs=installVueJs
 alias node_express_new_app=nodeExpressNpmInitiation
+alias node_express_new_app_ts=nodeExpressNpmInitiationTypeScript
 alias npm_adduser="npm adduser" # asks for username, password and public-email in the prompt
 alias npm_build="npm run build"
 alias npm_i="npm install"
