@@ -9,6 +9,7 @@ LATEST_PYTHON_VERSION="3.7.0" #https://www.python.org/downloads/
 LATEST_CLANGD_VERSION="6.0.1" #http://releases.llvm.org/download.html
 LATEST_DOCKER_COMPOSE_VERSION="1.21.2" #https://docs.docker.com/compose/install/
 LATEST_SCALA_VERSION='2.12.6' #https://www.scala-lang.org/download/
+LATEST_DBVIS_VERSION_NUMBER="10.0.13" #https://www.dbvis.com/download/
 LATEST_ROBOMONGO_VERSION="1.2.1" #https://robomongo.org/download
 LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-3e50a65"
 LATEST_STACER_VERSION="1.0.9" #https://github.com/oguzhaninan/Stacer/releases

@@ -1010,6 +1010,22 @@ installDbeaver() {
   goToRoot
 }
 
+installDbvis() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  goToSoftwareFolder
+  LATEST_DBVIS_FILE_NAME="dbvis_linux_${1//[.]/_}"
+  echo "$LATEST_DBVIS_FILE_NAME"
+  wget -O $LATEST_DBVIS_FILE_NAME --no-check-certificate http://www.dbvis.com/product_download/dbvis-$1/media/$LATEST_DBVIS_FILE_NAME.deb
+  sudo dpkg -i "$SYSTEM_SOFTWARE_FOLDER/$LATEST_DBVIS_FILE_NAME"
+  printf 'y\n' | sudo apt-get install -f
+  goToRoot
+}
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1179,6 +1195,7 @@ alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_clangd="installClangD $LATEST_CLANGD_VERSION"
 alias install_codeblocks=installCodeblocks
 alias install_dbeaver=installDbeaver
+alias install_dbvis="installDbvis $LATEST_DBVIS_VERSION_NUMBER"
 alias install_etcher=installEtcher
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
