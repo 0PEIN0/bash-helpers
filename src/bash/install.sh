@@ -1005,7 +1005,6 @@ installDbeaver() {
   goToSoftwareFolder
   LATEST_DBEAVER_FILE_NAME="dbeaver-ce_latest_amd64"
   wget -O $LATEST_DBEAVER_FILE_NAME --no-check-certificate https://dbeaver.io/files/$LATEST_DBEAVER_FILE_NAME.deb
-  printf 'y\n' | sudo apt install "$SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME.deb"
   sudo dpkg -i "$SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME"
   printf 'y\n' | sudo apt-get install -f
   goToRoot
