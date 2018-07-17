@@ -200,6 +200,10 @@ checkSoftwareFolder() {
   cd $softwareFolder/
 }
 
+goToSoftwareFolder() {
+  cd $SYSTEM_SOFTWARE_FOLDER/
+}
+
 checkAppsFolder() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName

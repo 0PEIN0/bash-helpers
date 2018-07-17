@@ -923,7 +923,7 @@ installSpotify() {
     return
   fi;
   goToRoot
-  checkSoftwareFolder
+  goToSoftwareFolder
   # Install Spotify
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
   echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -939,7 +939,7 @@ installPulseAudio() {
     return
   fi;
   goToRoot
-  checkSoftwareFolder
+  goToSoftwareFolder
   # Install microphone control panel and pulseaudio android support package
   aptGet
   printf 'y\n' | sudo apt-get install pavucontrol
@@ -957,7 +957,7 @@ installTransmission() {
     return
   fi;
   goToRoot
-  checkSoftwareFolder
+  goToSoftwareFolder
   # Install Transmission client
   printf '\n' | sudo add-apt-repository ppa:transmissionbt/ppa
   aptGet
@@ -1002,11 +1002,11 @@ installDbeaver() {
     return
   fi;
   goToRoot
-  checkSoftwareFolder
+  goToSoftwareFolder
   LATEST_DBEAVER_FILE_NAME="dbeaver-ce_latest_amd64"
   wget -O $LATEST_DBEAVER_FILE_NAME --no-check-certificate https://dbeaver.io/files/$LATEST_DBEAVER_FILE_NAME.deb
-  printf 'y\n' | sudo apt install $SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME.deb
-  sudo dpkg -i $SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME
+  printf 'y\n' | sudo apt install "$SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME.deb"
+  sudo dpkg -i "$SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME"
   printf 'y\n' | sudo apt-get install -f
   goToRoot
 }
