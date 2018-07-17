@@ -995,6 +995,23 @@ installPopularMediaPlayers() {
   printf "y\n" | sudo apt-get install clementine
 }
 
+installDbeaver() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  checkSoftwareFolder
+  LATEST_DBEAVER_FILE_NAME="dbeaver-ce_latest_amd64"
+  wget -O $LATEST_DBEAVER_FILE_NAME --no-check-certificate https://dbeaver.io/files/$LATEST_DBEAVER_FILE_NAME.deb
+  #wget -O Brackets.Release.$1.64-bit.deb --no-check-certificate https://github.com/adobe/brackets/releases/download/release-$1/Brackets.Release.$1.64-bit.deb
+  printf 'y\n' | sudo apt install $SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME.deb
+  sudo dpkg -i $SYSTEM_SOFTWARE_FOLDER/$LATEST_DBEAVER_FILE_NAME
+  printf 'y\n' | sudo apt-get install -f
+  goToRoot
+}
+
 installPackagesForSystemSudo() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1163,6 +1180,7 @@ alias install_blender=installBlender
 alias install_bracket="installBracket $LATEST_BRACKET_VERSION"
 alias install_clangd="installClangD $LATEST_CLANGD_VERSION"
 alias install_codeblocks=installCodeblocks
+alias install_dbeaver=installDbeaver
 alias install_etcher=installEtcher
 alias install_golang="installGolang $LATEST_GOLANG_VERSION $LATEST_GOLANG_VERSION_FULL"
 alias install_hack_lang=installHackLang
