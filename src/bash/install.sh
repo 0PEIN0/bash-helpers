@@ -151,8 +151,8 @@ installBracket() {
   printf '\n' | sudo add-apt-repository ppa:webupd8team/brackets
   aptGet
   printf 'y\n' | sudo apt-get install brackets
+  # below is the old installation of bracket
   #wget -O Brackets.Release.$1.64-bit.deb --no-check-certificate https://github.com/adobe/brackets/releases/download/release-$1/Brackets.Release.$1.64-bit.deb
-  #printf 'y\n' | sudo apt install $SYSTEM_SOFTWARE_FOLDER/Brackets.Release.$1.64-bit.deb
   #sudo dpkg -i $SYSTEM_SOFTWARE_FOLDER/Brackets.Release.$1.64-bit
   #printf 'y\n' | sudo apt-get install -f
   goToRoot
