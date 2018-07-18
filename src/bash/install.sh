@@ -910,8 +910,8 @@ installS3Cmd() {
     return
   fi;
   goToRoot
-  pip install --upgrade pip
   printf "y\n" | apt install python-pip
+  pip install --upgrade pip
   pip install s3cmd
   goToRoot
 }
