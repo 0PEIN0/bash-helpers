@@ -35,3 +35,7 @@ fi;
 if [ -f $SYSTEM_ROOT_GIT_REPO_FOLDER/crugen/project-shell.sh ]; then
     . $SYSTEM_ROOT_GIT_REPO_FOLDER/crugen/project-shell.sh
 fi;
+
+if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/aws.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/src/bash/aws.sh
+fi;
