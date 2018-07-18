@@ -911,7 +911,6 @@ installS3Cmd() {
   fi;
   goToRoot
   printf "y\n" | apt install python-pip
-  pip install --upgrade pip
   pip install s3cmd
   goToRoot
 }
