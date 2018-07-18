@@ -903,6 +903,19 @@ installNginx() {
   goToRoot
 }
 
+installS3Cmd() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  pip install --upgrade pip
+  printf "y\n" | apt install python-pip
+  pip install s3cmd
+  goToRoot
+}
+
 installCodeblocks() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1214,6 +1227,7 @@ alias install_python=installPython
 alias install_python_postgres=installPythonAndPostgres
 alias install_pulse_audio=installPulseAudio
 alias install_robo_mongo="installRoboMongo $LATEST_ROBOMONGO_VERSION $LATEST_ROBOMONGO_VERSION_FULL"
+alias install_s3cmd=installS3Cmd
 alias install_scala="installScala $LATEST_SCALA_VERSION"
 alias install_slack="installSlack $LATEST_SLACK_VERSION"
 alias install_spotify=installSpotify
