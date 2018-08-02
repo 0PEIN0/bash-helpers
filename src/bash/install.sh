@@ -1145,6 +1145,8 @@ installPackagesForSystemSudo() {
   powerlineFontInstallationSudo
   # Install slack chat app
   installSlack $LATEST_SLACK_VERSION
+  # Install Acetone
+  printf "y\n" | sudo apt-get install acetoneiso
   # Install Atom
   installAtom
   # Install nodejs
