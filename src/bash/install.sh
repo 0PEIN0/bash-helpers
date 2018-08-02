@@ -695,6 +695,18 @@ installGolang() {
   goToRoot
 }
 
+installPlayOnLinux() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  cd $SYSTEM_SOFTWARE_FOLDER/
+  aptGet
+  sudo apt-get install playonlinux
+  goToRoot
+}
+
 installPhantomJs() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1222,6 +1234,7 @@ alias install_mongo=installMongoDb
 alias install_mono_develop=installMonoDevelop #type and enter 'y' character twice when prompted
 alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL $LATEST_PHANTOMJS_VERSION"
 alias install_php=installPhp
+alias install_play_on_linux=installPlayOnLinux
 alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
 alias install_python=installPython
