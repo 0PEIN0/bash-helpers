@@ -1247,6 +1247,7 @@ alias install_mongo=installMongoDb
 alias install_mono_develop=installMonoDevelop #type and enter 'y' character twice when prompted
 alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL $LATEST_PHANTOMJS_VERSION"
 alias install_php=installPhp
+alias install_php_my_admin=installPhpmyadmin
 alias install_play_on_linux=installPlayOnLinux
 alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
