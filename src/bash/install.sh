@@ -538,18 +538,6 @@ installJenkins() {
   goToRoot
 }
 
-installPhpmyadmin() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  printf 'y\n' | sudo apt-get install mysql-server
-  sudo mysql_secure_installation
-  printf 'y\n' | sudo apt-get install phpmyadmin php-mbstring php-gettext
-  #https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04
-}
-
 installLaravelNonSudo() {
   funcName=$(getFunctionName)
   checkIfNotSudo $funcName
@@ -747,28 +735,6 @@ installMonoDevelop() {
   printf 'y\n' | sudo apt install flatpak
   flatpak install --user --from https://download.mono-project.com/repo/monodevelop.flatpakref
   #type and enter 'y' twice
-}
-
-installPhp() {
-  funcName=$(getFunctionName)
-  checkIfSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  aptGet
-  cd $SYSTEM_SOFTWARE_FOLDER/
-  printf 'y\n' | sudo apt-get install apache2
-  aptGet
-  printf 'y\n' | sudo apt-get install apache2 php7.0 libapache2-mod-php7.0
-  aptGet
-  curl -sS https://getcomposer.org/installer | php
-  sudo mv composer.phar /usr/local/bin/composer
-  aptGet
-  sudo phpenmod mcrypt
-  sudo phpenmod mbstring
-  sudo a2enmod rewrite
-  sudo systemctl restart apache2
-  goToRoot
 }
 
 installScala() {
@@ -1246,8 +1212,6 @@ alias install_maria_db=installMariaDb
 alias install_mongo=installMongoDb
 alias install_mono_develop=installMonoDevelop #type and enter 'y' character twice when prompted
 alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL $LATEST_PHANTOMJS_VERSION"
-alias install_php=installPhp
-alias install_php_my_admin=installPhpmyadmin
 alias install_play_on_linux=installPlayOnLinux
 alias install_postman=installPostman
 alias install_pycharm="installPyCharm $LATEST_PYCHARM_VERSION"
