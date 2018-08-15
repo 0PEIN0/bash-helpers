@@ -1034,6 +1034,18 @@ installDbeaver() {
   goToRoot
 }
 
+installMariaDb() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  aptGet
+  printf 'y\n' | sudo apt-get install mariadb-server mariadb-client
+  goToRoot
+}
+
 installDbvis() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1230,6 +1242,7 @@ alias install_java_eight=installJavaEight
 alias install_java_nine=installJavaNine
 alias install_jenkins=installJenkins
 alias install_laravel=installLaravelNonSudo
+alias install_maria_db=installMariaDb
 alias install_mongo=installMongoDb
 alias install_mono_develop=installMonoDevelop #type and enter 'y' character twice when prompted
 alias install_phantom="installPhantomJs $LATEST_PHANTOMJS_VERSION_FULL $LATEST_PHANTOMJS_VERSION"
