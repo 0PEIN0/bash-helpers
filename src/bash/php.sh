@@ -42,7 +42,7 @@ installPhpmyadmin() {
   fi;
   printf 'y\n' | sudo apt-get install mysql-server
   sudo mysql_secure_installation
-  printf 'y\n' | sudo apt-get install phpmyadmin php-mbstring php-gettext
+  sudo apt-get install phpmyadmin php-mbstring php-gettext
   #https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04
 }
 
