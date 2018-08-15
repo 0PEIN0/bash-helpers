@@ -22,6 +22,18 @@ installPhp() {
   goToRoot
 }
 
+installLaravelNonSudo() {
+  funcName=$(getFunctionName)
+  checkIfNotSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  composer global require "laravel/installer"
+  echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bash_aliases
+  bash_refresh
+  #http://vaguelyuseful.info/2016/08/03/installing-laravel-5-2-on-ubuntu-16-04-and-apache2/
+}
+
 installPhpmyadmin() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -35,5 +47,6 @@ installPhpmyadmin() {
 }
 
 alias apache_restart='/etc/init.d/apache2 restart'
+alias install_laravel=installLaravelNonSudo
 alias install_php=installPhp
 alias install_php_my_admin=installPhpmyadmin

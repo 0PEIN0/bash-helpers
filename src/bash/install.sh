@@ -538,18 +538,6 @@ installJenkins() {
   goToRoot
 }
 
-installLaravelNonSudo() {
-  funcName=$(getFunctionName)
-  checkIfNotSudo $funcName
-  if [ "${?}" = "0" ] ; then
-    return
-  fi;
-  composer global require "laravel/installer"
-  echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bash_aliases
-  bash_refresh
-  #http://vaguelyuseful.info/2016/08/03/installing-laravel-5-2-on-ubuntu-16-04-and-apache2/
-}
-
 installSkype() {
   funcName=$(getFunctionName)
   checkIfSudo $funcName
@@ -1207,7 +1195,6 @@ alias install_nginx=installNginx
 alias install_java_eight=installJavaEight
 alias install_java_nine=installJavaNine
 alias install_jenkins=installJenkins
-alias install_laravel=installLaravelNonSudo
 alias install_maria_db=installMariaDb
 alias install_mongo=installMongoDb
 alias install_mono_develop=installMonoDevelop #type and enter 'y' character twice when prompted
