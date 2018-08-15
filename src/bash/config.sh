@@ -16,6 +16,10 @@ if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/nodejs.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/src/bash/nodejs.sh
 fi;
 
+if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/php.sh ]; then
+    . $BASH_HELPER_GIT_FOLDER/src/bash/php.sh
+fi;
+
 if [ -f $BASH_HELPER_GIT_FOLDER/src/bash/docker.sh ]; then
     . $BASH_HELPER_GIT_FOLDER/src/bash/docker.sh
 fi;
