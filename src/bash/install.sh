@@ -997,6 +997,7 @@ installMariaDb() {
   goToRoot
   aptGet
   printf 'y\n' | sudo apt-get install mariadb-server mariadb-client
+  #https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/install-mariadb-on-ubuntu-16-04.html
   goToRoot
 }
 
