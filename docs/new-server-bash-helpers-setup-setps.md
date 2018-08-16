@@ -1,3 +1,5 @@
+### The purpose of this doc is to setup `bash-helpers` on a fresh server with just 3 steps. Assumes the server already has `git` and `nano` installed. Setup time: 1 min.
+
 1. Step 1:
 
 ```bash
