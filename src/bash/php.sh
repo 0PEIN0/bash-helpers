@@ -47,6 +47,7 @@ installPhpmyadmin() {
 }
 
 alias apache_restart='/etc/init.d/apache2 restart'
+alias get_apache_users='ps -ef | grep apache | grep -v grep'
 alias install_laravel=installLaravelNonSudo
 alias install_php=installPhp
 alias install_php_my_admin=installPhpmyadmin
