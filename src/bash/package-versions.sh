@@ -1,14 +1,14 @@
-LATEST_PYCHARM_VERSION="pycharm-community-2018.2" #https://www.jetbrains.com/pycharm/download/#section=linux
-LATEST_VSCODE_VERSION="1.25.1-1531323788" #https://code.visualstudio.com/download
-LATEST_BRACKET_VERSION="1.13" #https://github.com/adobe/brackets/releases
-LATEST_GOLANG_VERSION="1.10.3" #https://golang.org/dl/
+LATEST_PYCHARM_VERSION="pycharm-community-2018.2.2" #https://www.jetbrains.com/pycharm/download/#section=linux
+LATEST_VSCODE_VERSION="1.26.1-1534444688" #https://code.visualstudio.com/download
 LATEST_SLACK_VERSION="3.2.1" #https://slack.com/downloads/linux
-LATEST_GEOS_VERSION="geos-3.6.2" #http://download.osgeo.org/geos/
+LATEST_GEOS_VERSION="geos-3.6.3" #http://download.osgeo.org/geos/
 LATEST_POSTGIS_VERSION="postgis-2.4.4" #http://postgis.net/stuff/
 LATEST_PYTHON_VERSION="3.7.0" #https://www.python.org/downloads/
-LATEST_CLANGD_VERSION="6.0.1" #http://releases.llvm.org/download.html
-LATEST_DOCKER_COMPOSE_VERSION="1.22.0" #https://docs.docker.com/compose/install/
+LATEST_GOLANG_VERSION="1.10.3" #https://golang.org/dl/
+LATEST_BRACKET_VERSION="1.13" #https://github.com/adobe/brackets/releases
 LATEST_SCALA_VERSION='2.12.6' #https://www.scala-lang.org/download/
+LATEST_DOCKER_COMPOSE_VERSION="1.22.0" #https://docs.docker.com/compose/install/
+LATEST_CLANGD_VERSION="6.0.1" #http://releases.llvm.org/download.html
 LATEST_DBVIS_VERSION_NUMBER="10.0.13" #https://www.dbvis.com/download/
 LATEST_ROBOMONGO_VERSION="1.2.1" #https://robomongo.org/download
 LATEST_ROBOMONGO_VERSION_FULL="robo3t-$LATEST_ROBOMONGO_VERSION-linux-x86_64-3e50a65"
