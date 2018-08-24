@@ -13,7 +13,7 @@ apmUpdates() {
 downloadYoutubeVideo() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   eval "cd \"$SYSTEM_MUSIC_VIDEOS_FOLDER\""
