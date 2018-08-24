@@ -142,7 +142,7 @@ installBracket() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   goToRoot
@@ -179,7 +179,7 @@ installVisualStudioCode() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   goToRoot
@@ -356,11 +356,11 @@ installRoboMongo() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $2
   fi;
   goToRoot
@@ -399,7 +399,7 @@ installPyCharm() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   cd $SYSTEM_SOFTWARE_FOLDER
@@ -501,7 +501,7 @@ installAtom() {
 installStacer() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   checkIfSudo $funcName
@@ -564,7 +564,7 @@ installSlack() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   cd $SYSTEM_SOFTWARE_FOLDER
@@ -649,11 +649,11 @@ installWine() {
 
 installGolang() {
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $2
   fi;
   cd $SYSTEM_SOFTWARE_FOLDER
@@ -690,11 +690,11 @@ installPhantomJs() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $2
   fi;
   cd $SYSTEM_SOFTWARE_FOLDER/
@@ -732,7 +732,7 @@ installScala() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   aptGet
@@ -819,7 +819,7 @@ installAngryIpScan() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   aptGet
@@ -837,7 +837,7 @@ installClangD() {
     return
   fi;
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   aptGet

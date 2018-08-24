@@ -21,7 +21,7 @@ postgresPgpassFileInit() {
 newDjangoProject() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   django-admin startproject $1 .
@@ -45,15 +45,15 @@ checkRootVirtualPythonEnvironmentFolder() {
 
 checkVirtualPythonEnvironmentFolder() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   goToRoot
@@ -68,7 +68,7 @@ checkVirtualPythonEnvironmentFolder() {
 
 postgresPasswordReset() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   goToRoot
@@ -78,19 +78,19 @@ postgresPasswordReset() {
 
 pythonThreeVeCheck() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   if [ -z "$4" ]; then
-    echo 'null value not allowed as fourth parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as fourth parameter! You must pass the required parameter(s).'
     return $4
   fi;
   if [ -d "$1/bin" ]; then
@@ -105,19 +105,19 @@ pythonThreeVeCheck() {
 
 pythonTwoVeCheck() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   if [ -z "$4" ]; then
-    echo 'null value not allowed as fourth parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as fourth parameter! You must pass the required parameter(s).'
     return $4
   fi;
   if [ -d "$1/bin" ]; then
@@ -132,23 +132,23 @@ pythonTwoVeCheck() {
 
 pythonVeVersionDecider() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   if [ -z "$4" ]; then
-    echo 'null value not allowed as fourth parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as fourth parameter! You must pass the required parameter(s).'
     return $4
   fi;
   if [ -z "$5" ]; then
-    echo 'null value not allowed as fifth parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as fifth parameter! You must pass the required parameter(s).'
     return $5
   fi;
   if [ "$5" = "2" ]; then
@@ -162,11 +162,11 @@ pythonVeVersionDecider() {
 
 djangoUseVe() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   eval ${2}_ve_check
@@ -177,15 +177,15 @@ djangoUseVe() {
 
 startCeleryWorkers() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   nohup celery -A $1 worker -l info &
@@ -195,11 +195,11 @@ startCeleryWorkers() {
 
 djangoStopProcesses() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   kill -9 $(lsof -t -i:$1)
@@ -223,11 +223,11 @@ djangoStopProcesses() {
 
 djangoVeClear() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   cd $1/
@@ -237,7 +237,7 @@ djangoVeClear() {
 
 djangoGitSetup() {
   if [ -z "$1" ]; then
-  echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+  echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   git remote set-url origin $1
@@ -245,15 +245,15 @@ djangoGitSetup() {
 
 djangoDefaultSetup() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   cd $1/
@@ -264,11 +264,11 @@ djangoDefaultSetup() {
 
 djangoPsqlReset() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   chmod 600 ~/.pgpass
@@ -277,11 +277,11 @@ djangoPsqlReset() {
 
 djangoProjectDataLoad() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   goToRoot
@@ -293,19 +293,19 @@ djangoProjectDataLoad() {
 
 djangoReinitiate() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   if [ -z "$4" ]; then
-    echo 'null value not allowed as fourth parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as fourth parameter! You must pass the required parameter(s).'
     return $4
   fi;
   goToRoot
@@ -339,11 +339,11 @@ djangoDefaultSetupWithDataLoad() {
 
 djangoGitRebase() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   eval ${1}_ve
@@ -359,11 +359,11 @@ djangoGitRebaseWithDataLoad() {
 
 djangoReinitiateClean() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   goToRoot
@@ -379,7 +379,7 @@ djangoReinitiateClean() {
 
 djangoReset() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   eval ${1}_stop_processes
@@ -393,7 +393,7 @@ djangoReset() {
 
 djangoFullReset() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   goToRoot
@@ -410,7 +410,7 @@ djangoFullReset() {
 
 djangoTest() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   eval ${1}_ve
@@ -420,11 +420,11 @@ djangoTest() {
 
 djangoBranchChange() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   eval ${1}_stop_processes
@@ -446,11 +446,11 @@ djangoBranchChangeRun() {
 
 djangoBranchChangeWithFullReset() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   eval ${1}_stop_processes
@@ -470,15 +470,15 @@ djangoBranchChangeWithFullReset() {
 
 djangoRun() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   eval ${1}_ve
@@ -490,15 +490,15 @@ djangoRun() {
 
 djangoProductionRun() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   if [ -z "$3" ]; then
-    echo 'null value not allowed as third parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as third parameter! You must pass the required parameter(s).'
     return $3
   fi;
   bashRefresh
@@ -511,7 +511,7 @@ djangoProductionRun() {
 
 djangoDeploymentOperations() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   goToRoot
@@ -523,11 +523,11 @@ djangoDeploymentOperations() {
 
 djangoBranchChangeWithFullResetAndRun() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   eval ${1}_bc_full_reset $2
@@ -536,11 +536,11 @@ djangoBranchChangeWithFullResetAndRun() {
 
 djangoResetWithoutMigrationClean() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo 'null value not allowed as second parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as second parameter! You must pass the required parameter(s).'
     return $2
   fi;
   goToRoot
@@ -553,7 +553,7 @@ djangoResetWithoutMigrationClean() {
 
 djangoMakeMigrations() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   eval ${1}_ve
@@ -562,7 +562,7 @@ djangoMakeMigrations() {
 
 djangoMigrate() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   eval ${1}_ve

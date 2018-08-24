@@ -16,7 +16,7 @@ goToRoot() {
 
 goToDir() {
   if [ -z "$1" ]; then
-    echo 'null value not allowed as first parameter! You must pass the required parameter(s).'
+    echo 'null value is not allowed as first parameter! You must pass the required parameter(s).'
     return $1
   fi;
   cd $1/
@@ -50,7 +50,7 @@ isSudoMode() {
 
 isFile() {
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   if [ ! -f "$1" ]; then
@@ -62,7 +62,7 @@ isFile() {
 
 isDir() {
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   if [ -d "$1" ]; then
@@ -94,7 +94,7 @@ getFunctionName() {
 
 checkIfSudo() {
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"checkIfSudo\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"checkIfSudo\"! You must pass the required parameter(s)."
     return "0"
   fi;
   sudoMode=$(isSudoMode)
@@ -107,7 +107,7 @@ checkIfSudo() {
 
 checkIfNotSudo() {
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"checkIfNotSudo\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"checkIfNotSudo\"! You must pass the required parameter(s)."
     return "0"
   fi;
   sudoMode=$(isSudoMode)
@@ -121,11 +121,11 @@ checkIfNotSudo() {
 
 checkParameters() {
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"checkParameters\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"checkParameters\"! You must pass the required parameter(s)."
     return "0"
   fi;
   if [ -z "$2" ]; then
-    echo "null value not allowed as second parameter for method: \"checkParameters\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as second parameter for method: \"checkParameters\"! You must pass the required parameter(s)."
     return "0"
   fi;
   parameterPositions=(first second third fourth fifth sixth seventh eighth ninth tenth)
@@ -134,7 +134,7 @@ checkParameters() {
     j=$((i+2))
     #echo $i $j "${\"$j\"}"
     if [ -z "$j" ]; then
-      echo "aaanull value not allowed as ${parameterPositions[i]} parameter for method: \"${2}\"! You must pass the required parameter(s)."
+      echo "aaanull value is not allowed as ${parameterPositions[i]} parameter for method: \"${2}\"! You must pass the required parameter(s)."
       return "0"
     fi;
   done
@@ -257,7 +257,7 @@ changePermissionOfBashrcFiles() {
 openAUrlInBrowser() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   if which xdg-open > /dev/null
@@ -272,7 +272,7 @@ openAUrlInBrowser() {
 getWebsiteData() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   echo `curl $1`
@@ -281,11 +281,11 @@ getWebsiteData() {
 findStringPattern() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   if [ -z "$2" ]; then
-    echo "null value not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as second parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $2
   fi;
   dataString=$1

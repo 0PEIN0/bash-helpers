@@ -20,7 +20,7 @@ gitResetHard() {
 gitCheckout() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   printf 'yes\n' | git fetch --all
@@ -31,7 +31,7 @@ gitCheckout() {
 gitRebase() {
   funcName=$(getFunctionName)
   if [ -z "$1" ]; then
-    echo "null value not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
+    echo "null value is not allowed as first parameter for method: \"${funcName}\"! You must pass the required parameter(s)."
     return $1
   fi;
   printf 'yes\n' | git fetch --all
