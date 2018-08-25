@@ -60,6 +60,7 @@ installPhpFive() {
   printf '\n' | sudo add-apt-repository ppa:ondrej/php
   aptGet
   printf 'y\n' | sudo apt-get install -y php5.6
+  printf 'y\n' | sudo apt-get install php5.6-mbstring
   goToRoot
 }
 
@@ -73,6 +74,7 @@ installPhpSeven() {
   printf '\n' | sudo add-apt-repository ppa:ondrej/php
   aptGet
   printf 'y\n' | sudo apt-get install -y php7.2
+  printf 'y\n' | sudo apt-get install php7.2-mbstring
   goToRoot
 }
 
