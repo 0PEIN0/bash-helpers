@@ -63,9 +63,61 @@ installPhpFive() {
   goToRoot
 }
 
+installPhpSeven() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  printf '\n' | sudo add-apt-repository ppa:ondrej/php
+  aptGet
+  printf 'y\n' | sudo apt-get install -y php7.2
+  goToRoot
+}
+
+phpSwitchSevenToFive() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  sudo a2dismod php7.0
+  sudo a2dismod php7.2
+  sudo a2enmod php5.6
+  eval "apache_restart"
+  sudo update-alternatives --set php /usr/bin/php5.6
+  # sample output for above command: update-alternatives: using /usr/bin/php5.6 to provide /usr/bin/php (php) in manual mode
+  sudo update-alternatives --set phpize /usr/bin/phpize5.6
+  sudo update-alternatives --set php-config /usr/bin/php-config5.6
+  eval "apache_restart"
+  goToRoot
+}
+
+phpSwitchFiveToSeven() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  sudo a2dismod php5.6
+  sudo a2enmod php7.2
+  eval "apache_restart"
+  sudo update-alternatives --set php /usr/bin/php7.2
+  sudo update-alternatives --set phpize /usr/bin/phpize7.2
+  sudo update-alternatives --set php-config /usr/bin/php-config7.2
+  eval "apache_restart"
+  goToRoot
+}
+
 alias apache_restart='/etc/init.d/apache2 restart'
 alias get_apache_users='ps -ef | grep apache | grep -v grep'
 alias install_laravel=installLaravelNonSudo
 alias install_php=installPhp
 alias install_php_five=installPhpFive
 alias install_php_my_admin=installPhpmyadmin
+alias install_php_seven=installPhpSeven
+alias php_switch_from_five_to_seven=phpSwitchFiveToSeven
+alias php_switch_from_seven_to_five=phpSwitchSevenToFive
