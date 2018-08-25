@@ -343,7 +343,7 @@ systemUpdatesNonSudo() {
     return
   fi;
   cd /
-  pein_bash_refresh
+  eval "bash_refresh"
   eval "sshOperationsNonSudo"
   upgrade_oh_my_zsh
   youtube-dl -U
@@ -362,7 +362,7 @@ systemUpdatesSudo() {
     return
   fi;
   cd /
-  bash_refresh
+  eval "bash_refresh"
   coreSystemUpdate
   upgrade_oh_my_zsh
   youtube-dl -U
@@ -377,7 +377,7 @@ fetchBashHelpersRepo() {
   eval "gitResetHard"
   eval "git_f"
   eval "gitResetHard"
-  bash_refresh
+  eval "bash_refresh"
   goToRoot
 }
 
@@ -387,7 +387,7 @@ pullBashHelpersRepo() {
   cd $BASH_HELPER_GIT_FOLDER
   eval "git_rd"
   eval "git_p"
-  bash_refresh
+  eval "bash_refresh"
   goToRoot
 }
 
