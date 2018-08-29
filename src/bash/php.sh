@@ -130,6 +130,18 @@ installPhpCsFixer() {
   goToRoot
 }
 
+updatePhpCsFixer() {
+  funcName=$(getFunctionName)
+  checkIfSudo $funcName
+  if [ "${?}" = "0" ] ; then
+    return
+  fi;
+  goToRoot
+  cd $SYSTEM_SOFTWARE_FOLDER
+  php /usr/local/bin/php-cs-fixer self-update
+  goToRoot
+}
+
 alias apache_restart='/etc/init.d/apache2 restart'
 alias get_apache_users='ps -ef | grep apache | grep -v grep'
 alias install_laravel=installLaravelNonSudo
@@ -140,4 +152,4 @@ alias install_php_my_admin=installPhpmyadmin
 alias install_php_seven=installPhpSeven
 alias php_switch_from_five_to_seven=phpSwitchFiveToSeven
 alias php_switch_from_seven_to_five=phpSwitchSevenToFive
-alias update_cs_fixer='php php-cs-fixer.phar self-update'
+alias update_php_cs_fixer=updatePhpCsFixer
